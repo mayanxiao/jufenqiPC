@@ -15,7 +15,9 @@
 </template>
 
 <script>
+// import JFooter from '@/components/JFooter'
+
 export default {
-  name: 'app'
+  name: 'app',
 }
 </script>
