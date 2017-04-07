@@ -26,8 +26,9 @@ a {
 </template>
 
 <script>
+
 export default {
-  name: 'ForemanDetail',
+  name: 'foreman-detail',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

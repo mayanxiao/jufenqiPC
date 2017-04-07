@@ -12,11 +12,8 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Hello
-    },{
-      path: '/',
-      name: 'JFooter',
-      component: JFooter
-    },{
+    },
+    {
       path: '/foreman-detail',
       name: 'foreman-detail',
       component: ForemanDetail
