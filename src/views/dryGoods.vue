@@ -33,7 +33,26 @@
 		height: 200px;
 		width: 200px;
 		border-radius: 50%;
-		margin-right: 40px;
+		margin: 11px 40px;
+	}
+	.head-body{
+		height: 222px;
+		overflow: hidden;
+		display: inline-block;
+		width: 670px;
+	}
+	.head-body p:nth-child(1){
+		font-size: 20px;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+	.head-body p:nth-child(2){
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+	.head-body p:nth-child(3){
+		font-size: 12px;
+		color: #777;
 	}
 </style>
 
@@ -47,19 +66,101 @@
 			<p class="head-btn-check">
 				查看攻略
 			</p>
+			<div class="head-body">
+				<p>
+					准备阶段
+				</p>
+				<p>
+					角色：
+					<span>
+						业主、量房员
+					</span>
+				</p>
+				<p>
+					介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
+				</p>
+			</div>
 		</div>
+		<j-rank-list v-for="rank in ranks" :data="rank" :imgArr="rank.rankImgs"></j-rank-list>
 	</div>
 </template>
 
 <script type="text/javascript">
+	import JRankList from "../components/JRankList"
 	export default{
 		name: "dryGoods",
 		components: {
-
+			JRankList
 		},
 		data() {
 			return{
-
+				ranks: [{
+					rankName: "品牌排行榜",
+					rankMore: "更多排行",
+					rankImgs: [{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					}]
+				},{
+					rankName: "品牌排行榜",
+					rankMore: "更多排行",
+					rankImgs: [{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					}]
+				},{
+					rankName: "品牌排行榜",
+					rankMore: "更多排行",
+					rankImgs: [{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					},{
+						title: "最具性价比装修公司排行",
+						url: "/static/imgs/1.jpg"
+					}]
+				}]
 			}
 		},
 		methods: {
