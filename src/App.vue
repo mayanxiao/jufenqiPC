@@ -1,40 +1,44 @@
 <style>
-  *{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-  }
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    /* text-align: center; */
-    /* color: #2c3e50; */
-  }
-  .mainbody {
-    min-width: 1220px;
-    width: 62.5%;
-    margin: 0 auto;
-  }
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+input {
+  outline: none;
+}
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.mainbody {
+  min-width: 1220px;
+  width: 62.6%;
+  margin: 0 auto;
+}
 </style>
 <template>
   <div id="app">
+    <nav-bar></nav-bar>
     <div class="mainbody">
       <router-view></router-view>
     </div>
-    <!-- <j-footer></j-footer> -->
+    <j-footer></j-footer>
   </div>
 </template>
 
 <script>
-  import JFooter from '@/components/JFooter'
+import NavBar from '@/components/NavBar'
+import JFooter from '@/components/JFooter'
 
-  export default {
-    name: 'app',
-    components: {
-      JFooter
-    }
+export default {
+  name: 'app',
+  components: {
+    JFooter,
+    NavBar
   }
+}
 </script>
