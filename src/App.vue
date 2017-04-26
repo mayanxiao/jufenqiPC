@@ -6,6 +6,9 @@
   list-style: none;
   box-sizing: border-box;
 }
+input {
+  outline: none;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
