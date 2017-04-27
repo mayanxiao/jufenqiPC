@@ -42,6 +42,7 @@
     font-size: 20px;
     color: #fff;
     background-color: #ff9736;
+    cursor: pointer;
   }
   .input-tip {
     position: absolute;
@@ -64,7 +65,7 @@
  * 导航栏
  */
  .nav-list {
-  width: 52%;
+  width: 60%;
   height: 50px;
   line-height: 50px;
   font-size: 18px;

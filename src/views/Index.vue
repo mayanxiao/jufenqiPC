@@ -6,6 +6,11 @@
 	}
 	.banner-bac{
 		display: flex;
+		.info-input {
+			padding: 12px;
+			font-size: 14px;
+			text-align: center;
+		}
 	}
 	.banner-bac div:nth-child(1){
 		width: 298px;
@@ -169,12 +174,38 @@
 			}
 		}
 	}
+	.j-block {
+		margin-top: 100px;
+		.block-name {
+			text-align: center;
+			font-size: 24px;
+			margin-bottom: 76px;
+		}
+		.flex-name {
+			font-size: 24px;
+			width: 60%;
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 20px;
+		}
+		.con-wrapper {
+			display: flex;
+			height: 250px;
+			.con-left {
+				width: 20%;
+				background-color: #00f;
+			}
+			.con-right {
+				width: 80%;
+			}
+		}
+	}
 </style>
 
 <template>
 	<div class="index">
 		<div class="banner-bac">
-			<div>
+			<div class="info-input">
 				
 			</div>
 			<div>
@@ -288,6 +319,71 @@
 			</div>
 			<div>
 				
+			</div>
+		</div>
+		<div class="j-block">
+			<p class="block-name">选择装修公司</p>
+			<div class="con-wrapper">
+				<div style="width: 50%; background-color: #0f0;"></div>
+				<div style="width: 25%; background-color: #f00;"></div>
+				<div style="width: 25%; background-color: #0f0;"></div>
+			</div>
+		</div>
+		<div class="j-block" >
+			<div class="flex-name">
+				<span>综合</span><span>最有设计感的</span><span>口碑最好的</span><span>价位最低的</span>
+			</div>
+			<div class="con-wrapper" style="height: 400px;">
+				<div class="con-left"></div>
+				<div class="con-right">
+					<div style="background-color: #0f0; height: 50%"></div>
+					<div style="background-color: #f00; height: 50%"></div>
+				</div>
+			</div>
+		</div>
+		<div class="j-block">
+			<div class="flex-name" style="width: 100%;justify-content: flex-end;">浏览所有工长</div>
+			<div class="con-wrapper" style="height: 350px;">
+				<div style="width: 50%; background-color: #f00"></div>
+				<div style="width: 16.7%; background-color: #0f0"></div>
+				<div style="width: 16.7%; background-color: #f00"></div>
+				<div style="width: 16.7%; background-color: #0f0"></div>
+			</div>
+		</div>
+		<div class="j-block">
+			<div class="prepare">
+				<p>
+					寻设计
+				</p>
+				<div>
+					<p>风水攻略</p>
+					<p>颜色搭配攻略</p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+		<div class="j-block">
+			<div class="flex-name" style="margin-bottom: 60px;"><span>设计完工案例</span></div>
+			<div class="con-wrapper" style="height: 360px; justify-content: space-between;">
+				<div style="width: 23%; background-color: #0f0"></div>
+				<div style="width: 23%; background-color: #f00"></div>
+				<div style="width: 23%; background-color: #0f0"></div>
+				<div style="width: 23%; background-color: #f00"></div>
+			</div>
+		</div>
+		<div class="j-block" >
+			<div class="flex-name">
+				<span>综合</span><span>最有设计感的</span><span>口碑最好的</span><span>价位最低的</span>
+			</div>
+			<div class="con-wrapper" style="height: 400px;">
+				<div class="con-left"></div>
+				<div class="con-right">
+					<div style="background-color: #0f0; height: 50%"></div>
+					<div style="background-color: #f00; height: 50%"></div>
+				</div>
 			</div>
 		</div>
 	</div>

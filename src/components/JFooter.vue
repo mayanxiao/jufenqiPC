@@ -1,7 +1,7 @@
 <style lang="less" scoped>
 .j-footer {
 	width: 100%;
-
+  margin-top: 76px;
 	img {
     width: 100%;
     height: 44px;
