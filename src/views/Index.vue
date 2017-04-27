@@ -344,10 +344,10 @@
 		<div class="j-block">
 			<div class="flex-name" style="width: 100%;justify-content: flex-end;">浏览所有工长</div>
 			<div class="con-wrapper" style="height: 350px;">
-				<div style="width: 50%; background-color: #f00"></div>
-				<div style="width: 16.7%; background-color: #0f0"></div>
-				<div style="width: 16.7%; background-color: #f00"></div>
-				<div style="width: 16.7%; background-color: #0f0"></div>
+				<div style="width: 40%; background-color: #f00"></div>
+				<div style="width: 20%; background-color: #0f0"></div>
+				<div style="width: 20%; background-color: #f00"></div>
+				<div style="width: 20%; background-color: #0f0"></div>
 			</div>
 		</div>
 		<div class="j-block">
