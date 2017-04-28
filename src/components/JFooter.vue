@@ -1,6 +1,7 @@
 <style lang="less" scoped>
 .j-footer {
 	width: 100%;
+  min-width: 1220px;
   margin-top: 76px;
 	img {
     width: 100%;
@@ -9,13 +10,15 @@
 	}
   .items {
     display: flex;
-    background-color: #ccc;
-    padding: 10px 16px 20px 16px;
+    padding: 10px 0 20px 0;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
   }
   .qr-wrapper {
-    background-color: #fff;
     text-align: center;
-    width: 14.2%;
+    width: 13%;
+    border: 1px solid #ccc;
     img {
       display: block;
       width: 140px;
@@ -27,7 +30,6 @@
   .footbar {
     padding: 10px;
     display: flex;
-    background-color: #ff9736;
     .footbar-item {
       width: 7.9%;
       text-align: center;
@@ -40,7 +42,6 @@
   }
   .info-wrapper {
     padding: 20px 0;
-    background-color: #f7f7f7;
     .info {
       width: 70%;
       font-size: 14px;

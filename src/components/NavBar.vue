@@ -3,16 +3,15 @@
 .navbar {
   width: 100%;
   height: 250px;
-  background-color: #236;
 }
 .nav-wrapper {
   min-width: 1220px;
   width: 62.6%;
   margin: 0 auto;
-  background-color: #ccc;
   height: 100%;
   padding: 48px 0;
   position: relative;
+  border: 1px solid #ccc;
 }
 /**
  *  输入框

@@ -2,8 +2,8 @@
 .JFooterItem {
   background-color: #fff;
   width: 13%;
-  margin-right: 1.2%;
   text-align: center;
+  border: 1px solid #ccc;
   .f-title {
     font-size: 18px;
     font-family: '微软雅黑';
