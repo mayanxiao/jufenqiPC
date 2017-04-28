@@ -18,7 +18,7 @@
  */
 .input-wrapper {
   width: 50%;
-  height: 80px;
+  height: 60px;
   margin: 0 auto;
   display: flex;
   position: relative;
@@ -35,8 +35,8 @@
   }
   .input_btn {
     width: 20%;
-    height: 80px;
-    line-height: 80px;
+    height: 60px;
+    line-height: 60px;
     text-align: center;
     font-size: 20px;
     color: #fff;
@@ -86,12 +86,14 @@
       height: 50px;
       opacity: 1;
     }
+    &:hover .sub-list {
+      border: 1px solid #ccc;
+    }
     .sub-list {
       width: 100%;
       position: absolute;
       top: 50px;
       left: 0;
-      background-color: #567;
       transition: all .5s ease;
       .sub-item {
         height: 0px;
@@ -99,7 +101,6 @@
         text-align: center;
         line-height: 50px;
         color: #000;
-        background-color: #876;
         visibility: hidden;
         cursor: pointer;
         transition: all .5s ease;
@@ -143,52 +144,44 @@ export default {
       },{
         name: '效果图',
         subNav: [{
-          name: '嘿嘿'
+          name: '风格美图'
         },{
-          name: '显锋'
-        },{
-          name: '显锋嘿嘿'
-        },{
-          name: '显锋哈哈'
-        },]
+          name: '案例美图'
+        }]
       },{
         name: '装修讲堂',
         subNav: [{
-          name: '嘿嘿嘿'
+          name: '装修日记'
+        },{
+          name: '好物评测'
+        },{
+          name: '好物发现'
+        },{
+          name: '装修大学'
+        },{
+          name: '居分期排行'
         }]
       },{
         name: '找装修',
         subNav: [{
-          name: '啦啦啦'
+          name: '装修公司'
         },{
-          name: '噜噜噜'
+          name: '主材包'
         },{
-          name: '显锋笑哈哈'
-        },{
-          name: '来来来'
-        },]
+          name: '家装贷款'
+        }]
       },{
         name: '建材家居',
         subNav: [{
-          name: '嘿嘿'
+          name: '买建材'
         },{
-          name: '嘿嘿'
+          name: '居分期排行'
         },{
-          name: '嘿嘿'
-        },{
-          name: '嘿嘿'
-        },]
+          name: '家装贷款'
+        }]
       },{
         name: '免费服务',
-        subNav: [{
-          name: '嘿嘿'
-        },{
-          name: '嘿嘿'
-        },{
-          name: '嘿嘿'
-        },{
-          name: '嘿嘿'
-        },]
+        subNav: []
       },]
     }
   }
