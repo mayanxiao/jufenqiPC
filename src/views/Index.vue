@@ -300,108 +300,6 @@
 					}
 				}
 			}
-			.allcomps-bac{
-				margin-top: 40px;
-				position: relative;
-				.allcomps-title{
-					display: flex;
-					justify-content: space-between;
-					width: 500px;
-					p{
-						font-size: 14px;
-						height: 20px;
-						line-height: 20px;
-						font-weight: bold;
-					}
-					span{
-						display: block;
-						position: absolute;
-						font-size: 12px;
-						color: #aaa;
-						right: 20px;
-						height: 20px;
-						line-height: 20px;
-						cursor: pointer;
-					}
-				}
-				.allcomps-body{
-					height: 400px;
-					border: 1px solid #ccc;
-					margin-top: 15px;
-					display: flex;
-					div{
-						&:nth-child(1){
-							border-right: 1px solid #ccc;
-							width: 30%;
-							p{
-								height: 199px;
-								line-height: 199px;
-								text-align: center;
-							}
-						}
-						&:nth-child(2){
-							width: 70%;
-							border: 0;
-							div{
-								width: 100%;
-								border: 0;
-								&:nth-child(1){
-									display: flex;
-									height: 150px;
-									border-bottom: 1px solid #ccc;
-									div{
-										border-left: 1px solid #ccc;
-										line-height: 150px;
-										height: 150px;
-										display: block;
-										text-align: center;
-										padding: 0;
-										&:nth-child(1){
-											border: 0;
-										}
-									}
-								}
-								&:nth-child(2){
-									padding: 50px 0 0 40px;
-									position: relative;
-									div{
-										&:nth-child(1){
-											display: flex;
-											border: 0;
-											div{
-												height: 60px;
-												width: 80px;
-												border: 1px solid #ccc;
-												border-radius: 50%;
-											}
-											p{
-												height: 60px;
-												padding-left: 40px;
-												line-height: 60px;
-												font-size: 14px;
-											}
-										}
-										&:nth-child(2){
-											position: absolute;
-											right: 40px;
-											bottom: -10px;
-											border: 1px solid #ccc;
-											line-height: 40px;
-											width: 130px;
-											height: 40px;
-											text-align: center;
-											font-size: 14px;
-											background: #aaa;
-											padding: 0;
-											cursor: pointer;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 			.choose-chief{
 				margin-top: 60px;
 				position: relative;
@@ -466,6 +364,198 @@
 						border-radius: 50%;
 						margin: 50px auto;
 						display: block;
+					}
+				}
+			}
+		}
+	}
+	.allcomps-bac{
+		margin-top: 40px;
+		position: relative;
+		.allcomps-title{
+			display: flex;
+			justify-content: space-between;
+			width: 500px;
+			p{
+				font-size: 14px;
+				height: 20px;
+				line-height: 20px;
+				font-weight: bold;
+			}
+			span{
+				display: block;
+				position: absolute;
+				font-size: 12px;
+				color: #aaa;
+				right: 20px;
+				height: 20px;
+				line-height: 20px;
+				cursor: pointer;
+			}
+		}
+		.allcomps-body{
+			height: 400px;
+			border: 1px solid #ccc;
+			margin-top: 15px;
+			display: flex;
+			div{
+				&:nth-child(1){
+					border-right: 1px solid #ccc;
+					width: 30%;
+					p{
+						height: 199px;
+						line-height: 199px;
+						text-align: center;
+					}
+				}
+				&:nth-child(2){
+					width: 70%;
+					border: 0;
+					div{
+						width: 100%;
+						border: 0;
+						&:nth-child(1){
+							display: flex;
+							height: 150px;
+							border-bottom: 1px solid #ccc;
+							div{
+								border-left: 1px solid #ccc;
+								line-height: 150px;
+								height: 150px;
+								display: block;
+								text-align: center;
+								padding: 0;
+								&:nth-child(1){
+									border: 0;
+								}
+							}
+						}
+						&:nth-child(2){
+							padding: 50px 0 0 40px;
+							position: relative;
+							div{
+								&:nth-child(1){
+									display: flex;
+									border: 0;
+									div{
+										height: 60px;
+										width: 80px;
+										border: 1px solid #ccc;
+										border-radius: 50%;
+									}
+									p{
+										height: 60px;
+										padding-left: 40px;
+										line-height: 60px;
+										font-size: 14px;
+									}
+								}
+								&:nth-child(2){
+									position: absolute;
+									right: 40px;
+									bottom: -10px;
+									border: 1px solid #ccc;
+									line-height: 40px;
+									width: 130px;
+									height: 40px;
+									text-align: center;
+									font-size: 14px;
+									background: #aaa;
+									padding: 0;
+									cursor: pointer;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.find-desi-bac{
+		margin-top: 60px;
+		.name{
+			width: 100%;
+			position: relative;
+			border-bottom: 1px solid #ccc;
+			p{
+				position: absolute;
+				height: 30px;
+				font-size: 20px;
+				font-weight: bold;
+				line-height: 30px;
+				top: -15px;
+				width: 150px;
+				background: #fff;
+			}
+		}
+	}
+	.desi-finish-ex{
+		margin-top: 50px;
+		.desi-finish-title{
+			height: 60px;
+			position: relative;
+			&>p{
+				font-size: 20px;
+				font-weight: bold;
+				line-height: 92px;
+				height: 60px;
+			}
+			span{
+				display: block;
+				right: 0;
+				bottom: 0;
+				font-size: 14px;
+				cursor: pointer;
+				position: absolute;
+			}
+		}
+		.desi-finish-body{
+			margin-top: 60px;
+			height: 300px;
+			&>div{
+				height: 300px;
+				border: 1px solid #ccc;
+				float: left;
+				width: 25%;
+				margin-left: 20px;
+				&:nth-child(1){
+					margin: 0;
+				}
+				&>div{
+					&:nth-child(1){
+						height: 170px;
+						border-bottom: 1px solid #ccc;
+						line-height: 170px;
+						text-align: center;
+					}
+					&:nth-child(2){
+						padding: 0 20px;
+						div{
+							height: 69px;
+							display: flex;
+							justify-content: space-between;
+							p{
+								font-size: 14px;
+								height: 69px;
+								line-height: 69px;
+								text-align: center;
+							}
+							span{
+								display: block;
+								text-align: center;
+								height: 69px;
+								line-height: 69px;
+								font-size: 12px;
+								color: #999;
+							}
+						}
+						&>p{
+							height: 60px;
+							line-height: 60px;
+							text-align: center;
+							border-top: 1px solid #ccc;
+							font-size: 14px;
+						}
 					}
 				}
 			}
@@ -764,6 +854,74 @@
 					</div>
 					<div>
 						<img src="/static/imgs/1.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="find-desi-bac">
+			<div class="name">
+				<p>
+					选择装修公司
+				</p>
+			</div>
+			<div class="prepare">
+				<p>
+					
+				</p>
+				<span style="top: -20px;">
+					更多
+				</span>
+				<div>
+					<p>
+						关于知识的攻略
+					</p>
+					<p>
+						关于资金的攻略
+					</p>
+					<p>
+						关于时间的攻略
+					</p>
+					<p>
+						关于资金托管的攻略
+					</p>
+					<p>
+						关于量房的攻略
+					</p>
+					<p>
+						关于报价的攻略
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="desi-finish-ex">
+			<div class="desi-finish-title">
+				<p>
+					设计完工案例
+				</p>
+				<span>
+					查看所有
+				</span>
+			</div>
+			<div class="desi-finish-body">
+				<div>
+					<div>
+						案例一
+					</div>
+					<div>
+						<div>
+							<p>
+								东城甘露...
+							</p>
+							<span>
+								2室1厅1卫
+							</span>
+							<span>
+								85平米
+							</span>
+						</div>
+						<p>
+							2016－02－02  竣工
+						</p>
 					</div>
 				</div>
 			</div>

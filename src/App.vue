@@ -31,14 +31,14 @@ input {
 </template>
 
 <script>
-// import NavBar from '@/components/NavBar'
+import NavBar from '@/components/NavBar'
 import JFooter from '@/components/JFooter'
 
 export default {
   name: 'app',
   components: {
     JFooter,
-    // NavBar
+    NavBar
   }
 }
 </script>
