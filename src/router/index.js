@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'index',
+      component: Index
     },
     {
       path: '/foreman-detail',
@@ -24,16 +24,12 @@ export default new Router({
       path: '/dry-goods',
       name: 'dry-goods',
       component: dryGoods
-    },
-    {
-      path: '/index',
-      name: 'Index',
-      component: Index
-    },
-    {
-      path: '/index',
-      name: 'Index',
-      component: Index
     }
+    // {
+    //   path: '/index',
+    //   name: 'Index',
+    //   component: Index
+    // }
+
   ]
 })
