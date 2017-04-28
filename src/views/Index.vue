@@ -1,4 +1,9 @@
 <style lang="less">
+	img{
+		display: block;
+		height: 100%;
+		width: 100%;
+	}
 	.index{
 		padding-top: 100px;
 		min-width: 1220px;
@@ -514,12 +519,53 @@
 			height: 300px;
 			&>div{
 				height: 300px;
-				border: 1px solid #ccc;
 				float: left;
 				width: 25%;
-				margin-left: 20px;
+				padding-left: 20px;
 				&:nth-child(1){
-					margin: 0;
+					padding: 0;
+				}
+				&>div{
+					border: 1px solid #ccc;
+					height: 300px!important;
+					display: block;
+					&>div{
+						&:nth-child(1){
+							height: 170px;
+							border-bottom: 1px solid #ccc;
+							line-height: 170px;
+							text-align: center;
+						}
+						&:nth-child(2){
+							padding: 0 20px;
+							div{
+								height: 69px;
+								display: flex;
+								justify-content: space-between;
+								p{
+									font-size: 14px;
+									height: 69px;
+									line-height: 69px;
+									text-align: center;
+								}
+								span{
+									display: block;
+									text-align: center;
+									height: 69px;
+									line-height: 69px;
+									font-size: 12px;
+									color: #999;
+								}
+							}
+							&>p{
+								height: 60px;
+								line-height: 60px;
+								text-align: center;
+								border-top: 1px solid #ccc;
+								font-size: 14px;
+							}
+						}
+					}
 				}
 				&>div{
 					&:nth-child(1){
@@ -561,6 +607,75 @@
 			}
 		}
 	}
+	.allcompneys-bac{
+		margin-top: 40px;
+		position: relative;
+		.allcomps-title{
+			display: flex;
+			justify-content: space-between;
+			width: 500px;
+			p{
+				font-size: 14px;
+				height: 20px;
+				line-height: 20px;
+				font-weight: bold;
+			}
+			span{
+				display: block;
+				position: absolute;
+				font-size: 12px;
+				color: #aaa;
+				right: 20px;
+				height: 20px;
+				line-height: 20px;
+				cursor: pointer;
+			}
+		}
+		.allcomps-body{
+			height: 400px;
+			border: 1px solid #ccc;
+			margin-top: 15px;
+			display: flex;
+			div{
+				&:nth-child(1){
+					border-right: 1px solid #ccc;
+					width: 30%;
+					p{
+						height: 199px;
+						line-height: 199px;
+						text-align: center;
+					}
+				}
+				&:nth-child(2){
+					width: 70%;
+					border: 0;
+					div{
+						width: 100%;
+						border: 0;
+						display: flex;
+						height: 199px;
+						div{
+							border-left: 1px solid #ccc;
+							border-top: 1px solid #ccc;
+							line-height: 199px;
+							height: 199px;
+							display: block;
+							text-align: center;
+							padding: 0;
+							&:nth-child(1){
+								border-left: 0;
+							}
+						}
+						&:nth-child(1){
+							div{
+								border-top: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 </style>
 
 <template>
@@ -586,13 +701,13 @@
 				</div>
 				<div>
 					<div>
-						居装宝
+						<img src="http://iph.href.lu/400x400?text=居装宝">
 					</div>
 					<div>
-						居分期
+						<img src="http://iph.href.lu/400x400?text=居分期">
 					</div>
 					<div>
-						免费监理
+						<img src="http://iph.href.lu/400x400?text=免费监理">
 					</div>
 				</div>
 			</div>
@@ -807,7 +922,7 @@
 							<div>
 								<div>
 									<div>
-										
+
 									</div>
 									<p>
 										装修公司介绍
@@ -861,7 +976,7 @@
 		<div class="find-desi-bac">
 			<div class="name">
 				<p>
-					选择装修公司
+					寻设计
 				</p>
 			</div>
 			<div class="prepare">
@@ -905,30 +1020,463 @@
 			<div class="desi-finish-body">
 				<div>
 					<div>
-						案例一
+						<div>
+							案例一
+						</div>
+						<div>
+							<div>
+								<p>
+									东城甘露...
+								</p>
+								<span>
+									2室1厅1卫
+								</span>
+								<span>
+									85平米
+								</span>
+							</div>
+							<p>
+								2016－02－02  竣工
+							</p>
+						</div>
 					</div>
+				</div>
+				<div>
 					<div>
 						<div>
-							<p>
-								东城甘露...
-							</p>
-							<span>
-								2室1厅1卫
-							</span>
-							<span>
-								85平米
-							</span>
+							案例一
 						</div>
-						<p>
-							2016－02－02  竣工
-						</p>
+						<div>
+							<div>
+								<p>
+									东城甘露...
+								</p>
+								<span>
+									2室1厅1卫
+								</span>
+								<span>
+									85平米
+								</span>
+							</div>
+							<p>
+								2016－02－02  竣工
+							</p>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div>
+						<div>
+							案例一
+						</div>
+						<div>
+							<div>
+								<p>
+									东城甘露...
+								</p>
+								<span>
+									2室1厅1卫
+								</span>
+								<span>
+									85平米
+								</span>
+							</div>
+							<p>
+								2016－02－02  竣工
+							</p>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div>
+						<div>
+							案例一
+						</div>
+						<div>
+							<div>
+								<p>
+									东城甘露...
+								</p>
+								<span>
+									2室1厅1卫
+								</span>
+								<span>
+									85平米
+								</span>
+							</div>
+							<p>
+								2016－02－02  竣工
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="allcomps-bac">
+			<div class="allcomps-title">
+				<p>
+					综合
+				</p>
+				<p>
+					最有设计感的
+				</p>
+				<p>
+					口碑最好的
+				</p>
+				<p>
+					价格最低的
+				</p>
+				<span>
+					查看所有公司
+				</span>
+			</div>
+			<div class="allcomps-body">
+				<div>
+					<p>
+					设计公司排行
+					</p>
+					<p>
+						不想花钱设计？立即报名享受免费设计服务 >
+					</p>
+				</div>
+				<div>
+					<div>
+						<div>
+							公司1
+						</div>
+						<div>
+							公司2
+						</div>
+						<div>
+							公司3
+						</div>
+						<div>
+							公司4
+						</div>
+						<div>
+							公司5
+						</div>
+						<div>
+							公司6
+						</div>
+						<div>
+							公司7
+						</div>
+						<div>
+							公司8
+						</div>
+						<div>
+							公司9
+						</div>
+						<div>
+							公司10
+						</div>
+					</div>
+					<div>
+						<div>
+							<div>
+
+							</div>
+							<p>
+								设计公司介绍
+							</p>
+						</div>
+						<div>
+							查看详情
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="choose-comp">
+			<div class="name">
+				<p>
+					建材选购
+				</p>
+			</div>
+			<div class="prepare">
+				<p>
+					
+				</p>
+				<span style="top: -20px;">
+					更多
+				</span>
+				<div>
+					<p>
+						泥瓦攻略
+					</p>
+					<p>
+						五金攻略
+					</p>
+					<p>
+						水电攻略
+					</p>
+					<p>
+						地板攻略
+					</p>
+					<p>
+						墙壁攻略
+					</p>
+					<p>
+						门攻略
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="allcompneys-bac">
+			<div class="allcomps-title">
+				<p>
+					泥瓦
+				</p>
+				<p>
+					水电
+				</p>
+				<p>
+					地板
+				</p>
+				<p>
+					墙壁
+				</p>
+				<p>
+					门
+				</p>
+				<span>
+					更多
+				</span>
+			</div>
+			<div class="allcomps-body">
+				<div>
+					<p>
+					设计公司排行
+					</p>
+					<p>
+						不想花钱设计？专业导购免费服务 >
+					</p>
+				</div>
+				<div>
+					<div>
+						<div>
+							公司1
+						</div>
+						<div>
+							公司2
+						</div>
+						<div>
+							公司3
+						</div>
+						<div>
+							公司4
+						</div>
+						<div>
+							公司5
+						</div>
+					</div>
+					<div>
+						<div>
+							公司6
+						</div>
+						<div>
+							公司7
+						</div>
+						<div>
+							公司8
+						</div>
+						<div>
+							公司9
+						</div>
+						<div>
+							公司10
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="choose-comp">
+			<div class="name">
+				<p>
+					施工阶段
+				</p>
+			</div>
+			<div class="prepare">
+				<p>
+					
+				</p>
+				<span style="top: -20px;">
+					更多
+				</span>
+				<div>
+					<p>
+						泥瓦攻略
+					</p>
+					<p>
+						五金攻略
+					</p>
+					<p>
+						水电攻略
+					</p>
+					<p>
+						地板攻略
+					</p>
+					<p>
+						墙壁攻略
+					</p>
+					<p>
+						门攻略
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="effectpic-bac">
+			<p style="font-size: 14px;">
+				装修日记
+			</p>
+			<div>
+				<div>
+					装修日记1
+				</div>
+				<div>
+					<div>
+						装修日记2
+					</div>
+					<div>
+						<div>
+							装修日记3
+						</div>
+						<div>
+							装修日记4
+						</div>
+					</div>
+				</div>
+				<div>
+					装修日记5
+				</div>
+			</div>
+		</div>
+		<div class="choose-comp">
+			<div class="name">
+				<p>
+					家居选购
+				</p>
+			</div>
+			<div class="prepare">
+				<p>
+					
+				</p>
+				<span style="top: -20px;">
+					更多
+				</span>
+				<div>
+					<p>
+						灯具攻略
+					</p>
+					<p>
+						洁具攻略
+					</p>
+					<p>
+						家具攻略
+					</p>
+					<p>
+						电器攻略
+					</p>
+					<p>
+						床品攻略
+					</p>
+					<p>
+						饰品攻略
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="allcompneys-bac">
+			<div class="allcomps-title">
+				<p>
+					灯具
+				</p>
+				<p>
+					洁具
+				</p>
+				<p>
+					家具
+				</p>
+				<p>
+					电器
+				</p>
+				<p>
+					床品
+				</p>
+				<span>
+					更多
+				</span>
+			</div>
+			<div class="allcomps-body">
+				<div>
+					<p>
+					设计公司排行
+					</p>
+					<p>
+						不想花钱设计？专业导购免费服务 >
+					</p>
+				</div>
+				<div>
+					<div>
+						<div>
+							公司1
+						</div>
+						<div>
+							公司2
+						</div>
+						<div>
+							公司3
+						</div>
+						<div>
+							公司4
+						</div>
+						<div>
+							公司5
+						</div>
+					</div>
+					<div>
+						<div>
+							公司6
+						</div>
+						<div>
+							公司7
+						</div>
+						<div>
+							公司8
+						</div>
+						<div>
+							公司9
+						</div>
+						<div>
+							公司10
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 80px;">
+			
 		</div>
 	</div>
 </template>
 
 <script type="text/javascript">
-	
+	export default{
+		name: "index",
+		components: {
+
+		},
+		data(){
+			return {
+
+			}
+		},
+		methods: {
+
+		},
+		mounted(){
+			document.title = '家居平台-装修，装修公司，装修效果图，客厅装修，装修设计，简欧风格，现代中式'
+		}
+	}
 </script>
