@@ -57,7 +57,10 @@
 
 <template>
 	<div class="impression">
-		<chooser></chooser>
+		<div v-for="(space,id) in spaceData">
+			<chooser :title="'空间' + id" :spacesArr="space"></chooser>
+		</div>
+		
 		<div class="impre-pics">
 			<div v-for="impression in impressions">
 				<img :src="impression.imgsrc" alt="">
@@ -108,7 +111,8 @@
 				},{
 					name: "中式复古别墅设计室内书房效果图",
 					imgsrc: "/static/pressionimgs/wtf.png"
-				},]
+				},],
+				spaceData: [["客厅","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房"],["客厅","餐厅","厨房","餐厅","厨房","餐厅"],["餐厅","厨房","餐厅","厨房","餐厅"]]
 			}
 		}
 	}

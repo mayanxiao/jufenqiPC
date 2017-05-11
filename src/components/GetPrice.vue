@@ -7,12 +7,11 @@
       width: 150px;
       text-align: center;
       .title-label {
-        line-height: 150px;
         height: 150px;
         border: 1px solid #ccc;
         span {
           margin-top: 52px;
-          display: block;
+          display: inline-block;
         }
       }
     }
@@ -29,7 +28,16 @@
             width: 22% !important;
           }
         }
-        
+        .form-input {
+          width: 554px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          text-align: center;
+          outline: medium;
+          &::placeholder {
+            text-align: center;
+          }
+        }
       }
     }
   }
@@ -39,7 +47,7 @@
 <template>
 	<div class="get-price">
     <div class="title-wrapper">
-      <div class="title-label">在线报价</div>
+      <div class="title-label"><span style="margin-top: 63px;">在线报价</span></div>
       <div class="title-label"><span>免费验房、<br/>量房、设计</span></div>
     </div>
     <div class="form-wrapper">
@@ -71,7 +79,7 @@
             <el-option label="上海" value="2L"></el-option>
             <el-option label="天津" value="3L"></el-option>
           </el-select>
-          <input type="text" placeholder="请输入小区名称" class="form-input">
+          <input type="text" placeholder="请输入小区名称" class="form-input" id="neighbor">
         </el-form-item>
       </el-form>
     </div>
@@ -88,25 +96,10 @@
         }
       }
     },
-    // props: {
-      //   data: {
-        //     type: Array,
-        //     default () {
-          //       return []
-          //     }
-          //   },
-          //   title: {
-            //     type: String,
-            //     default: ''
-            //   }
-            // },
-            computed: {
-              footer() {
-                return this.data
-              },
-              fTitle() {
-                return this.title
-              }
-            }
-          }
-        </script>
+    methods: {
+      isPick() {
+        return document.getElementById('neighbor').focus()
+      },
+    }
+  }
+</script>

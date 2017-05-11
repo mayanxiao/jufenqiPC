@@ -1,8 +1,11 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+@main: #ffb400;
+
 .navbar {
   width: 100%;
   height: 250px;
+  border-bottom: 1px solid @main;
 }
 .nav-wrapper {
   min-width: 1220px;
@@ -11,19 +14,24 @@
   height: 100%;
   padding: 48px 0;
   position: relative;
-  border: 1px solid #ccc;
+  .img-logo {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
 }
 /**
  *  输入框
  */
 .input-wrapper {
-  width: 50%;
-  height: 60px;
+  width: 60%;
+  height: 34px;
   margin: 0 auto;
   display: flex;
   position: relative;
+  margin-top: 20px;
   input {
-    width: 80%;
+    width: 92%;
     height: 100%;
     padding: 10px 16px;
     font-size: 20px;
@@ -34,13 +42,13 @@
     }
   }
   .input_btn {
-    width: 20%;
-    height: 60px;
-    line-height: 60px;
+    width: 8%;
+    height: 34px;
+    line-height: 34px;
     text-align: center;
     font-size: 20px;
     color: #fff;
-    background-color: #ff9736;
+    background-color: @main;
     cursor: pointer;
   }
   .input-tip {
@@ -64,7 +72,7 @@
  * 导航栏
  */
  .nav-list {
-  width: 60%;
+  width: 100%;
   height: 50px;
   line-height: 50px;
   font-size: 18px;
@@ -85,9 +93,27 @@
       visibility: visible;
       height: 50px;
       opacity: 1;
+      background-color: @main;
+      color: #fff;
+      border-bottom: 1px solid #fff;
     }
-    &:hover .sub-list {
-      border: 1px solid #ccc;
+    &:hover .black {
+      transform: rotate(180deg);
+    }
+    &:hover {
+      background-color: @main;
+      color: #fff;
+    }
+    .name-wrapper {
+      position: relative;
+      span {
+        position: absolute;
+        width: 12px;
+        height: 6px;
+        top: 9px;
+        right: -23px;
+        transition: all 0.5s;
+      }
     }
     .sub-list {
       width: 100%;
@@ -108,11 +134,16 @@
     }
   }
  }
+ .active {
+    background-color: @main;
+    color: #fff;
+ }
 </style>
 
 <template>
   <div class="navbar">
     <div class="nav-wrapper">
+      <div class="img-logo"><img src="/static/pressionimgs/logo.png"></div>
       <div class="input-wrapper">
         <input type="text" placeholder="请输入您要搜索的内容">
         <div class="input_btn">搜索</div>
@@ -122,9 +153,13 @@
         </div>
       </div>
       <div class="nav-list">
-        <div class="nav-item" v-for="nav in navList">
-          {{nav.name}}
-          <div class="sub-list">
+        <div class="nav-item" v-for="(nav, id) in navList" :class="{'active': isTab(id)}" @click="tabIndex = id">
+          <span class="name-wrapper">
+            {{nav.name}}
+            <span v-if="ifHasSub(nav.subNav)" class="black"><img src="/static/pressionimgs/bigarrowup.png"></span>
+          </span>
+          
+          <div class="sub-list" :class="{'active': isTab(id)}">
             <div class="sub-item" v-for="sub in nav.subNav">{{sub.name}}</div>
           </div>
         </div>
@@ -138,6 +173,7 @@ export default {
   name: 'navbar',
   data () {
     return {
+      tabIndex: 0,
       navList: [{
         name: '首页',
         subNav: []
@@ -184,6 +220,15 @@ export default {
         subNav: []
       },]
     }
+  },
+  methods: {
+    ifHasSub(sub) {
+      return sub.length !== 0
+    },
+    isTab(id) {
+      return id == this.tabIndex
+    }
+
   }
 }
 </script>
