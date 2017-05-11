@@ -1,30 +1,37 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+@main: #ffb400;
+
 .navbar {
   width: 100%;
   height: 250px;
-  background-color: #236;
+  border-bottom: 1px solid @main;
 }
 .nav-wrapper {
   min-width: 1220px;
   width: 62.6%;
   margin: 0 auto;
-  background-color: #ccc;
   height: 100%;
   padding: 48px 0;
   position: relative;
+  .img-logo {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
 }
 /**
  *  输入框
  */
 .input-wrapper {
-  width: 50%;
-  height: 80px;
+  width: 60%;
+  height: 34px;
   margin: 0 auto;
   display: flex;
   position: relative;
+  margin-top: 20px;
   input {
-    width: 80%;
+    width: 92%;
     height: 100%;
     padding: 10px 16px;
     font-size: 20px;
@@ -35,13 +42,14 @@
     }
   }
   .input_btn {
-    width: 20%;
-    height: 80px;
-    line-height: 80px;
+    width: 8%;
+    height: 34px;
+    line-height: 34px;
     text-align: center;
     font-size: 20px;
     color: #fff;
-    background-color: #ff9736;
+    background-color: @main;
+    cursor: pointer;
   }
   .input-tip {
     position: absolute;
@@ -64,7 +72,7 @@
  * 导航栏
  */
  .nav-list {
-  width: 52%;
+  width: 100%;
   height: 50px;
   line-height: 50px;
   font-size: 18px;
@@ -85,13 +93,33 @@
       visibility: visible;
       height: 50px;
       opacity: 1;
+      background-color: @main;
+      color: #fff;
+      border-bottom: 1px solid #fff;
+    }
+    &:hover .black {
+      transform: rotate(180deg);
+    }
+    &:hover {
+      background-color: @main;
+      color: #fff;
+    }
+    .name-wrapper {
+      position: relative;
+      span {
+        position: absolute;
+        width: 12px;
+        height: 6px;
+        top: 9px;
+        right: -23px;
+        transition: all 0.5s;
+      }
     }
     .sub-list {
       width: 100%;
       position: absolute;
       top: 50px;
       left: 0;
-      background-color: #567;
       transition: all .5s ease;
       .sub-item {
         height: 0px;
@@ -99,7 +127,6 @@
         text-align: center;
         line-height: 50px;
         color: #000;
-        background-color: #876;
         visibility: hidden;
         cursor: pointer;
         transition: all .5s ease;
@@ -107,11 +134,16 @@
     }
   }
  }
+ .active {
+    background-color: @main;
+    color: #fff;
+ }
 </style>
 
 <template>
   <div class="navbar">
     <div class="nav-wrapper">
+      <div class="img-logo"><img src="/static/pressionimgs/logo.png"></div>
       <div class="input-wrapper">
         <input type="text" placeholder="请输入您要搜索的内容">
         <div class="input_btn">搜索</div>
@@ -121,9 +153,13 @@
         </div>
       </div>
       <div class="nav-list">
-        <div class="nav-item" v-for="nav in navList">
-          {{nav.name}}
-          <div class="sub-list">
+        <div class="nav-item" v-for="(nav, id) in navList" :class="{'active': isTab(id)}" @click="tabIndex = id">
+          <span class="name-wrapper">
+            {{nav.name}}
+            <span v-if="ifHasSub(nav.subNav)" class="black"><img src="/static/pressionimgs/bigarrowup.png"></span>
+          </span>
+          
+          <div class="sub-list" :class="{'active': isTab(id)}">
             <div class="sub-item" v-for="sub in nav.subNav">{{sub.name}}</div>
           </div>
         </div>
@@ -137,60 +173,62 @@ export default {
   name: 'navbar',
   data () {
     return {
+      tabIndex: 0,
       navList: [{
         name: '首页',
         subNav: []
       },{
         name: '效果图',
         subNav: [{
-          name: '嘿嘿'
+          name: '风格美图'
         },{
-          name: '显锋'
-        },{
-          name: '显锋嘿嘿'
-        },{
-          name: '显锋哈哈'
-        },]
+          name: '案例美图'
+        }]
       },{
         name: '装修讲堂',
         subNav: [{
-          name: '嘿嘿嘿'
+          name: '装修日记'
+        },{
+          name: '好物评测'
+        },{
+          name: '好物发现'
+        },{
+          name: '装修大学'
+        },{
+          name: '居分期排行'
         }]
       },{
         name: '找装修',
         subNav: [{
-          name: '啦啦啦'
+          name: '装修公司'
         },{
-          name: '噜噜噜'
+          name: '主材包'
         },{
-          name: '显锋笑哈哈'
-        },{
-          name: '来来来'
-        },]
+          name: '家装贷款'
+        }]
       },{
         name: '建材家居',
         subNav: [{
-          name: '嘿嘿'
+          name: '买建材'
         },{
-          name: '嘿嘿'
+          name: '居分期排行'
         },{
-          name: '嘿嘿'
-        },{
-          name: '嘿嘿'
-        },]
+          name: '家装贷款'
+        }]
       },{
         name: '免费服务',
-        subNav: [{
-          name: '嘿嘿'
-        },{
-          name: '嘿嘿'
-        },{
-          name: '嘿嘿'
-        },{
-          name: '嘿嘿'
-        },]
+        subNav: []
       },]
     }
+  },
+  methods: {
+    ifHasSub(sub) {
+      return sub.length !== 0
+    },
+    isTab(id) {
+      return id == this.tabIndex
+    }
+
   }
 }
 </script>

@@ -2,6 +2,7 @@
 	.chooser{
 		width: 1231px;
 		border: 1px solid #c3c3c3;
+		transition: all 0.5s ease;
 		&>div{
 			display: flex;
 			position: relative;
@@ -12,15 +13,14 @@
 				font-size: 16px;
 				padding-left: 21px;
 			}
-			div{
+			.chooserDom {
 				display: flex;
 				flex-wrap: wrap;
 				width: 100%;
 				padding: 0;
 				padding-right: 100px;
 				border-top: 1px dashed #f6f6f6;
-				overflow: hidden;
-				height: 44px;
+				transition: all 0.5s ease;
 				span{
 					width: 88px;
 					display: block;
@@ -49,30 +49,28 @@
 		}
 		&:nth-child(1){
 			&>p{
-				border: 0;
+				border: none;
 			}
 			&>div{
-				border: 0;
+				border: none;
 			}
 		}
-	}
-	.hide-bar{
-		height: 44px;
 	}
 </style>
 
 <template>
+<!--  -->
 	<div class="chooser">
-		<div v-for="chooser in choosers">
+		<div >
 			<p>
-				{{chooser.name}}
+				{{title}}
 			</p>
-			<div class="chooserDom" :id="chooser.id">
-				<span v-for="space in chooser.spaces">
+			<div class="chooserDom" :style="{height: getHeight(this.tmpList)}">
+				<span v-for="space in tmpList">
 					{{space}}
 				</span>
 			</div>
-			<img src="/static/pressionimgs/arrowup.png" alt="" @click="showOrHide(chooser.id)">
+			<img v-if="isBtn()" src="/static/pressionimgs/arrowup.png" alt="" @click="showHide()">
 		</div>
 	</div>
 </template>
@@ -80,36 +78,46 @@
 <script>
 	export default {
 		name: 'chooser',
-		data () {
-			return {
-				choosers: [{
-					id: 1,
-					name: "空间",
-					spaces: ["客厅","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房"]
-				},{
-					id: 2,
-					name: "空间",
-					spaces: ["客厅","餐厅","厨房"]
-				},{
-					id: 3,
-					name: "空间",
-					spaces: ["客厅","餐厅","厨房"]
-				}]
+		props: {
+			title: {
+				type: String,
+				default: ''
+			},
+			spacesArr: {
+				type: Array,
+				dafault: []
 			}
 		},
+		data () {
+			return {
+				tmpList: [],
+				show: false
+			}
+		},
+
 		methods: {
-			showOrHide(a){
-				var obj = document.getElementById(a).style
-				document.getElementById(a).style.height = "auto"
-				console.log(obj)
+			getHeight(data) {
+				let result = 44 * Math.ceil(data.length/11) + 'px'
+				console.log(result)
+				return result
+			},
+			showHide() {
+				this.show = !this.show
+				this.changeLength(this.show)
+			},
+			changeLength(boolean) {
+				if (boolean) {
+					this.tmpList = this.spacesArr
+				} else {
+					this.tmpList = this.spacesArr.slice(0, 11)
+				}
+			},
+			isBtn() {
+				return this.spacesArr.length > 11
 			}
 		},
 		mounted() {
-			// var chooserArr = document.getElementsByClassName("chooserDom")
-			// console.log(chooserArr)
-			// chooserArr.map(function(a){
-			// 	a.style.height = 44+"px"
-			// })
+			this.changeLength(false)
 		}
 	}
 </script>

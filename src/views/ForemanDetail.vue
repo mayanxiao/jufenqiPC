@@ -21,18 +21,21 @@ a {
 
 <template>
   <div class="foreman-detail">
-    <h1>{{ msg }}</h1>
+    <get-price></get-price>
   </div>
 </template>
 
 <script>
+import GetPrice from '@/components/GetPrice'
 
 export default {
   name: 'foreman-detail',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
+  },
+  components: {
+    GetPrice
   }
 }
 </script>
