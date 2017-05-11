@@ -6,11 +6,51 @@
 	.impre-pics{
 		margin-top: 30px;
 		display: flex;
-		flex-wrap: warp;
-		div{
+		flex-wrap: wrap;
+		justify-content: space-between;
+		&>div{
+			flex-shrink: 0;
 			height: 390px;
 			width: 390px;
 			position: relative;
+			margin-bottom: 30px;
+			cursor: pointer;
+			&:hover{
+				div{
+					display: block;
+				}
+			}
+			img{
+				width: 100%;
+				height: 100%;
+				display: block;
+			}
+			p{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				height: 50px;
+				line-height: 50px;
+				padding-left: 20px;
+				font-size: 16px;
+				color: #2d2d2d;
+				background: #f5f5f5;
+				width: 100%;
+			}
+			div{
+				height: 340px;
+				width: 390px;
+				line-height: 340px;
+				text-align: center;
+				font-size: 24px;
+				font-weight: bold;
+				color: #fff;
+				background: rgba(0,0,0,0.5);
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
 		}
 	}
 </style>
@@ -19,8 +59,14 @@
 	<div class="impression">
 		<chooser></chooser>
 		<div class="impre-pics">
-			<div>
-				<img src="" alt="">
+			<div v-for="impression in impressions">
+				<img :src="impression.imgsrc" alt="">
+				<p>
+					{{impression.name}}
+				</p>
+				<div>
+					来报名免设计费
+				</div>
 			</div>
 		</div>
 	</div>
@@ -35,7 +81,34 @@
 		},
 		data () {
 			return {
-
+				impressions: [{
+					name: "中式复古别墅设计室内书房效果图",
+					imgsrc: "/static/pressionimgs/wtf.png"
+				},{
+					name: "中式复古别墅设计室内书房效果图",
+					imgsrc: "/static/pressionimgs/wtf.png"
+				},{
+					name: "中式复古别墅设计室内书房效果图",
+					imgsrc: "/static/pressionimgs/wtf.png"
+				},{
+					name: "中式复古别墅设计室内书房效果图",
+					imgsrc: "/static/pressionimgs/wtf.png"
+				},{
+					name: "中式复古别墅设计室内书房效果图",
+					imgsrc: "/static/pressionimgs/wtf.png"
+				},{
+					name: "中式复古别墅设计室内书房效果图",
+					imgsrc: "/static/pressionimgs/wtf.png"
+				},{
+					name: "中式复古别墅设计室内书房效果图",
+					imgsrc: "/static/pressionimgs/wtf.png"
+				},{
+					name: "中式复古别墅设计室内书房效果图",
+					imgsrc: "/static/pressionimgs/wtf.png"
+				},{
+					name: "中式复古别墅设计室内书房效果图",
+					imgsrc: "/static/pressionimgs/wtf.png"
+				},]
 			}
 		}
 	}
