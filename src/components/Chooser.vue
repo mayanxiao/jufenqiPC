@@ -2,7 +2,7 @@
 	.chooser{
 		width: 1231px;
 		border: 1px solid #c3c3c3;
-		transition: all 0.5s ease;
+		transition: all 0.5s ease-in-out;
 		&>div{
 			display: flex;
 			position: relative;
@@ -20,7 +20,7 @@
 				padding: 0;
 				padding-right: 100px;
 				border-top: 1px dashed #f6f6f6;
-				transition: all 0.5s ease;
+				transition: all 0.5s ease-in-out;
 				span{
 					width: 88px;
 					display: block;
