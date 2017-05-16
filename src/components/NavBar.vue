@@ -4,8 +4,10 @@
 
 .navbar {
   width: 100%;
-  height: 250px;
+  height: 188px;
   border-bottom: 1px solid @main;
+  position: relative;
+  z-index: 1000;
 }
 .nav-wrapper {
   min-width: 1220px;
@@ -73,8 +75,8 @@
  */
  .nav-list {
   width: 100%;
-  height: 50px;
-  line-height: 50px;
+  height: 44px;
+  line-height: 44px;
   font-size: 18px;
   position: absolute;
   left: 50%;
@@ -85,13 +87,13 @@
   justify-content: space-around;
   .nav-item {
     width: 16.7%;
-    height: 50px;
+    height: 44px;
     text-align: center;
     position: relative;
     cursor: pointer;
     &:hover .sub-list .sub-item{
       visibility: visible;
-      height: 50px;
+      height: 44px;
       opacity: 1;
       background-color: @main;
       color: #fff;
@@ -118,7 +120,7 @@
     .sub-list {
       width: 100%;
       position: absolute;
-      top: 50px;
+      top: 46px;
       left: 0;
       transition: all .5s ease;
       .sub-item {
