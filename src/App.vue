@@ -6,6 +6,9 @@
   list-style: none;
   box-sizing: border-box;
 }
+body{
+  background: #f7f7f7;
+}
 input {
   outline: none;
 }
