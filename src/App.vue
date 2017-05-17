@@ -6,6 +6,9 @@
   list-style: none;
   box-sizing: border-box;
 }
+body{
+  background: #f7f7f7;
+}
 input {
   outline: none;
 }
@@ -22,11 +25,11 @@ input {
 </style>
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
+    <!-- <nav-bar></nav-bar> -->
     <div class="mainbody">
       <router-view></router-view>
     </div>
-    <j-footer></j-footer>
+    <!-- <j-footer></j-footer> -->
   </div>
 </template>
 

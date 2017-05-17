@@ -140,6 +140,11 @@
     background-color: @main;
     color: #fff;
  }
+ .black{
+  img{
+    display: block;
+  }
+ }
 </style>
 
 <template>
