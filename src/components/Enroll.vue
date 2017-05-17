@@ -16,6 +16,7 @@
 			display: flex;
 			justify-content: center;
 			color: #393939;
+			cursor: pointer;
 			img {
 				display: block;
 				width: 13px;
