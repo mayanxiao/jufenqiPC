@@ -29,7 +29,7 @@ input {
     <div class="mainbody">
       <router-view></router-view>
     </div>
-    <j-footer></j-footer>
+    <!-- <j-footer></j-footer> -->
   </div>
 </template>
 

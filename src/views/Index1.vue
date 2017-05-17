@@ -179,6 +179,7 @@
 		justify-content: space-between;
 		height: 350px;
 		padding-top: 25px;
+		margin-bottom: 60px;
 		div{
 			overflow: hidden;
 		}
@@ -400,17 +401,20 @@
 				<img src="/static/imgIndex/plans1.png" alt="">
 			</div>
 		</div>
+		<get-price></get-price>
 	</div>
 </template>
 
 <script>
 	import Enroll from "../components/Enroll"
 	import LitTitle from "../components/LitTitle"
+	import GetPrice from "../components/GetPrice"
 	export default {
 		name: 'impression',
 		components: {
 			Enroll,
-			LitTitle
+			LitTitle,
+			GetPrice
 		},
 		data () {
 			return {
