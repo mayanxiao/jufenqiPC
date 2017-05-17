@@ -1,6 +1,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-@main: #ffb400;
+@main: #f3a944;
 
 .navbar {
   width: 100%;
@@ -115,6 +115,9 @@
         top: 9px;
         right: -23px;
         transition: all 0.5s;
+        img {
+          display: block;
+        }
       }
     }
     .sub-list {

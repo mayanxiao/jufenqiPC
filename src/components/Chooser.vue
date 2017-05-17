@@ -32,7 +32,7 @@
 				}
 			}
 			p{
-				background: #ffb400;
+				background: #f3a944;
 				border-top: 1px dashed #fff;
 				color: #fff;
 			}
