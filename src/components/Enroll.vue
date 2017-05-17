@@ -43,10 +43,14 @@
 			font-size: 14px;
 			margin-bottom: 10px;
 			color: #999;
+			transition: border-color 0.1s cubic-bezier(.645,.045,.355,1);
 			&::placeholder {
 				color: #ccc;
 				font-size: 14px;
 				line-height: 36px;
+			}
+			&:focus {
+				border-color: @main;
 			}
 		}
 		.checkbox {
