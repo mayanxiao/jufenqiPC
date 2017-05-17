@@ -5,6 +5,7 @@
     width: 100%;
     border: 1px solid #ebebeb;
     display: flex;
+    background: #fff;
     .title-wrapper {
       width: 150px;
       text-align: center;
@@ -17,7 +18,7 @@
       }
     }
     .form-wrapper {
-      background-color: #f5f5f5;
+      background-color: #fff;
       width: calc(~"100% - 150px");
       padding: 10px 16px;
       position: relative;
