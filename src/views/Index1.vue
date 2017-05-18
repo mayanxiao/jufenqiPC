@@ -256,6 +256,34 @@
 			}
 		}
 	}
+	.el-carousel__item h3 {
+		color: #475669;
+		font-size: 14px;
+		opacity: 0.75;
+		line-height: 150px;
+		margin: 0;
+	}
+	.block{
+		height: 100%;
+	}
+	.el-carousel{
+		height: 100%;
+	}
+	.el-carousel__container{
+		height: 100%;
+		img{
+			height: 100%;
+			width: 100%;
+			display: block;
+			cursor: pointer;
+		}
+	}
+</style>
+
+<style type="text/css" media="screen">
+	.el-carousel__arrow{
+		margin-top: -18px!important;
+	}
 </style>
 
 <template>
@@ -264,7 +292,13 @@
 			<enroll></enroll>
 			<div class="bigbanner">
 				<div class="banner">
-					
+					<div class="block">
+						<el-carousel trigger="click" height="250px;">
+							<el-carousel-item v-for="item in banners" :key="item">
+								<img :src="item.imgurl" alt="">
+							</el-carousel-item>
+						</el-carousel>
+					</div>
 				</div>
 				<div class="three-logos">
 					<div>
@@ -308,20 +342,28 @@
 								业主说
 							</span>
 						</p>
-						<div class="review-body">
-							<div>
-								<img src="/static/imgIndex/head.png" alt="">
-								<p>
-									只有鱼头
-								</p>
-							</div>
-							<p>
-								［日记］幸福的鱼头
-								<span>
-									我的世界里只有鱼头，是的，没有错，真的只有鱼头，而且鱼头已经成为了我生活中的一部分。
-								</span>
-							</p>
-						</div>
+					</div>
+					<div class="block">
+						<el-carousel trigger="click" height="84px;" indicator-position="none" arrow="never">
+							<el-carousel-item v-for="item in ownSpeak" :key="item">
+								<div class="own-speak" style="padding:0; border:0;">
+									<div class="review-body">
+										<div>
+											<img :src="item.imgurl" alt="">
+											<p>
+												{{item.name}}
+											</p>
+										</div>
+										<p>
+											{{item.title}}
+											<span>
+												{{item.describe}}
+											</span>
+										</p>
+									</div>
+								</div>
+							</el-carousel-item>
+						</el-carousel>
 					</div>
 				</div>
 			</div>
@@ -418,6 +460,41 @@
 		},
 		data () {
 			return {
+				ownSpeak: [{
+					name: "只有鱼头",
+					title: "［日记］幸福的鱼头",
+					imgurl: "static/imgIndex/head.png",
+					describe: "我的世界里只有鱼头，是的，没有错，真的只有鱼头，而且鱼头已经成为了我生活中的一部分。"
+				},{
+					name: "只有鱼头",
+					title: "［日记］大鱼头",
+					imgurl: "static/imgIndex/head.png",
+					describe: "我的世界里只有鱼头，是的，没有错，真的只有鱼头，而且鱼头已经成为了我生活中的一部分。"
+				},{
+					name: "只有鱼头",
+					title: "［日记］小鱼头",
+					imgurl: "static/imgIndex/head.png",
+					describe: "我的世界里只有鱼头，是的，没有错，真的只有鱼头，而且鱼头已经成为了我生活中的一部分。"
+				},{
+					name: "只有鱼头",
+					title: "［日记］大大鱼头",
+					imgurl: "static/imgIndex/head.png",
+					describe: "我的世界里只有鱼头，是的，没有错，真的只有鱼头，而且鱼头已经成为了我生活中的一部分。"
+				},{
+					name: "只有鱼头",
+					title: "［日记］小小鱼头",
+					imgurl: "static/imgIndex/head.png",
+					describe: "我的世界里只有鱼头，是的，没有错，真的只有鱼头，而且鱼头已经成为了我生活中的一部分。"
+				},],
+				banners: [{
+					imgurl: "/static/imgIndex/plans3.png"
+				},{
+					imgurl: "/static/imgIndex/plans3.png"
+				},{
+					imgurl: "/static/imgIndex/plans3.png"
+				},{
+					imgurl: "/static/imgIndex/plans3.png"
+				}],
 				steps: [{
 					imgurl: "/static/imgIndex/step1.png",
 					name: "准备阶段"
