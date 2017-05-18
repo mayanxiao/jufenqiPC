@@ -4,7 +4,7 @@
 	@main: #f3a944;
 	.index1{
 		padding: 20px 0;
-		width: 1233px;
+		width: 1230px;
 	}
 	.banner-bac{
 		height: 364px;
@@ -12,10 +12,10 @@
 		justify-content: space-between;
 	}
 	.bigbanner{
-		width: 633px;
+		width: 630px;
 		.banner{
 			height: 250px;
-			width: 633px;
+			width: 630px;
 			margin-bottom: 10px;
 			border: 1px solid #ccc;
 		}
@@ -224,7 +224,7 @@
 			}
 		}
 		.effect-main-r{
-			width: 209px;
+			width: 206px;
 			height: 350px;
 		}
 		img{
