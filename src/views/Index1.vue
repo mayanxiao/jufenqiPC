@@ -342,22 +342,6 @@
 								业主说
 							</span>
 						</p>
-<<<<<<< HEAD
-						<div class="review-body">
-							<div>
-								<img src="/static/imgIndex/head.png" alt="">
-								<p>
-									只有王硕
-								</p>
-							</div>
-							<p>
-								［日记］幸福的小黑
-								<span>
-									小黑的世界里只有王硕，是的，没有错，真的只有王硕，他已经融入了小黑的生活。
-								</span>
-							</p>
-						</div>
-=======
 					</div>
 					<div class="block">
 						<el-carousel trigger="click" height="84px;" indicator-position="none" arrow="never">
@@ -380,7 +364,6 @@
 								</div>
 							</el-carousel-item>
 						</el-carousel>
->>>>>>> origin/master
 					</div>
 				</div>
 			</div>
