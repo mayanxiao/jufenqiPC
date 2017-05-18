@@ -2,6 +2,7 @@
 	@border-big: #999;
 	@border-lit: #ebebeb;
 	@main: #f3a944;
+	@border-el: #bfcbd9;
 	.index1{
 		padding: 20px 0;
 		width: 1230px;
@@ -109,11 +110,18 @@
 				height: 54px;
 				overflow: hidden;
 				padding-left: 10px;
+				overflow:hidden; 
+				text-overflow:ellipsis;
+				display:-webkit-box; 
+				-webkit-box-orient:vertical;
+				-webkit-line-clamp:3;
 			}
 		}
 	}
 	.steps{
 		margin: 30px auto 60px;
+		position: relative;
+		z-index: 10000000;
 		p{
 			color: #c3c3c3;
 			font-size: 14px;
@@ -278,11 +286,277 @@
 			cursor: pointer;
 		}
 	}
+	.com-titles{
+		height: 15px;
+		border-bottom: 1px solid @border-big;
+		position: relative;
+		p{
+			position: absolute;
+			background: #f7f7f7;
+			font-size: 30px;
+			width: 200px;
+			height: 41px;
+			line-height: 41px;
+			top: -3px;
+		}
+	}
+	.componey-head{
+		margin-top: 50px;
+		span{
+			margin-top: 36px;
+			height: 14px;
+			font-size: 14px;
+			line-height: 14px;
+			color: #666;
+			display: block;
+		}
+		.three-coms{
+			height: 170px;
+			display: flex;
+			margin-top: 10px;
+			div{
+				background-size: auto 170px;
+				background-position: bottom;
+				line-height: 170px;
+				font-size: 20px;
+				font-weight: bold;
+				text-align: center;
+				width: 20%;
+				color: #fff;
+				cursor: pointer;
+				&:nth-child(1){
+					background-image: url(/static/imgIndex/plans1.png);
+					width: 60%;
+				}
+				&:nth-child(2){
+					background-image: url(/static/imgIndex/plans2.png);
+				}
+				&:nth-child(3){
+					background-image: url(/static/imgIndex/plans3.png);
+				}
+			}
+		}
+		.coms-slect{
+			margin-top: 20px;
+			height: 34px;
+			display: flex;
+			position: relative;
+			p{
+				height: 34px;
+				margin-right: 30px;
+				display: inline-block;
+				padding: 0 2px;
+				line-height: 34px;
+				color: #666;
+				font-size: 16px;
+				cursor: pointer;
+				&:hover{
+					border-bottom: 1px solid @main;
+					color: @main;
+				}
+			}
+			span{
+				display: block;
+				position: absolute;
+				right: 0;
+				color: #c3c3c3;
+				font-size: 14px;
+				bottom: 9px;
+				cursor: pointer;
+			}
+		}
+		.coms-body{
+			margin-top: 10px;
+			border: 1px solid @border-lit;
+			.coms-body-name{
+				display: flex;
+				border-bottom: 1px solid @border-lit;
+				height: 124px;
+				p{
+					width: 10%;
+					border-left: 1px solid @border-lit;
+					height: 124px;
+					line-height: 124px;
+					text-align: center;
+					cursor: pointer;
+					&:nth-child(1){
+						border: 0;
+					}
+					&:hover{
+						box-shadow: 2px 2px 2px #ccc;
+					}
+				}
+				.active{
+					box-shadow: 2px 2px 2px #ccc;
+				}
+			}
+			.coms-body-main{
+				height: 260px;
+				padding: 50px 88px;
+				display: flex;
+				&>div{
+					padding-top: 20px;
+					width: 50%;
+					border-right: 1px solid @border-lit;
+					display: flex;
+					img{
+						display: block;
+						width: 120px;
+						height: 120px;
+						border-radius: 50%;
+						margin-right: 14px;
+					}
+					&>div{
+						p{
+							font-size: 18px;
+							margin-bottom: 14px;
+						}
+					}
+					.coms-body-judge{
+						margin-top: 14px;
+						display: flex;
+						flex-wrap: wrap;
+						height: 88px;
+						overflow: hidden;
+						p{
+							display: inline-block;
+							padding: 0 13px;
+							height: 30px;
+							line-height: 30px;
+							margin: 0 11px 11px 0;
+							background: #e5e5e5;
+							font-size: 14px;
+						}
+					}
+				}
+				&>p{
+					width: 50%;
+					padding-top: 50px;
+					padding-left: 45px;
+					text-overflow:ellipsis;
+					display:-webkit-box; 
+					-webkit-box-orient:vertical;
+					-webkit-line-clamp:3;
+					overflow: hidden;
+					color: #999;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+	.chiefs-select{
+		margin-top: 20px;
+		border: 1px solid @border-lit;
+		padding: 20px;
+		display: flex;
+		justify-content: space-between;
+		.chief-sel{
+			width: 230px;
+			height: 44px;
+			input{
+				height: 100%!important;
+			}
+		}
+		&>p{
+			width: 189px;
+			height: 44px;
+			border-radius: 5px;
+			line-height: 44px;
+			text-align: center;
+			font-size: 16px;
+			cursor: pointer;
+			border: 1px solid #bfcbd9;
+			color: #999;
+			&:hover{
+				color: @main;
+				border-color: @main;
+			}
+		}
+	}
+	.chiefs{
+		margin-top: 20px;
+		height: 235px;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 70px;
+		div{
+			height: 235px;
+			width: 188px;
+			position: relative;
+			img{
+				display: block;
+				height: 235px;
+				width: 188px;
+			}
+			p{
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				line-height: 235px;
+				text-align: center;
+				color: #fff;
+				font-size: 25px;
+				font-weight: bold;
+			}
+		}
+	}
+	.material{
+		.mat-slect{
+			margin-top: 20px;
+			height: 34px;
+			display: flex;
+			position: relative;
+			p{
+				height: 34px;
+				margin-right: 30px;
+				display: inline-block;
+				padding: 0 2px;
+				line-height: 34px;
+				color: #666;
+				font-size: 16px;
+				cursor: pointer;
+				&:hover{
+					border-bottom: 1px solid @main;
+					color: @main;
+				}
+			}
+			span{
+				display: block;
+				position: absolute;
+				right: 0;
+				color: #c3c3c3;
+				font-size: 14px;
+				bottom: 9px;
+				cursor: pointer;
+			}
+		}
+		.mat-body{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 10px;
+			&>div{
+				height: 190px;
+				width: 190px;
+				margin-bottom: 20px;
+				img{
+					display: block;
+					height: 100%;
+					width: 100%;
+				}
+			}
+		}
+	}
 </style>
 
 <style type="text/css" media="screen">
 	.el-carousel__arrow{
 		margin-top: -18px!important;
+	}
+	.chief-sel input{
+		height: 44px;
 	}
 </style>
 
@@ -342,22 +616,6 @@
 								业主说
 							</span>
 						</p>
-<<<<<<< HEAD
-						<div class="review-body">
-							<div>
-								<img src="/static/imgIndex/head.png" alt="">
-								<p>
-									只有王硕
-								</p>
-							</div>
-							<p>
-								［日记］幸福的小黑
-								<span>
-									小黑的世界里只有王硕，是的，没有错，真的只有王硕，他已经融入了小黑的生活。
-								</span>
-							</p>
-						</div>
-=======
 					</div>
 					<div class="block">
 						<el-carousel trigger="click" height="84px;" indicator-position="none" arrow="never">
@@ -380,7 +638,6 @@
 								</div>
 							</el-carousel-item>
 						</el-carousel>
->>>>>>> origin/master
 					</div>
 				</div>
 			</div>
@@ -461,6 +718,126 @@
 			</div>
 		</div>
 		<get-price></get-price>
+		<div class="componey-head">
+			<div class="com-titles">
+				<p>
+					选择装修公司
+				</p>
+			</div>
+			<span>
+				热门装修公司
+			</span>
+			<div class="three-coms">
+				<div>
+					奔跑吧
+				</div>
+				<div>
+					奔跑吧
+				</div>
+				<div>
+					奔跑吧
+				</div>
+			</div>
+			<div class="coms-slect">
+				<p>
+					综合
+				</p>
+				<p>
+					最具设计感的
+				</p>
+				<p>
+					口碑最好的
+				</p>
+				<p>
+					价位最低的
+				</p>
+				<span>
+					更多
+				</span>
+			</div>
+			<div class="coms-body">
+				<div class="coms-body-name"> 
+					<p v-for="combody in comBodys" @click="comsTag(combody.id)" :class="{ active: combody.isActive }">
+						{{combody.name}}
+					</p>
+				</div>
+				<div class="coms-body-main">
+					<div>
+						<img :src="comBody.imgurl" alt="">
+						<div>
+							<p>
+								{{comBody.name}}
+							</p>
+							<div class="block" style="height: auto">
+								<el-rate disabled text-color="#ff9900" v-model="comBody.val"></el-rate>
+							</div>
+							<div class="coms-body-judge">
+								<p v-for="judge in comBody.judges">
+									{{judge}}
+								</p>
+							</div>
+						</div>
+					</div>
+					<p>
+						{{comBody.describe}}
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="chiefs-select">
+			<el-select v-model="chiefValue" placeholder="请选择" class="chief-sel">
+				<el-option v-for="item in chiefOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
+			</el-select>
+			<el-select v-model="chiefValue" placeholder="请选择" class="chief-sel">
+				<el-option v-for="item in chiefOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
+			</el-select>
+			<el-select v-model="chiefValue" placeholder="请选择" class="chief-sel">
+				<el-option v-for="item in chiefOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
+			</el-select>
+			<el-select v-model="chiefValue" placeholder="请选择" class="chief-sel">
+				<el-option v-for="item in chiefOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
+			</el-select>
+			<p>
+				匹配
+			</p>
+		</div>
+		<div class="chiefs">
+			<div v-for="chief in chiefs">
+				<img :src="chief.imgurl" alt="">
+				<p>
+					{{chief.name}}
+				</p>
+			</div>
+		</div>
+		<lit-title :plansList="designersList"></lit-title>
+		<lit-title :plansList="materialsList" style="margin-top: 60px;"></lit-title>
+		<div class="material">
+			<div class="mat-slect">
+				<p>
+					泥瓦
+				</p>
+				<p>
+					水电
+				</p>
+				<p>
+					地板
+				</p>
+				<p>
+					墙壁
+				</p>
+				<p>
+					门
+				</p>
+				<span>
+					所有品牌
+				</span>
+			</div>
+			<div class="mat-body">
+				<div v-for="matbody in materialBody">
+					<img :src="matbody.imgurl" alt="">
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -477,6 +854,201 @@
 		},
 		data () {
 			return {
+				materialBody: [{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},{
+					imgurl: "static/imgIndex/plans6.png"
+				},],
+				materialsList:{
+					title: "建材选购",
+					plans: [{
+						imgurl: "static/imgIndex/plans1.png",
+						name: "关于知识的攻略"
+					},{
+						imgurl: "static/imgIndex/plans2.png",
+						name: "关于资金的攻略"
+					},{
+						imgurl: "static/imgIndex/plans3.png",
+						name: "关于时间的攻略"
+					},{
+						imgurl: "static/imgIndex/plans4.png",
+						name: "关于资金托管的攻略"
+					},{
+						imgurl: "static/imgIndex/plans5.png",
+						name: "关于量房的攻略"
+					},{
+						imgurl: "static/imgIndex/plans6.png",
+						name: "关于报价的攻略"
+					},]
+				},
+				designersList:{
+					title: "寻设计",
+					plans: [{
+						imgurl: "static/imgIndex/plans1.png",
+						name: "关于知识的攻略"
+					},{
+						imgurl: "static/imgIndex/plans2.png",
+						name: "关于资金的攻略"
+					},{
+						imgurl: "static/imgIndex/plans3.png",
+						name: "关于时间的攻略"
+					},{
+						imgurl: "static/imgIndex/plans4.png",
+						name: "关于资金托管的攻略"
+					},{
+						imgurl: "static/imgIndex/plans5.png",
+						name: "关于量房的攻略"
+					},{
+						imgurl: "static/imgIndex/plans6.png",
+						name: "关于报价的攻略"
+					},]
+				},
+				chiefs: [{
+					name: "小黑",
+					imgurl: "/static/imgIndex/plans5.png"
+				},{
+					name: "小黑",
+					imgurl: "/static/imgIndex/plans5.png"
+				},{
+					name: "小黑",
+					imgurl: "/static/imgIndex/plans5.png"
+				},{
+					name: "小黑",
+					imgurl: "/static/imgIndex/plans5.png"
+				},{
+					name: "小黑",
+					imgurl: "/static/imgIndex/plans5.png"
+				},{
+					name: "小黑",
+					imgurl: "/static/imgIndex/plans5.png"
+				},],
+				chiefOption: [{
+					value: '选项1',
+					label: '黄金糕'
+				}, {
+					value: '选项2',
+					label: '双皮奶'
+				}, {
+					value: '选项3',
+					label: '蚵仔煎'
+				}, {
+					value: '选项4',
+					label: '龙须面'
+				}, {
+					value: '选项5',
+					label: '北京烤鸭'
+				}],
+				chiefValue: "",
+				comBody:{
+					id: 1,
+					name: "不知道公司",
+					isActive: true,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},
+				comBodys: [{
+					id: 1,
+					name: "不知道公司",
+					isActive: true,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 2,
+					name: "嘿哈哈",
+					isActive: false,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 3,
+					name: "哈哈黑",
+					isActive: false,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 4,
+					name: "不知道公司",
+					isActive: false,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 5,
+					name: "呵呵",
+					isActive: false,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 6,
+					name: "呵呵",
+					isActive: false,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 7,
+					isActive: false,
+					name: "嘿嘿",
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 8,
+					name: "哈哈",
+					isActive: false,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 9,
+					name: "不知道公司",
+					isActive: false,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 10,
+					name: "不知道公司",
+					isActive: false,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},],
 				ownSpeak: [{
 					name: "只有鱼头",
 					title: "［日记］幸福的鱼头",
@@ -571,6 +1143,16 @@
 						that.steps[i].imgurl = newImgurl + ".png"
 					}
 				}
+			},
+			comsTag(id){
+				let that = this
+				this.comBodys.map(function(a){
+					a.isActive = false
+					if(a.id == id){
+						that.comBody = a
+						a.isActive = true
+					}
+				})
 			}
 		},
 		mounted() {
