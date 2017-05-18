@@ -18,7 +18,7 @@ input {
   -moz-osx-font-smoothing: grayscale;
 }
 .mainbody {
-  min-width: 1220px;
+  min-width: 1230px;
   width: 62.6%;
   margin: 0 auto;
 }
