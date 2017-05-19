@@ -6,7 +6,7 @@
 	height: 292px;
 	border: 1px solid @border;
 	margin: 0 20px 20px 0;
-	transition: box-shadow 0.4s ease;
+	transition: box-shadow 0.7s ease;
 	&:hover {
 		box-shadow: 2px 2px 2px #ccc;
 		border: none;
@@ -20,7 +20,7 @@
 			width: 100%;
 			height: 100%;
 			background-size: 100% 100%;
-			transition: all 0.3s ease;
+			transition: all .7s ease;
 		}
 		&:hover .img-url {
 			transform: scale(1.1);
@@ -76,7 +76,7 @@
 				<div class="item" style="line-height: 20px">{{getTime(sample.time)}}</div>
 			</div>
 			<div class="con-logo">
-				<div class="logo"><img :src="sample.logo"></div>
+				<!-- <div class="logo"><img :src="sample.logo"></div> -->
 				<div class="company">{{sample.company}}</div>
 			</div>
 		</div>
