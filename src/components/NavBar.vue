@@ -1,6 +1,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-@main: #f3a944;
+@main: #ff9736;
 
 .navbar {
   width: 100%;
@@ -10,7 +10,7 @@
   z-index: 1000;
 }
 .nav-wrapper {
-  min-width: 1220px;
+  min-width: 1230px;
   width: 62.6%;
   margin: 0 auto;
   height: 100%;

@@ -6,7 +6,6 @@
 	height: 292px;
 	border: 1px solid @border;
 	margin: 0 20px 20px 0;
-	cursor: pointer;
 	transition: box-shadow 0.4s ease;
 	&:hover {
 		box-shadow: 2px 2px 2px #ccc;
@@ -16,6 +15,7 @@
 		width: 100%;
 		height: 200px;
 		overflow: hidden;
+		cursor: pointer;
 		.img-url {
 			width: 100%;
 			height: 100%;
@@ -23,7 +23,7 @@
 			transition: all 0.3s ease;
 		}
 		&:hover .img-url {
-			transform: scale(1.2);
+			transform: scale(1.1);
 		}
 	}
 	.con-wrapper {
@@ -31,6 +31,7 @@
 		color: #666;
 		.con-title {
 			font-size: 14px;
+			cursor: pointer;
 		}
 		.con-intro {
 			display: flex;
@@ -78,7 +79,6 @@
 				<div class="logo"><img :src="sample.logo"></div>
 				<div class="company">{{sample.company}}</div>
 			</div>
-
 		</div>
 	</div>
 </template>
@@ -120,7 +120,7 @@ export default{
 		},
 		isForth(id) {
 			let ret = {}
-			if (id%3 === 0&& id > 0) {
+			if ((id + 1)%4 === 0&& id > 0) {
 				ret.marginRight = 0
 			}
 			return ret
