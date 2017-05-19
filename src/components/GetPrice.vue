@@ -1,5 +1,5 @@
 <style lang="less" scoped>
-@main: #f3a944;
+@main: #ff9736;
 
   .get-price {
     width: 100%;

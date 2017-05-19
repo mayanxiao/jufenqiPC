@@ -1,7 +1,7 @@
 <style lang="less" scoped>
 	@border-big: #999;
 	@border-lit: #ebebeb;
-	@main: #f3a944;
+	@main: #ff9736;
 	.lit-title{
 
 	}
