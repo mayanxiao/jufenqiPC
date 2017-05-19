@@ -19,6 +19,9 @@
 			width: 630px;
 			margin-bottom: 10px;
 			border: 1px solid #ccc;
+			div{
+				overflow: hidden;
+			}
 		}
 	}
 	.three-logos{
@@ -32,6 +35,7 @@
 			justify-content: center;
 			align-items: center;
 			cursor: pointer;
+			transition: all 0.4s linear;
 			&:hover{
 				box-shadow: 2px 2px 2px #ccc;
 			}
@@ -123,7 +127,7 @@
 		position: relative;
 		z-index: 10000000;
 		p{
-			color: #c3c3c3;
+			color: #999;
 			font-size: 14px;
 			text-align: center;
 			margin-bottom: 30px;
@@ -370,24 +374,26 @@
 			border: 1px solid @border-lit;
 			.coms-body-name{
 				display: flex;
-				border-bottom: 1px solid @border-lit;
 				height: 124px;
 				p{
 					width: 10%;
 					border-left: 1px solid @border-lit;
+					border-bottom: 1px solid @border-lit;
 					height: 124px;
 					line-height: 124px;
 					text-align: center;
 					cursor: pointer;
 					&:nth-child(1){
-						border: 0;
+						border-left: 0;
 					}
 					&:hover{
-						box-shadow: 2px 2px 2px #ccc;
+						box-shadow: 2px 2px 2px #ccc inset, -2px 2px 2px #ccc inset;
+						border-bottom: 0;
 					}
 				}
 				.active{
-					box-shadow: 2px 2px 2px #ccc;
+					box-shadow: 2px 2px 2px #ccc inset, -2px 2px 2px #ccc inset;
+					border-bottom: 0;
 				}
 			}
 			.coms-body-main{
@@ -405,6 +411,7 @@
 						height: 120px;
 						border-radius: 50%;
 						margin-right: 14px;
+						flex-shrink: 0;
 					}
 					&>div{
 						p{
@@ -578,6 +585,12 @@
 	}
 	.chief-sel input{
 		height: 44px;
+	}
+	.coms-body .block{
+		height: 260px;
+	}
+	.coms-body .block .el-carousel__container{
+		height: 260px!important;
 	}
 </style>
 
@@ -782,27 +795,34 @@
 						{{combody.name}}
 					</p>
 				</div>
-				<div class="coms-body-main">
-					<div>
-						<img :src="comBody.imgurl" alt="">
-						<div>
-							<p>
-								{{comBody.name}}
-							</p>
-							<div class="block" style="height: auto">
-								<el-rate disabled text-color="#ff9900" v-model="comBody.val"></el-rate>
-							</div>
-							<div class="coms-body-judge">
-								<p v-for="judge in comBody.judges">
-									{{judge}}
+				<div  class="block">
+					<el-carousel indicatorPosition="none" :autoplay="comsHaha()" arrow="never" ref="carousel" trigger="click" height="150px">
+						<el-carousel-item v-for="item in comBodys" :key="item">
+							<div class="coms-body-main">
+								<div>
+									<img :src="item.imgurl" alt="">
+									<div>
+										<p>
+											{{item.name}}
+										</p>
+										<div class="block" style="height: auto">
+											<el-rate disabled text-color="#ff9900" v-model="item.val"></el-rate>
+										</div>
+										<div class="coms-body-judge">
+											<p v-for="judge in item.judges">
+												{{judge}}
+											</p>
+										</div>
+									</div>
+								</div>
+								<p>
+									{{item.describe}}
 								</p>
 							</div>
-						</div>
-					</div>
-					<p>
-						{{comBody.describe}}
-					</p>
+						</el-carousel-item>
+					</el-carousel>
 				</div>
+				
 			</div>
 		</div>
 		<div class="chiefs-select">
@@ -1082,7 +1102,7 @@
 					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
 				},
 				comBodys: [{
-					id: 1,
+					id: 0,
 					name: "不知道公司",
 					isActive: true,
 					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
@@ -1090,7 +1110,7 @@
 					val: 2,
 					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
 				},{
-					id: 2,
+					id: 1,
 					name: "嘿哈哈",
 					isActive: false,
 					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
@@ -1098,7 +1118,7 @@
 					val: 2,
 					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
 				},{
-					id: 3,
+					id: 2,
 					name: "哈哈黑",
 					isActive: false,
 					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
@@ -1106,8 +1126,16 @@
 					val: 2,
 					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
 				},{
-					id: 4,
+					id: 3,
 					name: "不知道公司",
+					isActive: false,
+					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
+					imgurl: "/static/imgIndex/plans4.png",
+					val: 2,
+					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
+				},{
+					id: 4,
+					name: "呵呵",
 					isActive: false,
 					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
 					imgurl: "/static/imgIndex/plans4.png",
@@ -1123,14 +1151,6 @@
 					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
 				},{
 					id: 6,
-					name: "呵呵",
-					isActive: false,
-					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
-					imgurl: "/static/imgIndex/plans4.png",
-					val: 2,
-					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
-				},{
-					id: 7,
 					isActive: false,
 					name: "嘿嘿",
 					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
@@ -1138,7 +1158,7 @@
 					val: 2,
 					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
 				},{
-					id: 8,
+					id: 7,
 					name: "哈哈",
 					isActive: false,
 					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
@@ -1146,7 +1166,7 @@
 					val: 2,
 					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
 				},{
-					id: 9,
+					id: 8,
 					name: "不知道公司",
 					isActive: false,
 					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
@@ -1154,7 +1174,7 @@
 					val: 2,
 					judges: ["优秀","好优秀","非常优秀","非常非常优秀","不优秀","非常不优秀","非常非常不优秀"]
 				},{
-					id: 10,
+					id: 9,
 					name: "不知道公司",
 					isActive: false,
 					describe: "哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿哈哈嘿嘿",
@@ -1266,10 +1286,15 @@
 						a.isActive = true
 					}
 				})
+				this.$refs.carousel.setActiveItem(id)
+			},
+			comsHaha(){
+				return false
 			}
 		},
 		mounted() {
 			this.hoverChange()
+
 		}
 	}
 </script>
