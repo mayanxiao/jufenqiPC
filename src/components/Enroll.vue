@@ -1,5 +1,5 @@
 <style lang="less" scoped>
-@main: #f3a944;
+@main: #ff9736;
 .enroll{
 	border: 1px solid #ebebeb;
 	width: 280px;

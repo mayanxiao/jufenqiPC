@@ -1,16 +1,17 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-@main: #f3a944;
-
+@main: #ff9736;
+@border: #bfcbd9;
 .navbar {
   width: 100%;
   height: 188px;
   border-bottom: 1px solid @main;
   position: relative;
   z-index: 1000;
+  background-color: #fff;
 }
 .nav-wrapper {
-  min-width: 1220px;
+  min-width: 1230px;
   width: 62.6%;
   margin: 0 auto;
   height: 100%;
@@ -36,11 +37,17 @@
     width: 92%;
     height: 100%;
     padding: 10px 16px;
-    font-size: 20px;
+    font-size: 14px;
     color: #999;
+    border: 1px solid @border;
+    border-right: none;
+    transition: border-color 0.1s cubic-bezier(.645,.045,.355,1);
     &::placeholder {
-      font-size: 20px;
+      font-size: 14px;
       color: #ccc;
+    }
+    &:focus {
+      border-color: @main;
     }
   }
   .input_btn {
@@ -48,7 +55,7 @@
     height: 34px;
     line-height: 34px;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
     background-color: @main;
     cursor: pointer;
@@ -61,12 +68,24 @@
     top: 50%;
     left: 105%;
     transform: translateY(-50%);
-    font-weight: bold;
+    font-weight: lighter;
+    color: #999;
     .input-join {
       cursor: pointer;
+      color: #393939;
+      transition: all 0.2s ease;
+      &:hover {
+        color: @main;
+        font-weight: bold;
+      }
     }
     span {
       cursor: pointer;
+      transition: all 0.2s ease;
+      &:hover {
+        color: @main;
+        font-weight: bold;
+      }
     }
   }
 }
@@ -97,7 +116,6 @@
       opacity: 1;
       background-color: @main;
       color: #fff;
-      border-bottom: 1px solid #fff;
     }
     &:hover .black {
       transform: rotate(180deg);
@@ -117,13 +135,14 @@
         transition: all 0.5s;
         img {
           display: block;
+          transform: rotate(180deg);
         }
       }
     }
     .sub-list {
       width: 100%;
       position: absolute;
-      top: 46px;
+      top: 45px;
       left: 0;
       transition: all .5s ease;
       .sub-item {
@@ -135,6 +154,9 @@
         visibility: hidden;
         cursor: pointer;
         transition: all .5s ease;
+        &:hover {
+          background-color: rgb(255, 198, 78);
+        }
       }
     }
   }
