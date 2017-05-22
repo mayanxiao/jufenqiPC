@@ -6,6 +6,7 @@
 	.index1{
 		padding: 20px 0;
 		width: 1230px;
+		margin: 0 auto;
 	}
 	.banner-bac{
 		height: 364px;

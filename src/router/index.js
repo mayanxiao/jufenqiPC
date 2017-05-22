@@ -7,6 +7,7 @@ import JFooter from '@/components/JFooter'
 import Index from '@/views/Index'
 import Impression from '@/views/Impression'
 import Index1 from '@/views/Index1'
+import Plans from '@/views/Plans'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/test',
       name: 'Index',
       component: Index
+    },
+    {
+      path: '/plans',
+      name: 'Plans',
+      component: Plans
     }
     // {
     //   path: '/index',
