@@ -175,7 +175,7 @@
 <template>
   <div class="navbar">
     <div class="nav-wrapper">
-      <div class="img-logo">< img src="/static/pressionimgs/logo.png"></div>
+      <div class="img-logo"><img src="/static/pressionimgs/logo.png"></div>
       <div class="input-wrapper">
         <input type="text" placeholder="请输入您要搜索的内容">
         <div class="input_btn">搜索</div>
@@ -188,7 +188,7 @@
         <div class="nav-item" v-for="(nav, id) in navList" :class="{'active': isTab(id)}" @click="tabIndex = id">
           <span class="name-wrapper">
             {{nav.name}}
-            <span v-if="ifHasSub(nav.subNav)" class="black">< img src="/static/pressionimgs/bigarrowup.png"></span>
+            <span v-if="ifHasSub(nav.subNav)" class="black"><img src="/static/pressionimgs/bigarrowup.png"></span>
           </span>
           
           <div class="sub-list" :class="{'active': isTab(id)}">
