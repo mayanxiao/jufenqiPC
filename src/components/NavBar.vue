@@ -155,7 +155,7 @@
         cursor: pointer;
         transition: all .5s ease;
         &:hover {
-          background-color: rgb(255, 198, 78);
+          background-color: #f18017;
         }
       }
     }

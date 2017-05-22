@@ -17,11 +17,7 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.mainbody {
-  min-width: 1230px;
-  width: 62.6%;
-  margin: 0 auto;
-}
+
 </style>
 <template>
   <div id="app">
