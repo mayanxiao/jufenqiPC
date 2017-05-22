@@ -2,6 +2,7 @@
 	.impression{
 		width: 1231px;
 		padding-top: 20px;
+		margin: 0 auto;
 	}
 	.impre-pics{
 		margin-top: 30px;
