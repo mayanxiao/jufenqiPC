@@ -1,26 +1,11 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
-.card-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-.hh {
-  width: 50%;
-  height: 400px;
-  margin-bottom: 60px;
-  background-image: url('https://source.unsplash.com/random');
-  /* transform: perspective(17px); */
-}
+<style lang="less" scoped>
+
 </style>
 
 <template>
-  <div class="foreman-detail">
-    <get-price></get-price>
-    <div class="card-wrapper">
-      <design-card :sample="card" v-for="card in cards"></design-card>
-    </div>
-    <test></test>
+  <div class="find-dc">
+
   </div>
 </template>
 
@@ -31,7 +16,7 @@ import Test from '@/components/test'
 
 
 export default {
-  name: 'foreman-detail',
+  name: 'find-dc',
   data () {
     return {
       cards: [{
