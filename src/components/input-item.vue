@@ -5,7 +5,7 @@
 .input-item {
   width: 100%;
   height: 350px;
-  background-color: #ebebeb;
+  // background-color: #ebebeb;
   border-top: 2px solid @main;
   padding: 25px 16px;
   text-align: center;
@@ -39,7 +39,7 @@
 </style>
 
 <template>
-  <div class="input-item">
+  <div class="input-item" :style="backGround()">
     <div class="input-title">{{title}}</div>
     <input type="text" placeholder="姓名">
     <input type="text" placeholder="电话">
@@ -55,11 +55,22 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    back: {
+      type: String,
+      default: '#fff'
     }
   },
   data () {
     return {
       
+    }
+  },
+  methods: {
+    backGround() {
+      let ret = {}
+      ret.backgroundColor = this.back
+      return ret
     }
   }
 }
