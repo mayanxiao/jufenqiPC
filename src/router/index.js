@@ -10,6 +10,7 @@ import Index1 from '@/views/Index1'
 import Plans from '@/views/Plans'
 import Foreman from '@/views/Foreman'
 import FindDc from '@/views/FindDc'
+import Build from '@/views/Build'
 
 Vue.use(Router)
 
@@ -54,6 +55,11 @@ export default new Router({
       path: '/find-dc',
       name: 'FindDc',
       component: FindDc
+    },
+    {
+      path: '/build',
+      name: 'Build',
+      component: Build
     }
     // {
     //   path: '/index',
