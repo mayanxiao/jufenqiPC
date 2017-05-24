@@ -118,6 +118,7 @@
                 .intro {
                     font-size: 14px;
                     margin-bottom: 20px;
+                    justify-content: flex-start;
                     .intro-item {
                         padding: 0 10px;
                         border-left: 1px solid #999;
