@@ -3,7 +3,7 @@
 @main: #ff9736;
 @border: #bfcbd9;
 .navbar {
-  width: 100%;
+  width: 1230px;
   height: 188px;
   border-bottom: 1px solid @main;
   position: relative;

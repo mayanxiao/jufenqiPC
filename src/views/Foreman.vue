@@ -461,8 +461,8 @@ html {
         </div>
       </div>
       <div class="sidebar">
-        <input-item title="免费预约量房"></input-item>
-        <input-item title="TA的最新签约"></input-item>
+        <input-item title="免费预约量房" back="#ebebeb"></input-item>
+        <input-item title="TA的最新签约" back="#ebebeb"></input-item>
       </div>
     </div>
   </div>
