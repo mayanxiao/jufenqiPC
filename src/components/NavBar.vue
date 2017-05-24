@@ -3,7 +3,7 @@
 @main: #ff9736;
 @border: #bfcbd9;
 .navbar {
-  width: 1230px;
+  width: 100%;
   height: 188px;
   border-bottom: 1px solid @main;
   position: relative;
@@ -11,8 +11,7 @@
   background-color: #fff;
 }
 .nav-wrapper {
-  min-width: 1230px;
-  width: 62.6%;
+  width: 1230px;
   margin: 0 auto;
   height: 100%;
   padding: 48px 0;
