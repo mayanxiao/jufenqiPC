@@ -2,6 +2,7 @@
 	.impression{
 		width: 1231px;
 		padding-top: 20px;
+		margin: 0 auto;
 	}
 	.impre-pics{
 		margin-top: 30px;
@@ -57,8 +58,8 @@
 
 <template>
 	<div class="impression">
-		<div v-for="(space,id) in spaceData">
-			<chooser :title="'空间' + id" :spacesArr="space"></chooser>
+		<div v-for="(space,spid) in spaceData">
+			<chooser title="空间" :spacesArr="space" first="12" :chooseindex="spid"></chooser>
 		</div>
 		
 		<div class="impre-pics">

@@ -1,17 +1,19 @@
 <style lang="less">
 	.chooser{
-		width: 1231px;
+		width: 100%;
 		border: 1px solid #c3c3c3;
 		transition: all 0.5s ease-in-out;
 		&>div{
 			display: flex;
 			position: relative;
 			*{
-				width: 88px;
+				// width: 8%;
+				padding: 0 10px;
+
 				display: block;
 				line-height: 44px;
 				font-size: 16px;
-				padding-left: 21px;
+				text-align: center;
 			}
 			.chooserDom {
 				display: flex;
@@ -21,20 +23,29 @@
 				padding-right: 100px;
 				border-top: 1px dashed #f6f6f6;
 				transition: all 0.5s ease-in-out;
+				overflow: hidden;
 				span{
-					width: 88px;
 					display: block;
-					height: 44px;
-					line-height: 44px;
+					height: 34px;
+					line-height: 34px;
+					margin-top: 5px;
 					font-size: 14px;
 					color: #2d2d2d;
-					padding-left: 30px;
+					margin-left: 10px;
+					border-radius: 5px;
+					cursor: pointer;
+				}
+				.active {
+					background-color: #ff9736;
+					color: #fff;
 				}
 			}
 			p{
 				background: #ff9736;
 				border-top: 1px dashed #fff;
 				color: #fff;
+				width: 100px;
+				transition: all 0.5s ease;
 			}
 			img{
 				width: 24px;
@@ -47,26 +58,18 @@
 				transform: rotate(180deg);
 			}
 		}
-		&:nth-child(1){
-			&>p{
-				border: none;
-			}
-			&>div{
-				border: none;
-			}
-		}
 	}
 </style>
 
 <template>
 <!--  -->
-	<div class="chooser">
+	<div class="chooser" :style="borderNone(chooseId, 0, 10)">
 		<div >
-			<p>
+			<p :style="lineBorder(chooseId, this.tmpList)">
 				{{title}}
 			</p>
 			<div class="chooserDom" :style="{height: getHeight(this.tmpList)}">
-				<span v-for="space in tmpList">
+				<span v-for="(space,id) in tmpList" @click="spaceId = id" :class="{'active': id == spaceId}">
 					{{space}}
 				</span>
 			</div>
@@ -85,20 +88,35 @@
 			},
 			spacesArr: {
 				type: Array,
-				dafault: []
+				default: []
+			},
+			first: {
+				type: String,
+				default: '10'
+			},
+			chooseindex: {
+				type: Number,
+				default: 0
 			}
 		},
 		data () {
 			return {
 				tmpList: [],
-				show: false
+				show: false,
+				spaceId: 0
 			}
 		},
-
+		computed: {
+			listNum() {
+				return Number(this.first)
+			},
+			chooseId() {
+				return Number(this.chooseindex)
+			}
+		},
 		methods: {
 			getHeight(data) {
-				let result = 44 * Math.ceil(data.length/11) + 'px'
-				console.log(result)
+				let result = 44 * Math.ceil(data.length/this.listNum) + 'px'
 				return result
 			},
 			showHide() {
@@ -109,15 +127,31 @@
 				if (boolean) {
 					this.tmpList = this.spacesArr
 				} else {
-					this.tmpList = this.spacesArr.slice(0, 11)
+					this.tmpList = this.spacesArr.slice(0, this.listNum)
 				}
 			},
 			isBtn() {
-				return this.spacesArr.length > 11
+				return this.spacesArr.length > this.listNum
+			},
+			borderNone(id,bottom,top) {
+				let ret = {}
+				if (id < top && id > bottom) {
+					ret.borderTop = 'none'
+				}
+				return ret
+			},
+			lineBorder(id, data) {
+				let ret = {}
+				if (id == 0) {
+					ret.borderTop = 'none'
+				}
+				ret.lineHeight = 44 * Math.ceil(data.length/this.listNum) + 'px'
+				return ret
 			}
-		},
+ 		},
 		mounted() {
 			this.changeLength(false)
+			console.log(this.chooseindex)
 		}
 	}
 </script>
