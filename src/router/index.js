@@ -9,6 +9,7 @@ import Impression from '@/views/Impression'
 import Index1 from '@/views/Index1'
 import Plans from '@/views/Plans'
 import Foreman from '@/views/Foreman'
+import FindDc from '@/views/FindDc'
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ export default new Router({
       path: '/foreman',
       name: 'Foreman',
       component: Foreman
+    },
+    {
+      path: '/find-dc',
+      name: 'FindDc',
+      component: FindDc
     }
     // {
     //   path: '/index',

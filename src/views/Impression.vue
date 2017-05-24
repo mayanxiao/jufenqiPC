@@ -58,8 +58,8 @@
 
 <template>
 	<div class="impression">
-		<div v-for="(space,id) in spaceData">
-			<chooser :title="'空间' + id" :spacesArr="space"></chooser>
+		<div v-for="(space,spid) in spaceData">
+			<chooser title="空间" :spacesArr="space" first="12" :chooseindex="spid"></chooser>
 		</div>
 		
 		<div class="impre-pics">
