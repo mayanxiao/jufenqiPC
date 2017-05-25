@@ -141,6 +141,50 @@
 			}
 		}
 	}
+	.build-ban{
+		height: 350px;
+		display: flex;
+		justify-content: space-between;
+		&>div{
+			&:nth-child(1){
+				width: 280px;
+			}
+			&:nth-child(2){
+				width: 930px;
+				&>div{
+					&:nth-child(2){
+						display: flex;
+						justify-content: space-between;
+						div{
+							height: 120px;
+							img{
+								height: 100%;
+								width: 100%;
+							}
+							&:nth-child(1){
+								width: 300px;
+							}
+							&:nth-child(2){
+								width: 610px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.banner{
+		height: 210px;
+		margin-bottom: 20px;
+		div{
+			height: 210px;
+			overflow: hidden;
+		}
+		img{
+			height: 100%;
+			width: 100%;
+		}
+	}
 </style>
 <style type="text/css">
 	.choose p{
@@ -160,12 +204,19 @@
 	.chooser>div>div{
 		border-top: 1px solid #f6f6f6!important;
 	}
+	.banner .el-carousel__container{
+		height: 210px;
+	}
+	.banner .el-carousel__container button{
+		margin-top: -18px;
+		transform: none;
+	}
 </style>
 
 <template>
 	<div class="build">
 		<div>
-			<div class="build-top">
+			<!-- <div class="build-top">
 				<div>
 					<img src="/static/build/top1.png" alt="">
 				</div>
@@ -177,6 +228,30 @@
 				</div>
 				<div>
 					
+				</div>
+			</div> -->
+			<div class="build-ban">
+				<div>
+					<input-item title="免费设计"></input-item>
+				</div>
+				<div>
+					<div class="banner">
+						<div class="block">
+							<el-carousel trigger="click" height="210px;">
+								<el-carousel-item v-for="item in banners" :key="item">
+									<img :src="item.imgurl" alt="">
+								</el-carousel-item>
+							</el-carousel>
+						</div>
+					</div>
+					<div>
+						<div>
+							<img src="/static/build/top2.png" alt="">
+						</div>
+						<div>
+							<img src="/static/build/top2.png" alt="">
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="choose">
@@ -216,13 +291,26 @@
 
 <script>
 	import Chooser from "../components/Chooser"
+	import inputItem from "../components/input-item"
 	export default {
 		name: 'Build',
 		components: {
-			Chooser
+			Chooser,
+			inputItem
 		},
 		data () {
 			return {
+				banners: [{
+					imgurl: "/static/build/top2.png"
+				},{
+					imgurl: "/static/build/top2.png"
+				},{
+					imgurl: "/static/build/top2.png"
+				},{
+					imgurl: "/static/build/top2.png"
+				},{
+					imgurl: "/static/build/top2.png"
+				},],
 				tabList: [{
 					tabs: ["沙发","马桶","洁具","沙发","马桶","洁具","沙发","马桶","洁具","沙发","马桶","洁具"]
 				},{
