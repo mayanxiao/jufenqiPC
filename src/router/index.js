@@ -13,6 +13,7 @@ import FindDc from '@/views/FindDc'
 import Build from '@/views/Build'
 import CaseInfo from '@/views/CaseInfo'
 import User from '@/views/User'
+import Strategy from '@/views/Strategy'
 
 Vue.use(Router)
 
@@ -72,6 +73,11 @@ export default new Router({
       path: '/user',
       name: 'User',
       component: User
+    },
+    {
+      path: '/strategy',
+      name: 'Strategy',
+      component: Strategy
     }
     // {
     //   path: '/index',
