@@ -7,7 +7,11 @@
   box-sizing: border-box;
 }
 body{
+<<<<<<< HEAD
   background: #f7f7f7!important;
+=======
+  background: #f7f7f7 !important;
+>>>>>>> mayanxiao/master
 }
 input {
   outline: none;
