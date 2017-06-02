@@ -142,7 +142,7 @@
 	}
 }
 </style>
-<style type="text/css" media="screen">
+<style type="text/css" media="screen" scoped>
 body {
 	background-color: #fff;
 }
