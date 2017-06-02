@@ -11,6 +11,9 @@ import Plans from '@/views/Plans'
 import Foreman from '@/views/Foreman'
 import FindDc from '@/views/FindDc'
 import Build from '@/views/Build'
+import CaseInfo from '@/views/CaseInfo'
+import User from '@/views/User'
+import Strategy from '@/views/Strategy'
 
 Vue.use(Router)
 
@@ -60,6 +63,21 @@ export default new Router({
       path: '/build',
       name: 'Build',
       component: Build
+    },
+    {
+      path: '/case-info',
+      name: 'CaseInfo',
+      component: CaseInfo
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: User
+    },
+    {
+      path: '/strategy',
+      name: 'Strategy',
+      component: Strategy
     }
     // {
     //   path: '/index',
