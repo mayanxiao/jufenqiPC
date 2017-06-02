@@ -65,11 +65,7 @@
 	}
 }
 </style>
-<style type="text/css" media="screen">
-body {
-	background-color: #fff;
-}
-</style>
+
 <template>
 	<div class="strategy-item">
 		<div class="text">
