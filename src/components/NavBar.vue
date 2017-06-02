@@ -11,8 +11,7 @@
   background-color: #fff;
 }
 .nav-wrapper {
-  min-width: 1230px;
-  width: 62.6%;
+  width: 1230px;
   margin: 0 auto;
   height: 100%;
   padding: 48px 0;
