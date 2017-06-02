@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 body{
-  background: #f7f7f7;
+  background: #f7f7f7!important;
 }
 input {
   outline: none;
