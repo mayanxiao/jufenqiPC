@@ -2,9 +2,6 @@
 <style lang="less" scoped>
 @main: #ff9736;
 @back: #ebebeb;
-html {
-  background-color: #fff;
-}
 .foreman {
   .foreman-card {
     width: 100%;

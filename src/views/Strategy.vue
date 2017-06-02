@@ -3,6 +3,9 @@
 @border-lit: #ebebeb;
 @main: #ff9736;
 @border-el: #bfcbd9;
+.white-back {
+	background-color: #fff;
+}
 .strategy {
 	width: 1230px;
 	margin: 0 auto;
@@ -142,12 +145,9 @@
 	}
 }
 </style>
-<style type="text/css" media="screen" scoped>
-body {
-	background-color: #fff;
-}
-</style>
+
 <template>
+	<div class="white-back">
 	<div class="strategy">
 		<div class="s-area">
 			<div class="img-wrapper"><img src="https://source.unsplash.com/random"></div>
@@ -184,6 +184,7 @@ body {
 			</div>
 			<div class="more">更多案例 >> </div>
 		</div>
+	</div>
 	</div>
 </template>
 
