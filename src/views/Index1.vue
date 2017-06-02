@@ -8,14 +8,14 @@
 		width: 1230px;
 		margin: 0 auto;
 	}
-	.banner-bac{
+	.banner1-bac{
 		height: 364px;
 		display: flex;
 		justify-content: space-between;
 	}
-	.bigbanner{
+	.bigbanner1{
 		width: 630px;
-		.banner{
+		.banner1{
 			height: 250px;
 			width: 630px;
 			margin-bottom: 10px;
@@ -597,13 +597,13 @@
 
 <template>
 	<div class="index1">
-		<div class="banner-bac">
+		<div class="banner1-bac">
 			<enroll></enroll>
-			<div class="bigbanner">
-				<div class="banner">
+			<div class="bigbanner1">
+				<div class="banner1">
 					<div class="block">
 						<el-carousel trigger="click" height="250px;">
-							<el-carousel-item v-for="item in banners" :key="item">
+							<el-carousel-item v-for="item in banner1s" :key="item">
 								<img :src="item.imgurl" alt="">
 							</el-carousel-item>
 						</el-carousel>
@@ -1209,7 +1209,7 @@
 					imgurl: "static/imgIndex/head.png",
 					describe: "我的世界里只有鱼头，是的，没有错，真的只有鱼头，而且鱼头已经成为了我生活中的一部分。"
 				},],
-				banners: [{
+				banner1s: [{
 					imgurl: "/static/imgIndex/plans3.png"
 				},{
 					imgurl: "/static/imgIndex/plans3.png"
