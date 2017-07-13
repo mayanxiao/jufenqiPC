@@ -3,9 +3,6 @@
 @border-lit: #ebebeb;
 @main: #ff9736;
 @border-el: #bfcbd9;
-.white-back {
-	background-color: #fff;
-}
 .strategy {
 	width: 1230px;
 	margin: 0 auto;

@@ -17,3 +17,13 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+Vue.config.errorHandler = function (err, vm) {
+    var componentName = Vue.util.formatComponentName(vm),
+        propsData = vm.$options.propsData;
+    fundebug.notifyError(err, {
+        metaData: {
+            componentName: componentName,
+            propsData: propsData
+    }});
+}
