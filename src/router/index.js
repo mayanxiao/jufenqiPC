@@ -14,6 +14,7 @@ import Build from '@/views/Build'
 import CaseInfo from '@/views/CaseInfo'
 import User from '@/views/User'
 import Strategy from '@/views/Strategy'
+import DcDiary from '@/views/DcDiary'
 
 Vue.use(Router)
 
@@ -78,6 +79,11 @@ export default new Router({
       path: '/strategy',
       name: 'Strategy',
       component: Strategy
+    },
+    {
+      path: '/dc-diary',
+      name: 'DcDiary',
+      component: DcDiary
     }
     // {
     //   path: '/index',
