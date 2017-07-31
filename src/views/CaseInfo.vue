@@ -361,7 +361,7 @@
 							<img src="/static/imgIndex/plans1.png" alt="">
 							<div>
 								<p>
-									傻白羊的大白牙
+									居分期小黑
 								</p>
 								<div class="left-head-stars">
 									
@@ -833,7 +833,7 @@
 
 		},
 		mounted(){
-
+			document.title = '案例详情'
 		}
 	}
 </script>

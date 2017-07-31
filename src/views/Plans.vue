@@ -3,6 +3,10 @@
 	@border-lit: #ebebeb;
 	@main: #ff9736;
 	@border-el: #bfcbd9;
+	.white-back {
+		width: 100%;
+		background-color: #fff;
+	}
 	.plans{
 		width: 1230px;
 		display: flex;
@@ -327,140 +331,142 @@
 </style>
 
 <template>
-	<div class="plans">
-		<div class="left-bac">
-			<div class="left-title">
-				准备阶段
-			</div>
-			<div class="pare-pics">
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-				<div>
+	<div class="white-back">
+		<div class="plans">
+			<div class="left-bac">
+				<div class="left-title">
+					准备阶段
+				</div>
+				<div class="pare-pics">
 					<plans-pic :planspic="planspics[0]"></plans-pic>
-					<plans-pic :planspic="planspics[0]"></plans-pic>
-				</div>
-			</div>
-			<div class="pare-text">
-				<div>
-					<p v-for="paretext in pareTexts">
-						{{paretext.text}}
-					</p>
-				</div>
-				<div>
-					<p v-for="paretext in pareTexts">
-						{{paretext.text}}
-					</p>
-				</div>
-			</div>
-			<div class="left-title">
-				装修公司
-			</div>
-			<div class="com-pics">
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-			</div>
-			<div class="pare-text">
-				<div>
-					<p v-for="paretext in pareTexts">
-						{{paretext.text}}
-					</p>
-				</div>
-				<div>
-					<p v-for="paretext in pareTexts">
-						{{paretext.text}}
-					</p>
-				</div>
-			</div>
-			<div class="left-title">
-				建材选购
-			</div>
-			<div class="shop-bac">
-				<div>
-					<plans-pic :planspic="planspics[0]"></plans-pic>
-				</div>
-				<div>
-					<plans-pic :planspic="planspics[0]"></plans-pic>
-					<p v-for="paretext in pareTexts">
-						{{paretext.text}}
-					</p>
-				</div>
-			</div>
-			<div class="left-title">
-				施工
-			</div>
-			<div class="com-pics">
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-			</div>
-			<div class="pare-text">
-				<div>
-					<p v-for="paretext in pareTexts">
-						{{paretext.text}}
-					</p>
-				</div>
-				<div>
-					<p v-for="paretext in pareTexts">
-						{{paretext.text}}
-					</p>
-				</div>
-			</div>
-			<div class="left-title">
-				家具选购
-			</div>
-			<div class="com-pics">
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-				<plans-pic :planspic="planspics[0]"></plans-pic>
-			</div>
-			<div class="pare-text">
-				<div>
-					<p v-for="paretext in pareTexts">
-						{{paretext.text}}
-					</p>
-				</div>
-				<div>
-					<p v-for="paretext in pareTexts">
-						{{paretext.text}}
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="right-bac">
-			<div class="four">
-				<p>
-					平台服务保障
-				</p>
-				<img src="/static/imgPlans/1.png" alt="">
-				<img src="/static/imgPlans/2.png" alt="">
-				<img src="/static/imgPlans/3.png" alt="">
-				<img src="/static/imgPlans/4.png" alt="">
-			</div>
-			<div class="serive">
-				<p>
-					免费报价服务
-				</p>
-				<input type="text" name="" placeholder="姓名">
-				<input type="text" name="" placeholder="电话">
-				<input type="text" name="" placeholder="房屋面积">
-				<span>
-					提       交
-				</span>
-			</div>
-			<div class="steps">
-				<p>
-					热门装修阶段
-				</p>
-				<div class="wtf" v-for="step in steps" :class="{active: step.status}">
-					<p>
-						{{step.name}}
-					</p>
 					<div>
-						<span v-for="btn in step.btns" @click="taggleStep(step.id,btn.id)" :class="{active1: btn.status}">
-							{{btn.name}}
-						</span>
+						<plans-pic :planspic="planspics[0]"></plans-pic>
+						<plans-pic :planspic="planspics[0]"></plans-pic>
 					</div>
-					
+				</div>
+				<div class="pare-text">
+					<div>
+						<p v-for="paretext in pareTexts">
+							{{paretext.text}}
+						</p>
+					</div>
+					<div>
+						<p v-for="paretext in pareTexts">
+							{{paretext.text}}
+						</p>
+					</div>
+				</div>
+				<div class="left-title">
+					装修公司
+				</div>
+				<div class="com-pics">
+					<plans-pic :planspic="planspics[0]"></plans-pic>
+					<plans-pic :planspic="planspics[0]"></plans-pic>
+					<plans-pic :planspic="planspics[0]"></plans-pic>
+				</div>
+				<div class="pare-text">
+					<div>
+						<p v-for="paretext in pareTexts">
+							{{paretext.text}}
+						</p>
+					</div>
+					<div>
+						<p v-for="paretext in pareTexts">
+							{{paretext.text}}
+						</p>
+					</div>
+				</div>
+				<div class="left-title">
+					建材选购
+				</div>
+				<div class="shop-bac">
+					<div>
+						<plans-pic :planspic="planspics[0]"></plans-pic>
+					</div>
+					<div>
+						<plans-pic :planspic="planspics[0]"></plans-pic>
+						<p v-for="paretext in pareTexts">
+							{{paretext.text}}
+						</p>
+					</div>
+				</div>
+				<div class="left-title">
+					施工
+				</div>
+				<div class="com-pics">
+					<plans-pic :planspic="planspics[0]"></plans-pic>
+					<plans-pic :planspic="planspics[0]"></plans-pic>
+					<plans-pic :planspic="planspics[0]"></plans-pic>
+				</div>
+				<div class="pare-text">
+					<div>
+						<p v-for="paretext in pareTexts">
+							{{paretext.text}}
+						</p>
+					</div>
+					<div>
+						<p v-for="paretext in pareTexts">
+							{{paretext.text}}
+						</p>
+					</div>
+				</div>
+				<div class="left-title">
+					家具选购
+				</div>
+				<div class="com-pics">
+					<plans-pic :planspic="planspics[0]"></plans-pic>
+					<plans-pic :planspic="planspics[0]"></plans-pic>
+					<plans-pic :planspic="planspics[0]"></plans-pic>
+				</div>
+				<div class="pare-text">
+					<div>
+						<p v-for="paretext in pareTexts">
+							{{paretext.text}}
+						</p>
+					</div>
+					<div>
+						<p v-for="paretext in pareTexts">
+							{{paretext.text}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="right-bac">
+				<div class="four">
+					<p>
+						平台服务保障
+					</p>
+					<img src="/static/imgPlans/1.png" alt="">
+					<img src="/static/imgPlans/2.png" alt="">
+					<img src="/static/imgPlans/3.png" alt="">
+					<img src="/static/imgPlans/4.png" alt="">
+				</div>
+				<div class="serive">
+					<p>
+						免费报价服务
+					</p>
+					<input type="text" name="" placeholder="姓名">
+					<input type="text" name="" placeholder="电话">
+					<input type="text" name="" placeholder="房屋面积">
+					<span>
+						提       交
+					</span>
+				</div>
+				<div class="steps">
+					<p>
+						热门装修阶段
+					</p>
+					<div class="wtf" v-for="step in steps" :class="{active: step.status}">
+						<p>
+							{{step.name}}
+						</p>
+						<div>
+							<span v-for="btn in step.btns" @click="taggleStep(step.id,btn.id)" :class="{active1: btn.status}">
+								{{btn.name}}
+							</span>
+						</div>
+
+					</div>
 				</div>
 			</div>
 		</div>
@@ -694,7 +700,7 @@
 			}
 		},
 		mounted(){
-
+			document.title = '装修攻略'
 		}
 	}
 </script>

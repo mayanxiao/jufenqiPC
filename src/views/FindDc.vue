@@ -282,6 +282,9 @@ export default {
   },
   methods: {
 
+  },
+  mounted() {
+    document.title = '找装修-装修公司'
   }
 }
 </script>

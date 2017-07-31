@@ -246,10 +246,10 @@
 					</div>
 					<div>
 						<div>
-							<img src="/static/build/top2.png" alt="">
+							<img src="https://source.unsplash.com/random" alt="">
 						</div>
 						<div>
-							<img src="/static/build/top2.png" alt="">
+							<img src="https://source.unsplash.com/random" alt="">
 						</div>
 					</div>
 				</div>
@@ -301,15 +301,15 @@
 		data () {
 			return {
 				banners: [{
-					imgurl: "/static/build/top2.png"
+					imgurl: "https://source.unsplash.com/random"
 				},{
-					imgurl: "/static/build/top2.png"
+					imgurl: "https://source.unsplash.com/random"
 				},{
-					imgurl: "/static/build/top2.png"
+					imgurl: "https://source.unsplash.com/random"
 				},{
-					imgurl: "/static/build/top2.png"
+					imgurl: "https://source.unsplash.com/random"
 				},{
-					imgurl: "/static/build/top2.png"
+					imgurl: "https://source.unsplash.com/random"
 				},],
 				tabList: [{
 					tabs: ["沙发","马桶","洁具","沙发","马桶","洁具","沙发","马桶","洁具","沙发","马桶","洁具"]
@@ -326,35 +326,35 @@
 					describe: "描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道",
 					value: 0,
 					discuss: 12,
-					imgurl: "/static/build/good.png"
+					imgurl: "https://source.unsplash.com/random"
 				},{
 					name: "Meiling 美菱 BCD-448ZP34Fd 448升 双开门冰箱",
 					alert: "1.99包邮",
 					describe: "描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道",
 					value: 0,
 					discuss: 12,
-					imgurl: "/static/build/good.png"
+					imgurl: "https://source.unsplash.com/random"
 				},{
 					name: "Meiling 美菱 BCD-448ZP34Fd 448升 双开门冰箱",
 					alert: "1.99包邮",
 					describe: "描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道",
 					value: 0,
 					discuss: 12,
-					imgurl: "/static/build/good.png"
+					imgurl: "https://source.unsplash.com/random"
 				},{
 					name: "Meiling 美菱 BCD-448ZP34Fd 448升 双开门冰箱",
 					alert: "1.99包邮",
 					describe: "描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道",
 					value: 0,
 					discuss: 12,
-					imgurl: "/static/build/good.png"
+					imgurl: "https://source.unsplash.com/random"
 				},{
 					name: "Meiling 美菱 BCD-448ZP34Fd 448升 双开门冰箱",
 					alert: "1.99包邮",
 					describe: "描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道描述不知道",
 					value: 0,
 					discuss: 12,
-					imgurl: "/static/build/good.png"
+					imgurl: "https://source.unsplash.com/random"
 				},]
 			}
 		},
@@ -362,7 +362,7 @@
 			
 		},
 		mounted() {
-
+			document.title = '建材家居'
 		},
 		computed: {
 

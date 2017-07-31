@@ -125,6 +125,9 @@
     }
     .name-wrapper {
       position: relative;
+      &:hover {
+        color: #ccc;
+      }
       span {
         position: absolute;
         width: 12px;
@@ -185,13 +188,13 @@
       </div>
       <div class="nav-list">
         <div class="nav-item" v-for="(nav, id) in navList" :class="{'active': isTab(id)}" @click="tabIndex = id">
-          <span class="name-wrapper">
+          <span class="name-wrapper" @click="goto(nav.url)">
             {{nav.name}}
             <span v-if="ifHasSub(nav.subNav)" class="black"><img src="/static/pressionimgs/bigarrowup.png"></span>
           </span>
           
           <div class="sub-list" :class="{'active': isTab(id)}">
-            <div class="sub-item" v-for="sub in nav.subNav">{{sub.name}}</div>
+            <div class="sub-item" v-for="sub in nav.subNav" @click="goto(sub.url)">{{sub.name}}</div>
           </div>
         </div>
       </div>
@@ -207,42 +210,47 @@ export default {
       tabIndex: 0,
       navList: [{
         name: '首页',
+        url: '/',
         subNav: []
       },{
-        name: '效果图',
+        name: '装修案例',
+        url: '/case-dc',
         subNav: [{
           name: '风格美图'
         },{
-          name: '案例美图'
+          name: '案例美图',
+          url: '/impression'
         }]
       },{
         name: '装修讲堂',
+        url: '/plans',
         subNav: [{
           name: '装修日记'
         },{
-          name: '好物评测'
+          name: '好物评测',
+          url: ''
         },{
-          name: '好物发现'
+          name: '好物发现',
+          url: '/strategy'
         },{
           name: '装修大学'
         },{
-          name: '居分期排行'
+          name: '居分期排行',
+          url: '/dry-goods'
         }]
       },{
         name: '找装修',
+        url: '/find-dc',
         subNav: [{
           name: '装修公司'
         },{
-          name: '主材包'
-        },{
-          name: '家装贷款'
+          name: '工长',
+          url: '/foreman'
         }]
       },{
         name: '建材家居',
         subNav: [{
           name: '买建材'
-        },{
-          name: '居分期排行'
         },{
           name: '家装贷款'
         }]
@@ -258,6 +266,12 @@ export default {
     },
     isTab(id) {
       return id == this.tabIndex
+    },
+    goto(url) {
+      if (url) {
+        this.$router.push(url)
+      }
+      
     }
 
   }

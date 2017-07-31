@@ -51,6 +51,7 @@
 				top: 0;
 				left: 0;
 				display: none;
+				cursor: pointer;
 			}
 		}
 	}
@@ -64,11 +65,11 @@
 		
 		<div class="impre-pics">
 			<div v-for="impression in impressions">
-				<img :src="impression.imgsrc" alt="">
-				<p>
+				<img :src="impression.imgsrc" >
+				<p @click="goto('/case-info')">
 					{{impression.name}}
 				</p>
-				<div>
+				<div @click="goto('/case-info')">
 					来报名免设计费
 				</div>
 			</div>
@@ -114,6 +115,14 @@
 					imgsrc: "/static/pressionimgs/wtf.png"
 				},],
 				spaceData: [["客厅","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房","餐厅","厨房"],["客厅","餐厅","厨房","餐厅","厨房","餐厅"],["餐厅","厨房","餐厅","厨房","餐厅"]]
+			}
+		},
+		mounted() {
+			document.title = '效果图'
+		},
+		methods: {
+			goto(url) {
+				this.$router.push(url)
 			}
 		}
 	}

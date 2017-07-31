@@ -577,6 +577,9 @@ export default {
       }
       return ret
     }
+  },
+  mounted() {
+    document.title = '工长详情'
   }
 }
 </script>

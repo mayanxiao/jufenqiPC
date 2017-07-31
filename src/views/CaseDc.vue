@@ -36,6 +36,7 @@
 					height: 100%;
 					display: block;
 					transition: all 3s ease;
+					cursor: pointer;
 				}
 			}
 			.title-wrapper {
@@ -87,10 +88,10 @@
 			<div class="flex-pic-wrapper">
 				<div class="pic-item" v-for="(item, $index) in picList" :style="clearMargin($index + 1)">
 					<div class="pic-wrapper">
-						<img :src="item.imgUrl">
+						<img :src="item.imgUrl" @click="goto('/case-info')">
 					</div>
 					<div class="title-wrapper">
-						<div class="title-text">{{item.title}}</div>
+						<div class="title-text" @click="goto('/case-info')">{{item.title}}</div>
 						<div class="title-tip">
 							<div class="tip-item">
 								<div class="tip-icon" v-if="!item.viewShow">
@@ -231,10 +232,13 @@ export default{
 					this.picList[id].collectShow = !this.picList[id].collectShow
 					break
 			}
+		},
+		goto(url) {
+			this.$router.push(url)
 		}
 	},
 	mounted(){
-
+		document.title = '装修案例'
 	}
 }
 </script>

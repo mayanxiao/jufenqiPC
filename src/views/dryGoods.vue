@@ -98,26 +98,26 @@
 					rankName: "品牌排行榜",
 					rankMore: "更多排行",
 					rankImgs: [{
-						title: "最具性价比装修公司排行",
+						title: "最具性价比品牌排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最具性价比品牌排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最具性价比品牌排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最具性价比品牌排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最具性价比品牌排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最具性价比品牌排行",
 						url: "/static/imgs/1.jpg"
 					}]
 				},{
-					rankName: "品牌排行榜",
+					rankName: "装修公司排行榜",
 					rankMore: "更多排行",
 					rankImgs: [{
 						title: "最具性价比装修公司排行",
@@ -139,25 +139,25 @@
 						url: "/static/imgs/1.jpg"
 					}]
 				},{
-					rankName: "品牌排行榜",
+					rankName: "工长排行榜",
 					rankMore: "更多排行",
 					rankImgs: [{
-						title: "最具性价比装修公司排行",
+						title: "最优质工长排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最优质工长排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最优质工长排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最优质工长排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最优质工长排行",
 						url: "/static/imgs/1.jpg"
 					},{
-						title: "最具性价比装修公司排行",
+						title: "最优质工长排行",
 						url: "/static/imgs/1.jpg"
 					}]
 				}]
@@ -167,7 +167,7 @@
 
 		},
 		mounted(){
-
+			document.title = '居分期排行'
 		}
 	}
 </script>

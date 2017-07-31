@@ -157,9 +157,9 @@
 				<div class="s-btn">查看攻略</div>
 			</div>
 		</div>
-		<div class="process-wrapper">
+		<!-- <div class="process-wrapper">
 			<process-item></process-item>
-		</div>
+		</div> -->
 		<strategy-item title="产品评测" :itemData="products"></strategy-item>
 		<strategy-item title="专题" :itemData="subjects"></strategy-item>
 		<div class="example">
@@ -171,12 +171,12 @@
 				<div class="flex-item" style="margin-right: 20px;">
 					<div class="img-wrapper"><img src="https://source.unsplash.com/random"></div>
 					<div class="mask"></div>
-					<div class="item-title"><span>王硕的墙根一踹</span></div>
+					<div class="item-title"><span>案例一</span></div>
 				</div>
 				<div class="flex-item">
 					<div class="img-wrapper"><img src="https://source.unsplash.com/random"></div>
 					<div class="mask"></div>
-					<div class="item-title"><span>王硕的拄拐生涯</span></div>
+					<div class="item-title"><span>案例二</span></div>
 				</div>
 			</div>
 			<div class="more">更多案例 >> </div>
@@ -197,41 +197,41 @@ export default{
 	data() {
 		return{
 			products: [{
-				title: '王硕的发蜡',
+				title: '科勒马桶报告',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '王硕的抬头纹',
+				title: '博洛尼橱柜使用评测',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '王硕的哈利波特小眼镜',
+				title: '科勒马桶报告',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '王硕的青春痘',
+				title: '博洛尼橱柜使用评测',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '王硕的蜜汁微笑',
+				title: '科勒马桶报告',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '王硕的率直眼神',
+				title: '博洛尼橱柜使用评测',
 				imgUrl: 'https://source.unsplash.com/random'
 			},],
 			subjects: [{
-				title: '王硕的蓝色衬衫',
+				title: '舒适小屋必备',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '于头的机智挑衅',
+				title: '舒适小屋必备',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '王硕的愤怒眼神',
+				title: '舒适小屋必备',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '于头的阴险笑容',
+				title: '舒适小屋必备',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '王硕的电炮飞脚',
+				title: '舒适小屋必备',
 				imgUrl: 'https://source.unsplash.com/random'
 			},{
-				title: '于头的夺路而逃',
+				title: '舒适小屋必备',
 				imgUrl: 'https://source.unsplash.com/random'
 			},]
 		}
@@ -240,7 +240,7 @@ export default{
 
 	},
 	mounted(){
-
+		document.title = '装修干货'
 	}
 }
 </script>
