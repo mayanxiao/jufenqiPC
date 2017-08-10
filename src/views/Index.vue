@@ -1,1486 +1,951 @@
 <style lang="less" scoped>
-	img{
-		display: block;
-		height: 100%;
+@width: document.body.clientWidth;
+@main: #ff9736;
+.index {
+	width: 100%;
+	.pic-bg {
 		width: 100%;
-	}
-	.index{
-		padding-top: 100px;
-		min-width: 1220px;
-		margin: 0 auto;
-	}
-	.banner-bac{
-		display: flex;
-		.info-input {
-			padding: 12px;
-			font-size: 14px;
-			text-align: center;
-			p{
-				&:nth-child(1){
-					margin-top: 30px;
-					margin-bottom: 15px;
-					font-size: 16px;
-					font-weight: bold;
-				}
-				&:nth-child(6){
-					font-size: 12px;
-					color: #999;
-					text-align: center;
-					margin-top: 20px;
-				}
-			}
-			span{
-				font-size: 14px;
-				display: block;
-				text-align: center;
-				line-height: 20px;
-			}
-			input{
-				width: 95%;
-				margin: 30px auto;
-				padding-left: 20px;
-				height: 50px;
-				line-height: 40px;
-				border: 1px solid #aaa;
-			}
-		}
-	}
-	.banner-bac>div:nth-child(1){
-		width: 298px;
-		margin-right: 22px;
-		height: 530px;
-		border: 1px solid #ccc;
-	}
-	.banner-bac>div:nth-child(2){
-		margin-right: 20px;
-	}
-	.banner-bac>div:nth-child(2)>div:nth-child(1){
-		width: 600px;
-		height: 380px;
-		border: 1px solid #ccc;
-		line-height: 380px;
-		text-align: center;
-		margin-bottom: 20px;
-	}
-	.banner-bac>div:nth-child(2)>div:nth-child(2){
-		width: 600px;
-		height: 130px;
-		margin: 0;
-		display: flex;
-		div{
-			width: 180px;
-			height: 100%;
-			margin-right: 30px;
-			border: 1px solid #ccc;
-			line-height: 130px;
-			text-align: center;
-			&:nth-child(3){
-				margin: 0;
-			}
-		}
-	}
-	.banner-bac>div:nth-child(3){
-		width: 280px;
-		height: 530px;
-		border: 1px solid #ccc;
-		padding: 20px 30px;
-		font-size: 16px;
-		div{
-			height: 380px;
-		}
-		p{
-			border-top: 1px solid #ccc;
-			font-size: 12px;
-			position: relative;
-			padding-top: 30px;
-			span{
-				position: absolute;
-				display: block;
-				height: 30px;
-				font-size: 14px;
-				width: 100px;
-				top: -15px;
-				background: #fff;
-				line-height: 30px;
-				font-weight: bold;
-			}
-		}
-	}
-	.severs-bac{
-		padding-top: 76px;
-		margin-bottom: 130px;
-		p{
-			font-size: 24px;
-			font-weight: bold;
-			margin-bottom: 76px;
-			text-align: center;
-		}
-		div{
-			display: flex;
-			justify-content: space-between;
-			p{
-				width: 170px;
-				height: 170px;
-				border-radius: 50%;
-				border: 1px solid #ccc;
-				line-height: 170px;
-				text-align: center;
-				font-size: 20px;
-				font-weight: normal;
-				margin: 0;
-			}
-		}
-	}
-	.prepare{
+		background-size: 100% auto;
 		position: relative;
-		p{
-			font-size: 24px;
-			margin-bottom: 76px;
-			text-align: center;
-			font-weight: bold;
-		}
-		span{
-			display: block;
+		.img-person {
 			position: absolute;
-			top: 70px;
-			right: 0;
-			font-size: 14px;
-			color: #333;
-			cursor: pointer;
+			display: block;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 813px;
 		}
-		div{
-			display: flex;
-			justify-content: space-between;
-			p{
-				height: 177px;
-				width: 177px;
-				line-height: 177px;
+		.mainbody {
+			width: 1238px;
+			height: 100%;
+			margin: 0 auto;
+			position: relative;
+			.block-title {
+				font-size: 42px;
+				font-weight: 900;
+				font-family: '微软雅黑'
+			}
+			.block-subtitle {
+				font-size: 26px;
+				font-weight: 400;
+				font-family: '微软雅黑'
+			}
+			.line {
+				width: 54px;
+				height: 3px;
+				margin: 35px auto 64px auto;
+				background-color: @main;
+			}
+			.info {
+				width: 748px;
+				height: 403px;
+				background-image: url('/static/index/what-item.png');
+				background-size: 100% 100%;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				right: -100%;
+				padding: 143px 0 80px 68px;
+				color: #fff;
+				transition: right 0.5s ease;
+				.text {
+					opacity: 0;
+					transition: opacity 0.5s ease;
+					transition-delay: 0.7s;
+					h1 {
+						font-size: 50px;
+						font-weight: 600;
+					}
+					.line {
+						width: 60px;
+						height: 3px;
+						background-color: #fff;
+						margin: 35px 0 30px 0;
+					}
+					.tips {
+						font-size: 20px;
+					}
+				}
+			}
+			.why-wrapper {
+				width: 100%;
+				height: 100%;
+				padding-top: 40px;
 				text-align: center;
-				border: 1px solid #ccc;
-				font-size: 16px;
-				font-weight: normal;
-				margin: 0;
-			}
-		}
-	}
-	.effectpic-bac{
-		margin-top: 100px;
-		p{
-			font-size: 24px;
-			font-weight: bold;
-			margin-bottom: 20px;
-			span{
-				display: inline-block;
-				font-size: 14px;
-				margin-right: 40px;
-				&:nth-child(1){
-					margin-left: 80px;
+				color: #fff;
+				position: relative;
+				.why-item {
+					width: 318px;
+					height: 190px;
+					border-radius: 10px;
+					background-color: #fff;
+					padding-top: 20px;
+					cursor: pointer;
+					position: absolute;
+					left: 467px;
+					top: 291px;
+					opacity: 0;
+					transition: all 0.5s ease;
+					box-shadow: 5px 6px 15px 5px rgba(0, 0, 0, 0.1);
+					transform: scale(0.05);
+					&:hover div{
+						color: @main;
+					}
+					img {
+						margin-bottom: 15px;
+					}
+					.text {
+						color: #000;
+						font-size: 24px;
+						font-weight: 600;
+					}
+					.text-en {
+						color: #999;
+						font-size: 18px;
+						font-weight: 300;
+					}
 				}
 			}
-		}
-		div{
-			display: flex;
-			justify-content: space-between;
-			div{
-				&:nth-child(1){
-					width: 476px;
-					height: 340px;
-					border: 1px solid #ccc;
-					line-height: 340px;
-					text-align: center;
-					display: block;
-				}
-				&:nth-child(2){
-					display: block;	
-					div{
-						&:nth-child(1){
-							width: 476px;
-							height: 160px;
-							margin-bottom: 20px;
-							border: 1px solid #ccc;
-							line-height: 160px;
-							text-align: center;
-							display: block;
-						}
-						&:nth-child(2){
-							display: flex;
-							div{
-								width: 228px;
-								height: 160px;
-								border: 1px solid #ccc;
-								line-height: 160px;
-								text-align: center;
+			.deco-wp {
+				width: 100%;
+				height: 100%;
+				padding-top: 79px;
+				text-align: center;
+				.card {
+					width: 1016px;
+					height: 550px;
+					display: flex;
+					.left {
+						width: 758px;
+						height: 100%;
+						.img-wp {
+							width: 100%;
+							height: 412px;
+							img {
+								height: 100%;
 								display: block;
-								&:nth-child(1){
+							}
+						}
+						.case-text {
+							padding: 20px 0 0 16px;
+							background-color: #fff;
+							text-align: left;
+							width: 100%;
+							height: 138px;
+							p {
+								color: #333;
+								font-size: 24px;
+							}
+						}
+					}
+					.right {
+						width: 258px;
+						.img-wp {
+							width: 100%;
+							height: 146px;
+							position: relative;
+							&:hover .mask{
+								opacity: 1;
+								transform: none;
+							}
+							img {
+								width: 100%;
+								display: block;
+							}
+							.mask {
+								width: 100%;
+								height: 100%;
+								text-align: center;
+								color: #fff;
+								font-size: 18px;
+								padding-top: 45px;
+								background-color: rgba(255, 151, 54, 0.75);
+								opacity: 0;
+								transition: all 0.5s ease;
+								transform: scale(0.01);
+								position: absolute;
+								left: 0;
+								top: 0;
+								.icon {
+									margin-top: 10px;
+									img {
+										display: block;
+										margin: 0 auto;
+										width: 30px;
+										height: 30px;
+										cursor: pointer;
+									}
+								}
+							}
+						}
+						.text {
+							height: 258px;
+							color: #ddd;
+							background-color: #333;
+							font-size: 16px;
+							padding: 50px 34px 50px 34px;
+							width: 100%;
+							div {
+								width: 100%;
+								height: 100%;
+								display: -webkit-box;
+								-webkit-line-clamp: 7;
+								-webkit-box-orient: vertical;
+								overflow: hidden;
+								text-align: left;
+							}
+						}
+					}
+				}
+			}
+			.text-wp {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				padding: 68px 0 104px 0;
+				.tabs {
+					display: flex;
+					.tab-item {
+						color: #333;
+						font-size: 24px;
+						padding: 18px 0;
+						margin: 0 78px 46px 0;
+						cursor: pointer;
+					}
+					.active {
+						color: @main;
+						border-bottom: 5px solid @main;
+					}
+				}
+				.tab-content {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					.content-item {
+						width: calc(~"(1238px - 55px)/2");
+						height: 224px;
+						margin-bottom: 31px;
+						background-color: #fff;
+						display: flex;
+						box-shadow: 1px 1px 29px 2px rgba(0, 0, 0, 0.05);
+						.img-wrapper {
+							width: 294px;
+							height: 100%;
+							transition: all 1s ease;
+							overflow: hidden;
+							&:hover img {
+								transform: scale(1.05);
+							}
+							img {
+								display: block;
+								width: 100%;
+								height: 100%;
+								transition: all 1s ease;
+							}
+						}
+						.text {
+							width: calc(~"100% - 294px");
+							height: 100%;
+							padding: 28px 0 0 15px;
+							p {
+								margin: 0;
+								cursor: pointer;
+								&:hover {
+									color: @main !important;
 								}
 							}
 						}
 					}
 				}
-				&:nth-child(3){
-					height: 340px;
-					width: 228px;
-					line-height: 340px;
-					text-align: center;
-					border: 1px solid #ccc;
-					display: block;
-				}
 			}
-		}
-	}
-	.online{
-		margin-top: 100px;
-		display: flex;
-		div{
-			&:nth-child(1){
-				display: block;
-				p{
-					height: 180px;
-					width: 180px;
-					line-height: 180px;
-					text-align: center;
-					font-size: 20px;
-					&:nth-child(1){
-						background: #555;
-					}
-					&:nth-child(2){
-						background: #666;
-					}
-				}
-			}
-			&:nth-child(2){
-				width: 1040px;
-				height: 360px;
-				background: #777;
-			}
-		}
-	}
-	.choose-comp{
-		margin-top: 60px;
-		.name{
-			width: 100%;
-			position: relative;
-			border-bottom: 1px solid #ccc;
-			p{
-				position: absolute;
-				height: 30px;
-				font-size: 20px;
-				font-weight: bold;
-				line-height: 30px;
-				top: -15px;
-				width: 150px;
-				background: #fff;
-			}
-		}
-		.choose-body-bac{
-			border: 1px solid #ccc;
-			margin-top: 40px;
-			padding: 40px;
-			.choose-name{
-				p{
-					font-size: 18px;
-					font-weight: bold;
-					margin-bottom: 20px;
-				}
-				span{
-					font-size: 14px;
-				}
-			}
-			.body-comps{
-				display: flex;
-				border: 1px solid #ccc;
-				margin-top: 20px;
-				p{
-					height: 250px;
-					width: 25%;
-					line-height: 250px;
-					font-size: 12px;
-					text-align: center;
-					&:nth-child(1){
-						width: 50%;
-						border-right: 1px solid #ccc;
-					}
-					&:nth-child(2){
-						border-right: 1px solid #ccc;
-					}
-				}
-			}
-			.choose-chief{
-				margin-top: 60px;
+			.prod-wp {
+				width: 100%;
+				height: 100%;
 				position: relative;
-				border: 1px solid #ccc;
-				display: flex;
-				span{
-					display: block;
-					position: absolute;
-					border: 0;
-					font-size: 14px;
-					color: #aaa;
-					right: 0;
-					top: -20px;
+				padding-top: 149px;
+				text-align: center;
+				.btn {
+					width: 160px;
+					height: 46px;
+					font-size: 16px;
+					color: @main;
+					border: 1px solid @main;
+					text-align: center;
+					line-height: 46px;
+					margin: 63px auto 0 auto;
 					cursor: pointer;
 				}
-				div{
-					border-left: 1px solid #ccc;
-					width: 20%;
-					height: 250px;
-					&:nth-child(2){
-						border: 0;
-						width: 40%;
-						p{
-							width: 100%;
-							text-align: center;
-							height: 50px;
-							line-height: 50px;
-							font-size: 14px;
-						}
-						.choose-chief-btns{
-							display: flex;
-							justify-content: space-between;
-							flex-wrap: wrap;
-							width: 100%;
-							height: 150px;
-							div{
-								width: 150px;
-								display: block;
-								border: 1px solid #ccc;
-								margin: 0 30px;
-								height: 40px;
-								text-align: center;
-								line-height: 40px;
-							}
-						}
-						span{
-							display: block;
-							height: 40px;
-							width: 150px;
-							margin: 0 auto;
-							border: 1px solid #ccc;
-							text-align: center;
-							cursor: pointer;
-							position: relative;
-							color: #444;
-							line-height: 40px;
-						}
-					}
-					img{
-						width: 100px;
-						height: 100px;
-						border-radius: 50%;
-						margin: 50px auto;
-						display: block;
-					}
-				}
-			}
-		}
-	}
-	.allcomps-bac{
-		margin-top: 40px;
-		position: relative;
-		.allcomps-title{
-			display: flex;
-			justify-content: space-between;
-			width: 500px;
-			p{
-				font-size: 14px;
-				height: 20px;
-				line-height: 20px;
-				font-weight: bold;
-			}
-			span{
-				display: block;
-				position: absolute;
-				font-size: 12px;
-				color: #aaa;
-				right: 20px;
-				height: 20px;
-				line-height: 20px;
-				cursor: pointer;
-			}
-		}
-		.allcomps-body{
-			height: 400px;
-			border: 1px solid #ccc;
-			margin-top: 15px;
-			display: flex;
-			div{
-				&:nth-child(1){
-					border-right: 1px solid #ccc;
-					width: 30%;
-					p{
-						height: 199px;
-						line-height: 199px;
-						text-align: center;
-					}
-				}
-				&:nth-child(2){
-					width: 70%;
-					border: 0;
-					div{
-						width: 100%;
-						border: 0;
-						&:nth-child(1){
-							display: flex;
-							height: 150px;
-							border-bottom: 1px solid #ccc;
-							div{
-								border-left: 1px solid #ccc;
-								line-height: 150px;
-								height: 150px;
-								display: block;
-								text-align: center;
-								padding: 0;
-								&:nth-child(1){
-									border: 0;
-								}
-							}
-						}
-						&:nth-child(2){
-							padding: 50px 0 0 40px;
-							position: relative;
-							div{
-								&:nth-child(1){
-									display: flex;
-									border: 0;
-									div{
-										height: 60px;
-										width: 80px;
-										border: 1px solid #ccc;
-										border-radius: 50%;
-									}
-									p{
-										height: 60px;
-										padding-left: 40px;
-										line-height: 60px;
-										font-size: 14px;
-									}
-								}
-								&:nth-child(2){
-									position: absolute;
-									right: 40px;
-									bottom: -10px;
-									border: 1px solid #ccc;
-									line-height: 40px;
-									width: 130px;
-									height: 40px;
-									text-align: center;
-									font-size: 14px;
-									background: #aaa;
-									padding: 0;
-									cursor: pointer;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.find-desi-bac{
-		margin-top: 60px;
-		.name{
-			width: 100%;
-			position: relative;
-			border-bottom: 1px solid #ccc;
-			p{
-				position: absolute;
-				height: 30px;
-				font-size: 20px;
-				font-weight: bold;
-				line-height: 30px;
-				top: -15px;
-				width: 150px;
-				background: #fff;
-			}
-		}
-	}
-	.desi-finish-ex{
-		margin-top: 50px;
-		.desi-finish-title{
-			height: 60px;
-			position: relative;
-			&>p{
-				font-size: 20px;
-				font-weight: bold;
-				line-height: 92px;
-				height: 60px;
-			}
-			span{
-				display: block;
-				right: 0;
-				bottom: 0;
-				font-size: 14px;
-				cursor: pointer;
-				position: absolute;
-			}
-		}
-		.desi-finish-body{
-			margin-top: 60px;
-			height: 300px;
-			&>div{
-				height: 300px;
-				float: left;
-				width: 25%;
-				padding-left: 20px;
-				&:nth-child(1){
-					padding: 0;
-				}
-				&>div{
-					border: 1px solid #ccc;
-					height: 300px!important;
-					display: block;
-					&>div{
-						&:nth-child(1){
-							height: 170px;
-							border-bottom: 1px solid #ccc;
-							line-height: 170px;
-							text-align: center;
-						}
-						&:nth-child(2){
-							padding: 0 20px;
-							div{
-								height: 69px;
-								display: flex;
-								justify-content: space-between;
-								p{
-									font-size: 14px;
-									height: 69px;
-									line-height: 69px;
-									text-align: center;
-								}
-								span{
-									display: block;
-									text-align: center;
-									height: 69px;
-									line-height: 69px;
-									font-size: 12px;
-									color: #999;
-								}
-							}
-							&>p{
-								height: 60px;
-								line-height: 60px;
-								text-align: center;
-								border-top: 1px solid #ccc;
-								font-size: 14px;
-							}
-						}
-					}
-				}
-				&>div{
-					&:nth-child(1){
-						height: 170px;
-						border-bottom: 1px solid #ccc;
-						line-height: 170px;
-						text-align: center;
-					}
-					&:nth-child(2){
-						padding: 0 20px;
-						div{
-							height: 69px;
-							display: flex;
-							justify-content: space-between;
-							p{
-								font-size: 14px;
-								height: 69px;
-								line-height: 69px;
-								text-align: center;
-							}
-							span{
-								display: block;
-								text-align: center;
-								height: 69px;
-								line-height: 69px;
-								font-size: 12px;
-								color: #999;
-							}
-						}
-						&>p{
-							height: 60px;
-							line-height: 60px;
-							text-align: center;
-							border-top: 1px solid #ccc;
-							font-size: 14px;
-						}
-					}
-				}
-			}
-		}
-	}
-	.allcompneys-bac{
-		margin-top: 40px;
-		position: relative;
-		.allcomps-title{
-			display: flex;
-			justify-content: space-between;
-			width: 500px;
-			p{
-				font-size: 14px;
-				height: 20px;
-				line-height: 20px;
-				font-weight: bold;
-			}
-			span{
-				display: block;
-				position: absolute;
-				font-size: 12px;
-				color: #aaa;
-				right: 20px;
-				height: 20px;
-				line-height: 20px;
-				cursor: pointer;
-			}
-		}
-		.allcomps-body{
-			height: 400px;
-			border: 1px solid #ccc;
-			margin-top: 15px;
-			display: flex;
-			div{
-				&:nth-child(1){
-					border-right: 1px solid #ccc;
-					width: 30%;
-					p{
-						height: 199px;
-						line-height: 199px;
-						text-align: center;
-					}
-				}
-				&:nth-child(2){
-					width: 70%;
-					border: 0;
-					div{
-						width: 100%;
-						border: 0;
+				.prod-flex-wp {
+					width: 100%;
+					overflow: hidden;
+					margin-top: 30px;
+					.row { 
 						display: flex;
-						height: 199px;
-						div{
-							border-left: 1px solid #ccc;
-							border-top: 1px solid #ccc;
-							line-height: 199px;
-							height: 199px;
-							display: block;
-							text-align: center;
-							padding: 0;
-							&:nth-child(1){
-								border-left: 0;
+						width: 100%;
+						overflow: hidden;
+					}
+					.row:hover {
+						& ~ .row .slide { transform: translateY(-100%); } 
+
+						.slide { transform: translateX(100%); } 
+
+						& .col:hover ~ .col .slide { transform: translateX(-100%); } 
+
+						& .col:hover .slide {
+							transform: none;
+							visibility: visible;
+							transition-delay: 0s; 
+						}
+					}
+					.col {
+						color: #fff;
+						flex: 1 1 auto;
+						min-height: 325px;
+						position: relative;
+						overflow: hidden;
+						text-align: center;
+						h2 { 
+							font-weight: 600;
+							font-size: 20px;
+							margin: 94px 0 14px 0;
+							z-index: 0;
+						}
+						p {
+							font-size: 14px;
+							margin-bottom: 32px;
+						}
+						.circle {
+							img {
+								display: block;
+								cursor: pointer;
+								margin: 0 auto;
 							}
 						}
-						&:nth-child(1){
-							div{
-								border-top: 0;
-							}
+						&:hover .photo-container {
+							transform: scale(1.05);
 						}
+					}
+					.photo-container {
+						background: #0f0523 50% 50% / cover;
+						position: absolute;
+						top: 0; right: 0; bottom: 0; left: 0;
+						transition: 1s;
+						transform-origin: center;
+					}
+					.slide {
+						background: rgba(255, 151, 54, 0.8);
+						padding: 0 1.5rem;
+						position: absolute;
+						top: 0; 
+						right: 0; 
+						bottom: 0; 
+						left: 0; 
+						@speed: .3s;
+						transition: all @speed ease-in-out, visibility 0s @speed;
+						visibility: hidden; 
+						will-change: transform;
+						transform: translateY(100%); 
 					}
 				}
 			}
+			.loan-wp {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				padding-top: 96px;
+				text-align: center;
+				.loan-fl {
+					display: flex;
+					justify-content: space-between;
+					.loan-item {
+						width: 230px;
+						text-align: center;
+						transition: all 0.5s ease;
+						transform: scale(0.05);
+						opacity: 0;
+						.img-wp {
+							width: 230px;
+							height: 230px;
+							border-radius: 50%;
+							position: relative;
+							background-color: #fff;
+							margin-bottom: 50px;
+							margin-top: 108px;
+							box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 11px 3px;
+							transition: all 1s ease;
+							&:hover {
+								transform: scale(1.1);
+							}
+							img {
+								display: block;
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								transform: translate(-50%, -50%);
+							}
+						}
+						.item-text {
+							font-size: 24px;
+							color: #fff;
+							font-weight: 600
+						}
+					}
+				}
+				.loan-btn {
+					width: 205px;
+					height: 68px;
+					background-color: #fff;
+					color: @main;
+					text-align: center;
+					line-height: 68px;
+					border-radius: 34px;
+					font-size: 24px;
+					margin: 114px auto 0 auto;
+					font-weight: 600;
+					box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 11px 3px;
+					cursor: pointer;
+				}
+
+			}
 		}
 	}
-</style>
 
+}
+</style>
+<style>
+.mainbody .deco-wp .el-carousel__item {
+	left: -198px ;
+	width: 1016px ;
+}
+
+.mainbody .deco-wp .el-carousel__arrow {
+    border: none;
+    padding: 0;
+    width: calc(223px / 2);
+    height: 115px;
+    background-color: rgb(255,151,54);
+    border-radius: 0;
+    color: #fff;
+    position: absolute;
+    top: 446px;
+    z-index: 10;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 34px;
+    border-top: 2px solid #fff;
+}
+.mainbody .deco-wp .el-carousel__arrow--right {
+    right: 0;
+}
+.mainbody .deco-wp .el-carousel__arrow--left {
+    left: 0;
+}
+.mainbody .deco-wp .el-carousel__mask {
+	opacity: 0.7 !important;
+	z-index: 100;
+	background-color: #000;
+}
+</style>
 <template>
-	<div class="index">
-		<div class="banner-bac">
-			<div class="info-input">
-				<p>
-					专业顾问 免费服务
-				</p>
-				<span>
-					报名后我们会为您分配最匹配的顾问联系您，还会为您提供免费验房、量房、设计、报价、监理等服务
-				</span>
-				<input type="text" name="" placeholder="您的手机号">
-				<input type="text" name="" placeholder="您的地区">
-				<input type="text" name="" placeholder="立即报名">
-				<p>
-					已为99999业主提供服务
-				</p>
+	<div class="index" id="Index">
+		<!-- banner -->
+		<div class="pic-bg" :style="setHeight(0)"></div>
+		<!-- what -->
+		<div class="pic-bg" :style="setHeight(1)">
+			<div class="mainbody">
+				<div class="info" :style="setAnimation(animation1, 1)">
+					<div class="text" :style="setAnimation(animation1, 2)">
+						<h1 >什么是居分期</h1>
+						<div class="line"></div>
+						<div class="tips">居分期是根据家庭成员的性格、喜好、工作来配置+定制</div>
+						<div class="tips">家居风格和产品并以管家式追踪贯彻各个流程</div>
+					</div>
+				</div>
 			</div>
-			<div>
-				<div>
-					<el-carousel height="380px">
-						<el-carousel-item v-for="item in 4" :key="item">
-							<h3 style="color: #000;">{{ item }}</h3>
+		</div>
+		<!-- why -->
+		<div class="pic-bg" :style="setHeight(2)">
+			<img class="img-person" src="/static/index/person.png"></img>
+			<div class="mainbody">
+				<div class="why-wrapper">
+					<div class="block-title">为什么选择居分期</div>
+					<div class="block-subtitle">OUR ADVANTAGE</div>
+					<div class="why-item" v-for="(item, id) in whyList" :style="setPosition(animation2,id)">
+						<img :src="item.url">
+						<div class="text">{{item.text}}</div>
+						<div class="text-en">{{item.textEn}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 案例 -->
+		<div class="pic-bg" :style="setHeight(3)">
+			<div class="mainbody">
+				<div class="deco-wp">
+					<div class="block-title"  style="font-size: 30px; font-weight: 400;margin-bottom: 12px">装 修 案 例</div>
+					<div class="block-subtitle" style="font-size: 40px; font-weight: 600;">DECORATION CASE</div>
+					<div class="line"></div>
+					<el-carousel :interval="3500" arrow="always" indicator-position="none" type="card" height="550px">
+						<el-carousel-item v-for="item in decoList" >
+							<div class="card">
+								<div class="left">
+									<div class="img-wp" :style="setProdImg(item.imgUrl)"></div>
+									<div class="case-text">
+										<p>{{item.name}}</p>
+										<p style="font-size: 14px; color: #666; margin-top: 16px;">{{item.intro}}</p>
+									</div>
+								</div>
+								<div class="right">
+									<div class="img-wp" v-for="room in item.itemUrl">
+										<img :src="room.url">
+										<div class="mask">
+											{{room.name}}
+											<div class="icon"><img src="/static/more-arrow.png"></div>
+										</div>
+									</div>
+									<div class="text"><div>{{item.styles}}</div></div>
+								</div>
+							</div>
 						</el-carousel-item>
 					</el-carousel>
+					
 				</div>
-				<div>
-					<div>
-						<img src="http://iph.href.lu/400x400?text=居装宝">
-					</div>
-					<div>
-						<img src="http://iph.href.lu/400x400?text=居分期">
-					</div>
-					<div>
-						<img src="http://iph.href.lu/400x400?text=免费监理">
-					</div>
-				</div>
-			</div>
-			<div>
-				<div>
-					居分期－独立、客观、第三方的家装领域平台
-				</div>
-				<p>
-					<span>
-						居点评/业主说
-					</span>
-					我们一家很喜欢这套简约风，尤其是客厅与卫生间的设计，深受家人的喜欢，与家人住在这里很开心
-				</p>
 			</div>
 		</div>
-		<div class="severs-bac">
-			<p>
-				选择您当前所处的阶段以找到您可能需要的服务
-			</p>
-			<div>
-				<p>
-					准备阶段
-				</p>
-				<p>
-					装修公司
-				</p>
-				<p>
-					设计阶段
-				</p>
-				<p>
-					建材选购
-				</p>
-				<p>
-					施工阶段
-				</p>
-				<p>
-					家具选购
-				</p>
-			</div>
-		</div>
-		<div class="prepare">
-			<p>
-				准备阶段
-			</p>
-			<span>
-				更多
-			</span>
-			<div>
-				<p>
-					关于知识的攻略
-				</p>
-				<p>
-					关于资金的攻略
-				</p>
-				<p>
-					关于时间的攻略
-				</p>
-				<p>
-					关于资金托管的攻略
-				</p>
-				<p>
-					关于量房的攻略
-				</p>
-				<p>
-					关于报价的攻略
-				</p>
-			</div>
-		</div>
-		<div class="effectpic-bac">
-			<p>
-				效果图
-				<span>
-					美式
-				</span>
-				<span>
-					现代
-				</span>
-				<span>
-					简约
-				</span>
-				<span>
-					田园
-				</span>
-				<span>
-					日式
-				</span>
-				<span>
-					混搭
-				</span>
-			</p>
-			<div>
-				<div>
-					美式风格二居设计
-				</div>
-				<div>
-					<div>
-						美式风格公寓设计
-					</div>
-					<div>
-						<div>
-							一居设计
-						</div>
-						<div>
-							三居设计
+		<!-- 攻略日记 -->
+		<div class="pic-bg" :style="setHeight(4)">
+			<div class="mainbody">
+				<div class="text-wp">
+					<div class="tabs">
+						<div class="tab-item" v-for="(tab, tabId) in tabList" @click="tabIndex = tabId" :class="{'active': tabIndex == tabId}">
+							{{tab.name}}
 						</div>
 					</div>
-				</div>
-				<div>
-					免费设计咨询
-				</div>
-			</div>
-		</div>
-		<div class="online">
-			<div>
-				<p>
-					在线报价
-				</p>
-				<p>
-					免费量房
-				</p>
-			</div>
-			<div>
-				
-			</div>
-		</div>
-		<div class="choose-comp">
-			<div class="name">
-				<p>
-					选择装修公司
-				</p>
-			</div>
-			<div class="choose-body-bac">
-				<div class="choose-name">
-					<p>
-						居分期装修榜
-					</p>
-					<span>
-						热门装修公司
-					</span>
-				</div>
-				<div class="body-comps">
-					<p>
-						一生家
-					</p>
-					<p>
-						奔跑吧装修
-					</p>
-					<p>
-						齐家网
-					</p>
-				</div>
-				<div class="allcomps-bac">
-					<div class="allcomps-title">
-						<p>
-							综合
-						</p>
-						<p>
-							最有设计感的
-						</p>
-						<p>
-							口碑最好的
-						</p>
-						<p>
-							价格最低的
-						</p>
-						<span>
-							查看所有公司
-						</span>
-					</div>
-					<div class="allcomps-body">
-						<div>
-							<p>
-								装修公司排行
-							</p>
-							<p>
-								教我怎么选 >
-							</p>
-						</div>
-						<div>
-							<div>
-								<div>
-									公司1
-								</div>
-								<div>
-									公司2
-								</div>
-								<div>
-									公司3
-								</div>
-								<div>
-									公司4
-								</div>
-								<div>
-									公司5
-								</div>
-								<div>
-									公司6
-								</div>
-								<div>
-									公司7
-								</div>
-								<div>
-									公司8
-								</div>
-								<div>
-									公司9
-								</div>
-								<div>
-									公司10
-								</div>
+					<div class="tab-content">
+						<div class="content-item" v-for="content in tabContent[tabIndex]">
+							<div class="img-wrapper"><img :src="content.coverImg"></div>
+							<div class="text">
+								<p style="font-size: 14px; color: #999; font-weight: 400">{{getTime(content.createdAt)}}</p>
+								<p style="font-size: 18px; color: #333; margin: 29px 0 10px 0"><b>{{content.title}}</b></p>
+								<p style="font-size: 16px; color: #666; height: 60px; margin-bottom: 10px; padding-right: 27px;">{{content.intro}}</p>
+								<p style="font-size: 14px; color: #ff9736">MORE+</p>
 							</div>
-							<div>
-								<div>
-									<div>
-
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 产品 -->
+		<div class="pic-bg" :style="setHeight(5)">
+			<div class="mainbody">
+				<div class="prod-wp">
+					<div class="block-title" style="font-size: 30px; font-weight: 400">软装商城</div>
+					<div class="block-subtitle" style="font-size: 40px; font-weight: 900; margin-top: 17px;">SOFT SHOP</div>
+					<div class="line"></div>
+					<div class="prod-flex-wp">
+						<div class="row" v-for="n in 2">
+							<div class="col" v-for= "(col, id) in prodList[n - 1]" :style="colStyle(id, n)">
+							<div class="photo-container" :style="setProdImg(col.url)"></div>
+								<div class="slide">
+									<h2>{{col.name}}</h2>
+									<p>{{col.disc}}</p>
+									<div class="circle">
+										<img src="/static/more-arrow.png">
 									</div>
-									<p>
-										装修公司介绍
-									</p>
-								</div>
-								<div>
-									查看详情
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="choose-chief">
-					<span>
-						浏览所有工长
-					</span>
-					<div>
-						<p>
-							挑工长
-						</p>
-						<div class="choose-chief-btns">
-							<div>
-								户型
-							</div>
-							<div>
-								面积
-							</div>
-							<div>
-								风格
-							</div>
-							<div>
-								风格
-							</div>
-						</div>
-						<span>
-							匹配
-						</span>
-					</div>
-					<div>
-						<img src="/static/imgs/1.jpg">
-					</div>
-					<div>
-						<img src="/static/imgs/1.jpg">
-					</div>
-					<div>
-						<img src="/static/imgs/1.jpg">
-					</div>
+					<div class="btn">查看更多</div>
 				</div>
 			</div>
 		</div>
-		<div class="find-desi-bac">
-			<div class="name">
-				<p>
-					寻设计
-				</p>
-			</div>
-			<div class="prepare">
-				<p>
-					
-				</p>
-				<span style="top: -20px;">
-					更多
-				</span>
-				<div>
-					<p>
-						关于知识的攻略
-					</p>
-					<p>
-						关于资金的攻略
-					</p>
-					<p>
-						关于时间的攻略
-					</p>
-					<p>
-						关于资金托管的攻略
-					</p>
-					<p>
-						关于量房的攻略
-					</p>
-					<p>
-						关于报价的攻略
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="desi-finish-ex">
-			<div class="desi-finish-title">
-				<p>
-					设计完工案例
-				</p>
-				<span>
-					查看所有
-				</span>
-			</div>
-			<div class="desi-finish-body">
-				<div>
-					<div>
-						<div>
-							案例一
-						</div>
-						<div>
-							<div>
-								<p>
-									东城甘露...
-								</p>
-								<span>
-									2室1厅1卫
-								</span>
-								<span>
-									85平米
-								</span>
-							</div>
-							<p>
-								2016－02－02  竣工
-							</p>
+		<!-- 贷款流程 -->
+		<div class="pic-bg" :style="setHeight(6)" id="animation3">
+			<div class="mainbody">
+				<div class="loan-wp" :style="{'padding-top': screenWidth * 96 / 1920 + 'px'}">
+					<div class="block-title" style="color: #fff">贷 款 流 程</div>
+					<div class="line" style="background-color: #fff; margin: 26px auto 13px auto"></div>
+					<div class="block-subtitle" style="color: #fff">LOAN FLOW</div>
+					<div class="loan-fl">
+						<div class="loan-item" v-for="(item, id) in loanList" :style="setLoanStyle(animation3, id)">
+							<div class="img-wp"><img :src="item.url"></div>
+							<div class="item-text">{{item.name}}</div>
 						</div>
 					</div>
-				</div>
-				<div>
-					<div>
-						<div>
-							案例一
-						</div>
-						<div>
-							<div>
-								<p>
-									东城甘露...
-								</p>
-								<span>
-									2室1厅1卫
-								</span>
-								<span>
-									85平米
-								</span>
-							</div>
-							<p>
-								2016－02－02  竣工
-							</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div>
-						<div>
-							案例一
-						</div>
-						<div>
-							<div>
-								<p>
-									东城甘露...
-								</p>
-								<span>
-									2室1厅1卫
-								</span>
-								<span>
-									85平米
-								</span>
-							</div>
-							<p>
-								2016－02－02  竣工
-							</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div>
-						<div>
-							案例一
-						</div>
-						<div>
-							<div>
-								<p>
-									东城甘露...
-								</p>
-								<span>
-									2室1厅1卫
-								</span>
-								<span>
-									85平米
-								</span>
-							</div>
-							<p>
-								2016－02－02  竣工
-							</p>
-						</div>
-					</div>
+					<div class="loan-btn">去分期</div>
 				</div>
 			</div>
-		</div>
-		<div class="allcomps-bac">
-			<div class="allcomps-title">
-				<p>
-					综合
-				</p>
-				<p>
-					最有设计感的
-				</p>
-				<p>
-					口碑最好的
-				</p>
-				<p>
-					价格最低的
-				</p>
-				<span>
-					查看所有公司
-				</span>
-			</div>
-			<div class="allcomps-body">
-				<div>
-					<p>
-					设计公司排行
-					</p>
-					<p>
-						不想花钱设计？立即报名享受免费设计服务 >
-					</p>
-				</div>
-				<div>
-					<div>
-						<div>
-							公司1
-						</div>
-						<div>
-							公司2
-						</div>
-						<div>
-							公司3
-						</div>
-						<div>
-							公司4
-						</div>
-						<div>
-							公司5
-						</div>
-						<div>
-							公司6
-						</div>
-						<div>
-							公司7
-						</div>
-						<div>
-							公司8
-						</div>
-						<div>
-							公司9
-						</div>
-						<div>
-							公司10
-						</div>
-					</div>
-					<div>
-						<div>
-							<div>
-
-							</div>
-							<p>
-								设计公司介绍
-							</p>
-						</div>
-						<div>
-							查看详情
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="choose-comp">
-			<div class="name">
-				<p>
-					建材选购
-				</p>
-			</div>
-			<div class="prepare">
-				<p>
-					
-				</p>
-				<span style="top: -20px;">
-					更多
-				</span>
-				<div>
-					<p>
-						泥瓦攻略
-					</p>
-					<p>
-						五金攻略
-					</p>
-					<p>
-						水电攻略
-					</p>
-					<p>
-						地板攻略
-					</p>
-					<p>
-						墙壁攻略
-					</p>
-					<p>
-						门攻略
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="allcompneys-bac">
-			<div class="allcomps-title">
-				<p>
-					泥瓦
-				</p>
-				<p>
-					水电
-				</p>
-				<p>
-					地板
-				</p>
-				<p>
-					墙壁
-				</p>
-				<p>
-					门
-				</p>
-				<span>
-					更多
-				</span>
-			</div>
-			<div class="allcomps-body">
-				<div>
-					<p>
-					设计公司排行
-					</p>
-					<p>
-						不想花钱设计？专业导购免费服务 >
-					</p>
-				</div>
-				<div>
-					<div>
-						<div>
-							公司1
-						</div>
-						<div>
-							公司2
-						</div>
-						<div>
-							公司3
-						</div>
-						<div>
-							公司4
-						</div>
-						<div>
-							公司5
-						</div>
-					</div>
-					<div>
-						<div>
-							公司6
-						</div>
-						<div>
-							公司7
-						</div>
-						<div>
-							公司8
-						</div>
-						<div>
-							公司9
-						</div>
-						<div>
-							公司10
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="choose-comp">
-			<div class="name">
-				<p>
-					施工阶段
-				</p>
-			</div>
-			<div class="prepare">
-				<p>
-					
-				</p>
-				<span style="top: -20px;">
-					更多
-				</span>
-				<div>
-					<p>
-						泥瓦攻略
-					</p>
-					<p>
-						五金攻略
-					</p>
-					<p>
-						水电攻略
-					</p>
-					<p>
-						地板攻略
-					</p>
-					<p>
-						墙壁攻略
-					</p>
-					<p>
-						门攻略
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="effectpic-bac">
-			<p style="font-size: 14px;">
-				装修日记
-			</p>
-			<div>
-				<div>
-					装修日记1
-				</div>
-				<div>
-					<div>
-						装修日记2
-					</div>
-					<div>
-						<div>
-							装修日记3
-						</div>
-						<div>
-							装修日记4
-						</div>
-					</div>
-				</div>
-				<div>
-					装修日记5
-				</div>
-			</div>
-		</div>
-		<div class="choose-comp">
-			<div class="name">
-				<p>
-					家居选购
-				</p>
-			</div>
-			<div class="prepare">
-				<p>
-					
-				</p>
-				<span style="top: -20px;">
-					更多
-				</span>
-				<div>
-					<p>
-						灯具攻略
-					</p>
-					<p>
-						洁具攻略
-					</p>
-					<p>
-						家具攻略
-					</p>
-					<p>
-						电器攻略
-					</p>
-					<p>
-						床品攻略
-					</p>
-					<p>
-						饰品攻略
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="allcompneys-bac">
-			<div class="allcomps-title">
-				<p>
-					灯具
-				</p>
-				<p>
-					洁具
-				</p>
-				<p>
-					家具
-				</p>
-				<p>
-					电器
-				</p>
-				<p>
-					床品
-				</p>
-				<span>
-					更多
-				</span>
-			</div>
-			<div class="allcomps-body">
-				<div>
-					<p>
-					设计公司排行
-					</p>
-					<p>
-						不想花钱设计？专业导购免费服务 >
-					</p>
-				</div>
-				<div>
-					<div>
-						<div>
-							公司1
-						</div>
-						<div>
-							公司2
-						</div>
-						<div>
-							公司3
-						</div>
-						<div>
-							公司4
-						</div>
-						<div>
-							公司5
-						</div>
-					</div>
-					<div>
-						<div>
-							公司6
-						</div>
-						<div>
-							公司7
-						</div>
-						<div>
-							公司8
-						</div>
-						<div>
-							公司9
-						</div>
-						<div>
-							公司10
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div style="height: 80px;">
-			
 		</div>
 	</div>
 </template>
 
 <script type="text/javascript">
 	export default{
-		name: "index",
 		components: {
 
 		},
 		data(){
 			return {
-
+				tabIndex: 0,
+				screenWidth: document.body.clientWidth,
+				scrollBegin: '',
+				notPlay: false,
+				animation1: false,
+				animation2: false,
+				animation3: false,
+				whyList: [{
+					url: '/static/index/why-item-1.png',
+					text: '家装流行产品及装修咨询',
+					textEn: 'Product decoration consulting'
+				},{
+					url: '/static/index/why-item-2.png',
+					text: '整体家装',
+					textEn: 'Product decoration consulting'
+				},{
+					url: '/static/index/why-item-3.png',
+					text: '家装流行产品及装修咨询',
+					textEn: 'Product decoration consulting'
+				},{
+					url: '/static/index/why-item-4.png',
+					text: '家装流行产品及装修咨询',
+					textEn: 'Product decoration consulting'
+				},],
+				tabList: [{
+					name: '家装攻略',
+				},{
+					name: '家装日记',
+				},],
+				tabContent: [[{
+						coverImg: '/static/index/tab-item-1.png',
+						title: '攻略攻略',
+						intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
+						createdAt: 1483278433
+					},{
+						coverImg: '/static/index/tab-item-2.png',
+						title: '攻略攻略',
+						intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
+						createdAt: 1483278433
+					},{
+						coverImg: '/static/index/tab-item-3.png',
+						title: '攻略攻略',
+						intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
+						createdAt: 1483278433
+					},{
+						coverImg: '/static/index/tab-item-4.png',
+						title: '攻略攻略',
+						intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
+						createdAt: 1483278433
+					},],[{
+						coverImg: '/static/index/tab-item-3.png',
+						title: '日记日记',
+						intro: '简介简介简介简介简介简介简介',
+						createdAt: 1483278433
+					},{
+						coverImg: '/static/index/tab-item-2.png',
+						title: '日记日记',
+						intro: '简介简介简介简介简介简介简介',
+						createdAt: 1483278433
+					},{
+						coverImg: '/static/index/tab-item-1.png',
+						title: '日记日记',
+						intro: '简介简介简介简介简介简介简介',
+						createdAt: 1483278433
+					},{
+						coverImg: '/static/index/tab-item-4.png',
+						title: '日记日记',
+						intro: '简介简介简介简介简介简介简介',
+						createdAt: 1483278433
+					},]],
+				prodList: [[{
+						name: '古典沙发',
+						url: '/static/index/prod-1.png',
+						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+					},{
+						name: '现代吊灯',
+						url: '/static/index/prod-2.png',
+						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+					},{
+						name: '清新书桌',
+						url: '/static/index/prod-3.png',
+						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+					},],[{
+						name: '优雅烛台',
+						url: '/static/index/prod-4.png',
+						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+					},{
+						name: '北欧花盆',
+						url: '/static/index/prod-5.png',
+						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+					},{
+						name: '温馨餐桌',
+						url: '/static/index/prod-6.png',
+						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+					},{
+						name: '简约烛台',
+						url: '/static/index/prod-7.png',
+						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+					},]],
+				loanList: [{
+						name: '进入家装分期页面',
+						url: '/static/index/loan-1.png'
+					},{
+						name: '填写个人信息',
+						url: '/static/index/loan-2.png'
+					},{
+						name: '信息后台审核',
+						url: '/static/index/loan-3.png'
+					},{
+						name: '分期贷款通过',
+						url: '/static/index/loan-4.png'
+					},],
+				decoList: [{
+					name: '时尚现代',
+					styles: '从小使用名牌，对时尚遥遥领先的把握，不屑于使用各种明显的图案纹理的物品，唯独钟情于圆形的风格，相信生活是完美没有缺陷的。娇艳欲滴的青春，并蓄着活泼与恬静。新锐、色彩、浪漫，童话般的情节拼接出懵懂女孩的心事。流畅的直线条，去掉所有不需要的装饰，空间生活因归还本位而美丽得随意、可爱、陶醉，就像《芳芳》中苏菲玛索饰演的角色，俏皮、天真，纯净得象水象空气。',
+					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+					imgUrl: '/static/index/kebo/kebo1.jpg',
+					itemUrl: [{
+						url: '/static/index/case-2.png',
+						name: '卫生间'
+					},{
+						url: '/static/index/case-2.png',
+						name: '厨房'
+					}]
+				},{
+					name: '北欧风格',
+					styles: '就像村上春树所说：“没有小确幸的人生，不过是干巴巴的沙漠罢了”。一种不同于文艺复兴时期喧闹的新型 “文艺范”悄然兴起。有一定阅历和沉淀，平静过着自己的生活，木质的温润搭配富有艺术沉淀的配饰，造就了于闹市中诗意存在的处事态度。',
+					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+					imgUrl: '/static/index/kebo/kebo2.jpg',
+					itemUrl: [{
+						url: '/static/index/case-2.png',
+						name: '卫生间'
+					},{
+						url: '/static/index/case-2.png',
+						name: '厨房'
+					}]
+				},{
+					name: '台湾温暖',
+					styles: '欧洲现代主义大师风起云涌的50年代，马歇·布劳耶、密斯·凡·德·罗、伊姆斯等设计大师对经济衰退后舒适生活致敬，高级工艺、舒适家具备受推崇。跳脱自然风的清新唯美，潇洒反叛自由浪漫的波西米亚风格被推向主流，就像大野洋子与甲壳虫乐队主唱列侬位于纽约曼哈顿美国名流聚集区“达科塔”公寓的家，彩色书柜、经典休闲单椅与部落风格皮质沙发看似无章混搭，其实是不羁与反叛的内心宣泄。',
+					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+					imgUrl: '/static/index/kebo/kebo4.jpg',
+					itemUrl: [{
+						url: '/static/index/case-2.png',
+						name: '卫生间'
+					},{
+						url: '/static/index/case-2.png',
+						name: '厨房'
+					}]
+				},{
+					name: '都市简约',
+					styles: '随着女性力量的日渐强大，女人对男性美的定义也发生了转变，继而一个新的物种暖男应运而生。将暖男温柔细腻的情感渗透到现代家居空间，运用最暖的色彩爱马仕橙与冷峻工业风，共同点缀现代家具的时尚之感。冷与暖的矛盾调性在橙色的调和下完美衔接，扑面而至的都市气息展现了主人如日光般温暖的内心世界。',
+					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+					imgUrl: '/static/index/kebo/kebo3.jpg',
+					itemUrl: [{
+						url: '/static/index/case-2.png',
+						name: '卫生间'
+					},{
+						url: '/static/index/case-2.png',
+						name: '厨房'
+					}]
+				},{
+					name: '北欧新竹',
+					styles: '当现代风与海洋风相遇时，一代文豪海明威在古巴海岛发现了他人生的新大陆。明媚的阳光、浓烈的Mojito、令人陶醉的雪茄、还有他钟爱的渔船。就如他所说“我热爱这个国家、感觉就像在家里”。海魂条纹成为设计的神魂所在，完成跨时空的对话；原木色餐椅与灰蓝背景相互交织，感受无处不在的大海气息。彼此成就，这也许就是人与空间最好的关系。',
+					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+					imgUrl: '/static/index/kebo/kebo5.jpg',
+					itemUrl: [{
+						url: '/static/index/case-2.png',
+						name: '卫生间'
+					},{
+						url: '/static/index/case-2.png',
+						name: '厨房'
+					}]
+				},{
+					name: '现代八',
+					styles: '作为曾经的海上殖民强国，阿姆斯特丹现为欧洲最开放城市。当古老而有韵味的欧式建筑与当代设计相结合，与生俱来的内敛傲娇姿态在现代家居中展现的淋漓尽致。打破空间沉闷，古典糅合时尚，深色家具与黑白灰中的华丽色调完美交融，无彩色风格优雅塑造低奢格调，演绎自信空间的绝妙气质。',
+					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+					imgUrl: '/static/index/kebo/kebo6.jpg',
+					itemUrl: [{
+						url: '/static/index/case-2.png',
+						name: '卫生间'
+					},{
+						url: '/static/index/case-2.png',
+						name: '厨房'
+					}]
+				},],
 			}
 		},
 		methods: {
+			setHeight(type) {
+				let ret = {}
+				switch (type) {
+					case 0:
+						ret.background = `url('/static/index/banner_01.png') no-repeat`
+						ret.height = `${this.screenWidth * 800 / 1920}px`
+						// ret.height = '800px'
+						break
+					case 1:
+						ret.background = `url('/static/index/what.png') no-repeat`
+						ret.height = `${this.screenWidth * 750 / 1920}px`
+						break
+					case 2: 
+						ret.backgroundImage = `url('/static/index/why.png')`
+						// ret.height = `${this.screenWidth * 712 / 1920}px`
+						ret.height = '712px'
+						break
+					case 3: 
+						ret.backgroundImage = `url('/static/index/case-bg.png')`
+						// ret.height = `${this.screenWidth * 1024 / 1920}px`
+						ret.height = '1024px'
+						ret.backgroundSize = 'cover'
+						break
+					case 4:
+						ret.backgroundColor = `#f6f6f6`
+						ret.height = `749px`
+						break
+					case 5:
+						ret.backgroundColor = `#fff`
+						ret.height = `1187px`
+						break
+					case 6:
+						ret.backgroundImage = `url('/static/index/loan-bg.png')`
+						// ret.height = `${this.screenWidth * 884 / 1920}px`
+						ret.height = `884px`
+						ret.backgroundSize = 'cover'
+						break
+				}
+				return ret
+			},
+			setPosition(judge, id) {
+				let ret = {}
+				if (judge) {
+					switch (id) {
+						case 0:
+							ret.left = '0px'
+							ret.top = '196px'
+							
+							break
+						case 1:
+							ret.left = '920px'
+							ret.top = '196px'
+							ret.transitionDelay = '0.5s'
+							break
+						case 2:
+							ret.left = '0px'
+							ret.top = '457px'
+							ret.transitionDelay = '1s'
+							break
+						case 3:
+							ret.left = '920px'
+							ret.top = '457px'
+							ret.transitionDelay = '1.5s'
+							break
+						}
+					ret.opacity = '1'
+					ret.transform = 'none'
+				}
+				return ret
+			},
+			setLoanStyle(type, id) {
+				let ret = {}
+				if (type) {
+					switch (id) {
+						case 0:
+							ret.transitionDelay = '0s'
+							break
+						case 1: 
+							ret.transitionDelay = '0.3s'
+							break
+						case 2:
+							ret.transitionDelay = '0.6s'
+							break
+						case 3:
+							ret.transitionDelay = '0.9s'
+							break
+					}
+					ret.opacity = '1'
+					ret.transform = 'none'
+				}
+				return ret
+			},
+			setProdImg(imgUrl) {
+				let ret = {}
+				ret.backgroundImage = `url(${imgUrl})`
+				ret.backgroundSize = '100% auto'
+				return ret
+			},
+			colStyle(id, n) {
+				let ret = {}
+				if (id == 0&&n == 1) {
+					ret.flex = '2 2 auto'
+				}
+				return ret 
+			},
+			getTime(timeStamp) {
+				const d = new Date(timeStamp * 1000)
+				const Y = `${d.getFullYear()}-`
+				const M = `${d.getMonth() + 1 < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1}-`
+				const D = (d.getDate() < 10 ? `0${d.getDate()}` : d.getDate())
+				return Y + M + D
+			},
+			getScrollBegin() {
+				this.scrollBegin = document.documentElement.scrollTop || document.body.scrollTop 
 
+				if(document.body.scrollTop) {
+					this.scrollBegin = document.body.scrollTop;
+				} else{
+					this.scrollBegin = document.documentElement.scrollTop
+				}
+			},
+			setAnimation(a, b) {
+				let ret = {}
+				if (a && b == 1) {
+					ret.right = 0
+				} else if (a && b == 2) {
+					ret.opacity = 1
+				}
+				return ret
+			},
+			scrollLimit(type) {
+				let result = 0
+				switch(type) {
+					case 1:
+						result = document.body.clientWidth * 600/1920
+						break
+					case 2:
+						result = document.body.clientWidth * 1350/1920
+						break
+					case 3:
+						result = document.body.clientWidth * 1250/1920 + 3672
+						break
+				}
+				return result
+			}
 		},
+			
 		mounted(){
-			document.title = '家居平台-装修，装修公司，装修效果图，客厅装修，装修设计，简欧风格，现代中式'
+			document.title = '居分期-提供美好生活方式'
+			window.addEventListener('scroll', this.getScrollBegin)			
+		},
+		watch: {
+			scrollBegin: function(val) {
+				console.log(val)
+				if (val > this.scrollLimit(3)) {
+					this.animation3 = true
+				} else if (val > this.scrollLimit(2)) {
+					this.animation2 = true
+				} else if (val > this.scrollLimit(1)) {
+					console.log(this.scrollLimit)
+					this.animation1 = true
+				}
+				
+			}
 		}
 	}
 </script>

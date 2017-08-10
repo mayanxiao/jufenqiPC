@@ -4,216 +4,134 @@
 @border: #bfcbd9;
 .navbar {
   width: 100%;
-  height: 188px;
-  border-bottom: 1px solid @main;
-  position: relative;
-  z-index: 1000;
-  background-color: #fff;
+  height: 100px;
+  position: fixed;
+  z-index: 99999;
+  transition: all 0.7s ease;
 }
 .nav-wrapper {
-  width: 1230px;
+  width: 1238px;
   margin: 0 auto;
   height: 100%;
-  padding: 48px 0;
   position: relative;
-  .img-logo {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-  }
-}
-/**
- *  输入框
- */
-.input-wrapper {
-  width: 60%;
-  height: 34px;
-  margin: 0 auto;
   display: flex;
-  position: relative;
-  margin-top: 20px;
-  input {
-    width: 92%;
+  overflow: hidden;
+  .img-logo {
+    position: relative;
+    width: 114px;
+    height: 88px;
+    .img-change {
+      position: absolute;
+      top: 17px;
+      display: block;
+      left: 0px;
+    }
+  }
+  .nav-list {
+    display: flex;
     height: 100%;
-    padding: 10px 16px;
+    transition: all 0.2s linear;
+    position: absolute;
+    left: 643px;
+    top: 0;
+    .nav-item {
+      width: 119px;
+      height: 100%;
+      line-height: 100px;
+      font-size: 18px;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      &:hover {
+        background-color: @main;
+        color: #fff !important;
+      }
+    }
+  }
+  .login {
+    line-height: 100px;
     font-size: 14px;
     color: #999;
-    border: 1px solid @border;
-    border-right: none;
-    transition: border-color 0.1s cubic-bezier(.645,.045,.355,1);
-    &::placeholder {
-      font-size: 14px;
-      color: #ccc;
-    }
-    &:focus {
-      border-color: @main;
-    }
-  }
-  .input_btn {
-    width: 8%;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    font-size: 16px;
-    color: #fff;
-    background-color: @main;
-    cursor: pointer;
-  }
-  .input-tip {
-    position: absolute;
-    display: flex;
-    width: 30%;
-    justify-content: space-around;
-    top: 50%;
-    left: 105%;
-    transform: translateY(-50%);
-    font-weight: lighter;
-    color: #999;
-    .input-join {
-      cursor: pointer;
-      color: #393939;
-      transition: all 0.2s ease;
-      &:hover {
-        color: @main;
-        font-weight: bold;
-      }
-    }
+    position: relative;
     span {
       cursor: pointer;
-      transition: all 0.2s ease;
+      display: block;
       &:hover {
         color: @main;
-        font-weight: bold;
       }
+    }
+    .line {
+      position: absolute;
+      height: 13px;
+      width: 1px;
+      background-color: #ddd;
+      top: 43px;
+      left: 13px;
     }
   }
 }
-/**
- * 导航栏
- */
- .nav-list {
+.sub-list {
   width: 100%;
-  height: 44px;
-  line-height: 44px;
-  font-size: 18px;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  color: #000;
+  height: 80px;
+  line-height: 80px;
   display: flex;
-  justify-content: space-around;
-  .nav-item {
-    width: 16.7%;
-    height: 44px;
-    text-align: center;
-    position: relative;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  position: relative;
+  z-index: 99999;
+  span  {
     cursor: pointer;
-    &:hover .sub-list .sub-item{
-      visibility: visible;
-      height: 44px;
-      opacity: 1;
-      background-color: @main;
-      color: #fff;
-    }
-    &:hover .black {
-      transform: rotate(180deg);
-    }
+    font-size: 18px;
+    color: #666;
     &:hover {
-      background-color: @main;
-      color: #fff;
-    }
-    .name-wrapper {
-      position: relative;
-      &:hover {
-        color: #ccc;
-      }
-      span {
-        position: absolute;
-        width: 12px;
-        height: 6px;
-        top: 9px;
-        right: -23px;
-        transition: all 0.5s;
-        img {
-          display: block;
-          transform: rotate(180deg);
-        }
-      }
-    }
-    .sub-list {
-      width: 100%;
-      position: absolute;
-      top: 45px;
-      left: 0;
-      transition: all .5s ease;
-      .sub-item {
-        height: 0px;
-        opacity: 0;
-        text-align: center;
-        line-height: 50px;
-        color: #000;
-        visibility: hidden;
-        cursor: pointer;
-        transition: all .5s ease;
-        &:hover {
-          background-color: #f18017;
-        }
-      }
+      color: @main;
     }
   }
- }
- .active {
-    background-color: @main;
-    color: #fff;
- }
- .black{
-  img{
-    display: block;
-  }
- }
+}
+.active {
+  background-color: @main;
+  color: #fff;
+}
+
 </style>
 
 <template>
-  <div class="navbar">
-    <div class="nav-wrapper">
-      <div class="img-logo"><img src="/static/pressionimgs/logo.png"></div>
-      <div class="input-wrapper">
-        <input type="text" placeholder="请输入您要搜索的内容">
-        <div class="input_btn">搜索</div>
-        <div class="input-tip">
-          <div class="input-join">入驻</div>
-          <div class="login-signin"><span>登录</span>/<span>注册</span></div>
+  <div class="navbar" :style="setBack(scrollShow)" id="NavBar">
+    <div class="nav-wrapper" @mouseenter="scroll <= scrollLimit?scrollShow = true:scrollShow = scrollShow" @mouseleave="scroll <= scrollLimit?scrollShow = false:scrollShow = scrollShow" >
+      <div class="img-logo" v-if="scrollShow" ><img src="/static/logo.png"></div>
+      <div class="img-logo" v-if="!scrollShow" ><img src="/static/logo-static.png"></div>
+      <div class="nav-list" id="navLi" :style="setMargin(scrollShow)">
+        <div class="nav-item" v-for="(nav, $index) in navList" @mouseenter="subChange($index)" @mouseleave="subChange($index)" :style="setColor(scrollShow)">{{nav.name}}</div>
+        <div class="login" style="margin-left: 15px;" v-if="scrollShow"><span>登录</span></div>
+        <div class="login" style="padding: 0 0 0 28px;" v-if="scrollShow">
+          <span>注册</span>
+          <div class="line"></div>
         </div>
       </div>
-      <div class="nav-list">
-        <div class="nav-item" v-for="(nav, id) in navList" :class="{'active': isTab(id)}" @click="tabIndex = id">
-          <span class="name-wrapper" @click="goto(nav.url)">
-            {{nav.name}}
-            <span v-if="ifHasSub(nav.subNav)" class="black"><img src="/static/pressionimgs/bigarrowup.png"></span>
-          </span>
-          
-          <div class="sub-list" :class="{'active': isTab(id)}">
-            <div class="sub-item" v-for="sub in nav.subNav" @click="goto(sub.url)">{{sub.name}}</div>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="sub-list" v-if="subShow" @mouseleave="scroll <= scrollLimit?change():subShow = false" @mouseenter="scrollShow = true">
+      <span style="margin-left: 775px;">家装日记</span>
+      <span style="margin: 0 46px;">家装案例</span>
+      <span>家装攻略</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'navbar',
   data () {
     return {
       tabIndex: 0,
+      scroll: '',
+      scrollLimit: document.body.clientWidth * 800/1920,
+      scrollShow: false,
+      subShow: false,
       navList: [{
         name: '首页',
         url: '/',
         subNav: []
       },{
-        name: '装修案例',
+        name: '家装分期',
         url: '/case-dc',
         subNav: [{
           name: '风格美图'
@@ -222,7 +140,7 @@ export default {
           url: '/impression'
         }]
       },{
-        name: '装修讲堂',
+        name: '家装指南',
         url: '/plans',
         subNav: [{
           name: '装修日记'
@@ -239,7 +157,7 @@ export default {
           url: '/dry-goods'
         }]
       },{
-        name: '找装修',
+        name: '产品商城',
         url: '/find-dc',
         subNav: [{
           name: '装修公司'
@@ -248,21 +166,19 @@ export default {
           url: '/foreman'
         }]
       },{
-        name: '建材家居',
+        name: '个人中心',
         subNav: [{
           name: '买建材'
         },{
           name: '家装贷款'
         }]
-      },{
-        name: '免费服务',
-        subNav: []
-      },]
+      }]
     }
   },
   methods: {
-    ifHasSub(sub) {
-      return sub.length !== 0
+    change() {
+      this.subShow = false
+      this.scrollShow = false
     },
     isTab(id) {
       return id == this.tabIndex
@@ -271,9 +187,60 @@ export default {
       if (url) {
         this.$router.push(url)
       }
-      
-    }
+    },
+    subChange(id) {
+      if (id == 2&&this.scrollShow) {
+        this.subShow = true
+      } else {
+        this.subShow = false
+      }
+    },
+    setBack(val) {
+      let ret = {}
+      if (val) {
+        ret.backgroundColor = '#fff'
+        // rgba(255,255,255,1)
+      }
+      return ret
+    },
+    setMargin(val) {
+      let ret = {}
+      if (val) {
+        ret.left = '530px'
+      } 
+      return ret
+    },
+    setColor(val) {
+      let ret = {}
+      if (val) {
+        ret.color = '#333'
+      }
+      return ret
+    },
+    getScroll() {
+      this.scroll = document.documentElement.scrollTop || document.body.scrollTop;  
 
+      if(document.body.scrollTop)
+        {
+          this.scroll= document.body.scrollTop;
+        }
+        else{
+          this.scroll= document.documentElement.scrollTop
+        }
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.getScroll)
+  },
+  watch: {
+    scroll: function(val) {
+      if (val > this.scrollLimit) {
+        this.scrollShow = true
+      } else {
+        this.scrollShow = false
+      }
+    }
   }
 }
+
 </script>

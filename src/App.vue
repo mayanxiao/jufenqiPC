@@ -16,7 +16,7 @@ input {
   outline: none;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif, '微软雅黑';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,9 +25,7 @@ input {
 <template>
   <div id="app">
     <nav-bar></nav-bar>
-    <div class="mainbody">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
     <!-- <j-footer></j-footer> -->
   </div>
 </template>
@@ -38,9 +36,39 @@ import JFooter from '@/components/JFooter'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      scroll: ''
+    }
+  },
   components: {
     JFooter,
     NavBar
+  },
+  mounted() {
+    // window.addEventListener('scroll', this.getScroll)
+  },
+  methods: {
+    getScroll() {
+      this.scroll = document.documentElement.scrollTop || document.body.scrollTop;  
+
+      if(document.body.scrollTop)
+        {
+          this.scroll= document.body.scrollTop;
+        }
+        else{
+          this.scroll= document.documentElement.scrollTop
+        }
+    }
+  },
+  watch: {
+    scroll: function(val) {
+      if (val > this.scrollLimit) {
+        this.scrollShow = true
+      } else {
+        this.scrollShow = false
+      }
+    }
   }
 }
 </script>
