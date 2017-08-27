@@ -24,9 +24,8 @@ input {
 </style>
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
     <router-view></router-view>
-    <!-- <j-footer></j-footer> -->
+    <j-footer></j-footer>
   </div>
 </template>
 
@@ -38,7 +37,6 @@ export default {
   name: 'app',
   data() {
     return {
-      scroll: ''
     }
   },
   components: {
@@ -46,29 +44,10 @@ export default {
     NavBar
   },
   mounted() {
-    // window.addEventListener('scroll', this.getScroll)
   },
   methods: {
-    getScroll() {
-      this.scroll = document.documentElement.scrollTop || document.body.scrollTop;  
-
-      if(document.body.scrollTop)
-        {
-          this.scroll= document.body.scrollTop;
-        }
-        else{
-          this.scroll= document.documentElement.scrollTop
-        }
-    }
   },
   watch: {
-    scroll: function(val) {
-      if (val > this.scrollLimit) {
-        this.scrollShow = true
-      } else {
-        this.scrollShow = false
-      }
-    }
   }
 }
 </script>

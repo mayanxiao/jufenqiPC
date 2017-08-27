@@ -7,6 +7,12 @@
 		width: 100%;
 		background-size: 100% auto;
 		position: relative;
+		display: block;
+		.img-bg {
+			display: block;
+			width: 100%;
+			z-index: 1;
+		}
 		.img-person {
 			position: absolute;
 			display: block;
@@ -15,11 +21,43 @@
 			transform: translateX(-50%);
 			width: 813px;
 		}
+		.info {
+			width: 748px;
+			height: 403px;
+			background-image: url('/static/index/what-item.png');
+			background-size: 100% 100%;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: -100%;
+			padding: 143px 0 80px 68px;
+			color: #fff;
+			transition: right 0.5s ease;
+			.text {
+				opacity: 0;
+				transition: opacity 0.5s ease;
+				transition-delay: 0.7s;
+				h1 {
+					font-size: 50px;
+					font-weight: 600;
+				}
+				.line {
+					width: 60px;
+					height: 3px;
+					background-color: #fff;
+					margin: 35px 0 30px 0;
+				}
+				.tips {
+					font-size: 20px;
+				}
+			}
+		}
 		.mainbody {
 			width: 1238px;
 			height: 100%;
 			margin: 0 auto;
 			position: relative;
+			z-index: 5;
 			.block-title {
 				font-size: 42px;
 				font-weight: 900;
@@ -35,37 +73,6 @@
 				height: 3px;
 				margin: 35px auto 64px auto;
 				background-color: @main;
-			}
-			.info {
-				width: 748px;
-				height: 403px;
-				background-image: url('/static/index/what-item.png');
-				background-size: 100% 100%;
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-				right: -100%;
-				padding: 143px 0 80px 68px;
-				color: #fff;
-				transition: right 0.5s ease;
-				.text {
-					opacity: 0;
-					transition: opacity 0.5s ease;
-					transition-delay: 0.7s;
-					h1 {
-						font-size: 50px;
-						font-weight: 600;
-					}
-					.line {
-						width: 60px;
-						height: 3px;
-						background-color: #fff;
-						margin: 35px 0 30px 0;
-					}
-					.tips {
-						font-size: 20px;
-					}
-				}
 			}
 			.why-wrapper {
 				width: 100%;
@@ -111,6 +118,21 @@
 				height: 100%;
 				padding-top: 79px;
 				text-align: center;
+				.btn {
+					width: 160px;
+					height: 46px;
+					font-size: 16px;
+					color: @main;
+					border: 1px solid @main;
+					text-align: center;
+					line-height: 46px;
+					margin: 68px auto 0 auto;
+					cursor: pointer;
+					&:hover {
+						background-color: @main;
+						color: #fff;
+					}
+				}
 				.card {
 					width: 1016px;
 					height: 550px;
@@ -140,6 +162,7 @@
 					}
 					.right {
 						width: 258px;
+						height: 550px;
 						.img-wp {
 							width: 100%;
 							height: 146px;
@@ -179,15 +202,15 @@
 							}
 						}
 						.text {
+							width: 100%;
 							height: 258px;
 							color: #ddd;
 							background-color: #333;
 							font-size: 16px;
 							padding: 50px 34px 50px 34px;
-							width: 100%;
 							div {
-								width: 100%;
-								height: 100%;
+								width: 190px;
+								height: 158px;
 								display: -webkit-box;
 								-webkit-line-clamp: 7;
 								-webkit-box-orient: vertical;
@@ -203,6 +226,23 @@
 				height: 100%;
 				position: relative;
 				padding: 68px 0 104px 0;
+				.btn {
+					width: 67px;
+					height: 24px;
+					text-align: center;
+					font-size: 14px;
+					border: 1px solid #999;
+					color: #999;
+					line-height: 24px;
+					position: absolute;
+					right: 0;
+					top: 102px;
+					cursor: pointer;
+					&:hover {
+						color: @main;
+						border-color: @main;
+					}
+				}
 				.tabs {
 					display: flex;
 					.tab-item {
@@ -274,6 +314,10 @@
 					line-height: 46px;
 					margin: 63px auto 0 auto;
 					cursor: pointer;
+					&:hover {
+						background-color: @main;
+						color: #fff;
+					}
 				}
 				.prod-flex-wp {
 					width: 100%;
@@ -404,6 +448,10 @@
 					font-weight: 600;
 					box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 11px 3px;
 					cursor: pointer;
+					transition: all 0.3s ease;
+					&:hover {
+						transform: scale(1.05);
+					}
 				}
 
 			}
@@ -416,6 +464,7 @@
 .mainbody .deco-wp .el-carousel__item {
 	left: -198px ;
 	width: 1016px ;
+	cursor: default;
 }
 
 .mainbody .deco-wp .el-carousel__arrow {
@@ -433,7 +482,7 @@
     transform: translateY(-50%);
     text-align: center;
     font-size: 34px;
-    border-top: 2px solid #fff;
+    border-top: 2px solid #eee;
 }
 .mainbody .deco-wp .el-carousel__arrow--right {
     right: 0;
@@ -449,18 +498,20 @@
 </style>
 <template>
 	<div class="index" id="Index">
+		<nav-bar></nav-bar>
 		<!-- banner -->
-		<div class="pic-bg" :style="setHeight(0)"></div>
+		<div class="pic-bg">
+			<img class="img-bg" src="/static/index/banner_01.png">
+		</div>
 		<!-- what -->
-		<div class="pic-bg" :style="setHeight(1)">
-			<div class="mainbody">
-				<div class="info" :style="setAnimation(animation1, 1)">
-					<div class="text" :style="setAnimation(animation1, 2)">
-						<h1 >什么是居分期</h1>
-						<div class="line"></div>
-						<div class="tips">居分期是根据家庭成员的性格、喜好、工作来配置+定制</div>
-						<div class="tips">家居风格和产品并以管家式追踪贯彻各个流程</div>
-					</div>
+		<div class="pic-bg">
+			<img class="img-bg" src="/static/index/what.png">
+			<div class="info" :style="setAnimation(animation1, 1)">
+				<div class="text" :style="setAnimation(animation1, 2)">
+					<h1 >什么是居分期</h1>
+					<div class="line"></div>
+					<div class="tips">居分期是根据家庭成员的性格、喜好、工作来配置+定制</div>
+					<div class="tips">家居风格和产品并以管家式追踪贯彻各个流程</div>
 				</div>
 			</div>
 		</div>
@@ -509,7 +560,7 @@
 							</div>
 						</el-carousel-item>
 					</el-carousel>
-					
+					<div class="btn">查看更多</div>
 				</div>
 			</div>
 		</div>
@@ -517,6 +568,7 @@
 		<div class="pic-bg" :style="setHeight(4)">
 			<div class="mainbody">
 				<div class="text-wp">
+					<div class="btn">更多 +</div>
 					<div class="tabs">
 						<div class="tab-item" v-for="(tab, tabId) in tabList" @click="tabIndex = tabId" :class="{'active': tabIndex == tabId}">
 							{{tab.name}}
@@ -582,370 +634,373 @@
 </template>
 
 <script type="text/javascript">
-	export default{
-		components: {
+import NavBar from '@/components/NavBar'
 
-		},
-		data(){
-			return {
-				tabIndex: 0,
-				screenWidth: document.body.clientWidth,
-				scrollBegin: '',
-				notPlay: false,
-				animation1: false,
-				animation2: false,
-				animation3: false,
-				whyList: [{
-					url: '/static/index/why-item-1.png',
-					text: '家装流行产品及装修咨询',
-					textEn: 'Product decoration consulting'
+export default{
+	components: {
+		NavBar
+	},
+	data(){
+		return {
+			tabIndex: 0,
+			screenWidth: document.body.clientWidth,
+			scrollBegin: '',
+			notPlay: false,
+			animation1: false,
+			animation2: false,
+			animation3: false,
+			whyList: [{
+				url: '/static/index/why-item-1.png',
+				text: '家装流行产品及装修咨询',
+				textEn: 'Product decoration consulting'
+			},{
+				url: '/static/index/why-item-2.png',
+				text: '整体家装',
+				textEn: 'Product decoration consulting'
+			},{
+				url: '/static/index/why-item-3.png',
+				text: '家装流行产品及装修咨询',
+				textEn: 'Product decoration consulting'
+			},{
+				url: '/static/index/why-item-4.png',
+				text: '家装流行产品及装修咨询',
+				textEn: 'Product decoration consulting'
+			},],
+			tabList: [{
+				name: '家装攻略',
+			},{
+				name: '家装日记',
+			},],
+			tabContent: [[{
+					coverImg: '/static/index/tab-item-1.png',
+					title: '攻略攻略',
+					intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
+					createdAt: 1483278433
 				},{
-					url: '/static/index/why-item-2.png',
-					text: '整体家装',
-					textEn: 'Product decoration consulting'
+					coverImg: '/static/index/tab-item-2.png',
+					title: '攻略攻略',
+					intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
+					createdAt: 1483278433
 				},{
-					url: '/static/index/why-item-3.png',
-					text: '家装流行产品及装修咨询',
-					textEn: 'Product decoration consulting'
+					coverImg: '/static/index/tab-item-3.png',
+					title: '攻略攻略',
+					intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
+					createdAt: 1483278433
 				},{
-					url: '/static/index/why-item-4.png',
-					text: '家装流行产品及装修咨询',
-					textEn: 'Product decoration consulting'
+					coverImg: '/static/index/tab-item-4.png',
+					title: '攻略攻略',
+					intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
+					createdAt: 1483278433
+				},],[{
+					coverImg: '/static/index/tab-item-3.png',
+					title: '日记日记',
+					intro: '简介简介简介简介简介简介简介',
+					createdAt: 1483278433
+				},{
+					coverImg: '/static/index/tab-item-2.png',
+					title: '日记日记',
+					intro: '简介简介简介简介简介简介简介',
+					createdAt: 1483278433
+				},{
+					coverImg: '/static/index/tab-item-1.png',
+					title: '日记日记',
+					intro: '简介简介简介简介简介简介简介',
+					createdAt: 1483278433
+				},{
+					coverImg: '/static/index/tab-item-4.png',
+					title: '日记日记',
+					intro: '简介简介简介简介简介简介简介',
+					createdAt: 1483278433
+				},]],
+			prodList: [[{
+					name: '古典沙发',
+					url: '/static/index/prod-1.png',
+					disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+				},{
+					name: '现代吊灯',
+					url: '/static/index/prod-2.png',
+					disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+				},{
+					name: '清新书桌',
+					url: '/static/index/prod-3.png',
+					disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+				},],[{
+					name: '优雅烛台',
+					url: '/static/index/prod-4.png',
+					disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+				},{
+					name: '北欧花盆',
+					url: '/static/index/prod-5.png',
+					disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+				},{
+					name: '温馨餐桌',
+					url: '/static/index/prod-6.png',
+					disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+				},{
+					name: '简约烛台',
+					url: '/static/index/prod-7.png',
+					disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
+				},]],
+			loanList: [{
+					name: '进入家装分期页面',
+					url: '/static/index/loan-1.png'
+				},{
+					name: '填写个人信息',
+					url: '/static/index/loan-2.png'
+				},{
+					name: '信息后台审核',
+					url: '/static/index/loan-3.png'
+				},{
+					name: '分期贷款通过',
+					url: '/static/index/loan-4.png'
 				},],
-				tabList: [{
-					name: '家装攻略',
+			decoList: [{
+				name: '时尚现代',
+				styles: '从小使用名牌，对时尚遥遥领先的把握，不屑于使用各种明显的图案纹理的物品，唯独钟情于圆形的风格，相信生活是完美没有缺陷的。娇艳欲滴的青春，并蓄着活泼与恬静。新锐、色彩、浪漫，童话般的情节拼接出懵懂女孩的心事。流畅的直线条，去掉所有不需要的装饰，空间生活因归还本位而美丽得随意、可爱、陶醉，就像《芳芳》中苏菲玛索饰演的角色，俏皮、天真，纯净得象水象空气。',
+				intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+				以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+				imgUrl: '/static/index/kebo/kebo1.jpg',
+				itemUrl: [{
+					url: '/static/index/case-2.png',
+					name: '卫生间'
 				},{
-					name: '家装日记',
-				},],
-				tabContent: [[{
-						coverImg: '/static/index/tab-item-1.png',
-						title: '攻略攻略',
-						intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
-						createdAt: 1483278433
-					},{
-						coverImg: '/static/index/tab-item-2.png',
-						title: '攻略攻略',
-						intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
-						createdAt: 1483278433
-					},{
-						coverImg: '/static/index/tab-item-3.png',
-						title: '攻略攻略',
-						intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
-						createdAt: 1483278433
-					},{
-						coverImg: '/static/index/tab-item-4.png',
-						title: '攻略攻略',
-						intro: '简介简介简介简介简介简介简介简介简介简介简介简介简介简介',
-						createdAt: 1483278433
-					},],[{
-						coverImg: '/static/index/tab-item-3.png',
-						title: '日记日记',
-						intro: '简介简介简介简介简介简介简介',
-						createdAt: 1483278433
-					},{
-						coverImg: '/static/index/tab-item-2.png',
-						title: '日记日记',
-						intro: '简介简介简介简介简介简介简介',
-						createdAt: 1483278433
-					},{
-						coverImg: '/static/index/tab-item-1.png',
-						title: '日记日记',
-						intro: '简介简介简介简介简介简介简介',
-						createdAt: 1483278433
-					},{
-						coverImg: '/static/index/tab-item-4.png',
-						title: '日记日记',
-						intro: '简介简介简介简介简介简介简介',
-						createdAt: 1483278433
-					},]],
-				prodList: [[{
-						name: '古典沙发',
-						url: '/static/index/prod-1.png',
-						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
-					},{
-						name: '现代吊灯',
-						url: '/static/index/prod-2.png',
-						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
-					},{
-						name: '清新书桌',
-						url: '/static/index/prod-3.png',
-						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
-					},],[{
-						name: '优雅烛台',
-						url: '/static/index/prod-4.png',
-						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
-					},{
-						name: '北欧花盆',
-						url: '/static/index/prod-5.png',
-						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
-					},{
-						name: '温馨餐桌',
-						url: '/static/index/prod-6.png',
-						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
-					},{
-						name: '简约烛台',
-						url: '/static/index/prod-7.png',
-						disc: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明产品'
-					},]],
-				loanList: [{
-						name: '进入家装分期页面',
-						url: '/static/index/loan-1.png'
-					},{
-						name: '填写个人信息',
-						url: '/static/index/loan-2.png'
-					},{
-						name: '信息后台审核',
-						url: '/static/index/loan-3.png'
-					},{
-						name: '分期贷款通过',
-						url: '/static/index/loan-4.png'
-					},],
-				decoList: [{
-					name: '时尚现代',
-					styles: '从小使用名牌，对时尚遥遥领先的把握，不屑于使用各种明显的图案纹理的物品，唯独钟情于圆形的风格，相信生活是完美没有缺陷的。娇艳欲滴的青春，并蓄着活泼与恬静。新锐、色彩、浪漫，童话般的情节拼接出懵懂女孩的心事。流畅的直线条，去掉所有不需要的装饰，空间生活因归还本位而美丽得随意、可爱、陶醉，就像《芳芳》中苏菲玛索饰演的角色，俏皮、天真，纯净得象水象空气。',
-					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
-					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
-					imgUrl: '/static/index/kebo/kebo1.jpg',
-					itemUrl: [{
-						url: '/static/index/case-2.png',
-						name: '卫生间'
-					},{
-						url: '/static/index/case-2.png',
-						name: '厨房'
-					}]
+					url: '/static/index/case-2.png',
+					name: '厨房'
+				}]
+			},{
+				name: '北欧风格',
+				styles: '就像村上春树所说：“没有小确幸的人生，不过是干巴巴的沙漠罢了”。一种不同于文艺复兴时期喧闹的新型 “文艺范”悄然兴起。有一定阅历和沉淀，平静过着自己的生活，木质的温润搭配富有艺术沉淀的配饰，造就了于闹市中诗意存在的处事态度。',
+				intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+				以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+				imgUrl: '/static/index/kebo/kebo2.jpg',
+				itemUrl: [{
+					url: '/static/index/case-2.png',
+					name: '卫生间'
 				},{
-					name: '北欧风格',
-					styles: '就像村上春树所说：“没有小确幸的人生，不过是干巴巴的沙漠罢了”。一种不同于文艺复兴时期喧闹的新型 “文艺范”悄然兴起。有一定阅历和沉淀，平静过着自己的生活，木质的温润搭配富有艺术沉淀的配饰，造就了于闹市中诗意存在的处事态度。',
-					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
-					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
-					imgUrl: '/static/index/kebo/kebo2.jpg',
-					itemUrl: [{
-						url: '/static/index/case-2.png',
-						name: '卫生间'
-					},{
-						url: '/static/index/case-2.png',
-						name: '厨房'
-					}]
+					url: '/static/index/case-2.png',
+					name: '厨房'
+				}]
+			},{
+				name: '台湾温暖',
+				styles: '欧洲现代主义大师风起云涌的50年代，马歇·布劳耶、密斯·凡·德·罗、伊姆斯等设计大师对经济衰退后舒适生活致敬，高级工艺、舒适家具备受推崇。跳脱自然风的清新唯美，潇洒反叛自由浪漫的波西米亚风格被推向主流，就像大野洋子与甲壳虫乐队主唱列侬位于纽约曼哈顿美国名流聚集区“达科塔”公寓的家，彩色书柜、经典休闲单椅与部落风格皮质沙发看似无章混搭，其实是不羁与反叛的内心宣泄。',
+				intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+				以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+				imgUrl: '/static/index/kebo/kebo4.jpg',
+				itemUrl: [{
+					url: '/static/index/case-2.png',
+					name: '卫生间'
 				},{
-					name: '台湾温暖',
-					styles: '欧洲现代主义大师风起云涌的50年代，马歇·布劳耶、密斯·凡·德·罗、伊姆斯等设计大师对经济衰退后舒适生活致敬，高级工艺、舒适家具备受推崇。跳脱自然风的清新唯美，潇洒反叛自由浪漫的波西米亚风格被推向主流，就像大野洋子与甲壳虫乐队主唱列侬位于纽约曼哈顿美国名流聚集区“达科塔”公寓的家，彩色书柜、经典休闲单椅与部落风格皮质沙发看似无章混搭，其实是不羁与反叛的内心宣泄。',
-					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
-					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
-					imgUrl: '/static/index/kebo/kebo4.jpg',
-					itemUrl: [{
-						url: '/static/index/case-2.png',
-						name: '卫生间'
-					},{
-						url: '/static/index/case-2.png',
-						name: '厨房'
-					}]
+					url: '/static/index/case-2.png',
+					name: '厨房'
+				}]
+			},{
+				name: '都市简约',
+				styles: '随着女性力量的日渐强大，女人对男性美的定义也发生了转变，继而一个新的物种暖男应运而生。将暖男温柔细腻的情感渗透到现代家居空间，运用最暖的色彩爱马仕橙与冷峻工业风，共同点缀现代家具的时尚之感。冷与暖的矛盾调性在橙色的调和下完美衔接，扑面而至的都市气息展现了主人如日光般温暖的内心世界。',
+				intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+				以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+				imgUrl: '/static/index/kebo/kebo3.jpg',
+				itemUrl: [{
+					url: '/static/index/case-2.png',
+					name: '卫生间'
 				},{
-					name: '都市简约',
-					styles: '随着女性力量的日渐强大，女人对男性美的定义也发生了转变，继而一个新的物种暖男应运而生。将暖男温柔细腻的情感渗透到现代家居空间，运用最暖的色彩爱马仕橙与冷峻工业风，共同点缀现代家具的时尚之感。冷与暖的矛盾调性在橙色的调和下完美衔接，扑面而至的都市气息展现了主人如日光般温暖的内心世界。',
-					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
-					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
-					imgUrl: '/static/index/kebo/kebo3.jpg',
-					itemUrl: [{
-						url: '/static/index/case-2.png',
-						name: '卫生间'
-					},{
-						url: '/static/index/case-2.png',
-						name: '厨房'
-					}]
+					url: '/static/index/case-2.png',
+					name: '厨房'
+				}]
+			},{
+				name: '北欧新竹',
+				styles: '当现代风与海洋风相遇时，一代文豪海明威在古巴海岛发现了他人生的新大陆。明媚的阳光、浓烈的Mojito、令人陶醉的雪茄、还有他钟爱的渔船。就如他所说“我热爱这个国家、感觉就像在家里”。海魂条纹成为设计的神魂所在，完成跨时空的对话；原木色餐椅与灰蓝背景相互交织，感受无处不在的大海气息。彼此成就，这也许就是人与空间最好的关系。',
+				intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+				以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+				imgUrl: '/static/index/kebo/kebo5.jpg',
+				itemUrl: [{
+					url: '/static/index/case-2.png',
+					name: '卫生间'
 				},{
-					name: '北欧新竹',
-					styles: '当现代风与海洋风相遇时，一代文豪海明威在古巴海岛发现了他人生的新大陆。明媚的阳光、浓烈的Mojito、令人陶醉的雪茄、还有他钟爱的渔船。就如他所说“我热爱这个国家、感觉就像在家里”。海魂条纹成为设计的神魂所在，完成跨时空的对话；原木色餐椅与灰蓝背景相互交织，感受无处不在的大海气息。彼此成就，这也许就是人与空间最好的关系。',
-					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
-					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
-					imgUrl: '/static/index/kebo/kebo5.jpg',
-					itemUrl: [{
-						url: '/static/index/case-2.png',
-						name: '卫生间'
-					},{
-						url: '/static/index/case-2.png',
-						name: '厨房'
-					}]
+					url: '/static/index/case-2.png',
+					name: '厨房'
+				}]
+			},{
+				name: '现代八',
+				styles: '作为曾经的海上殖民强国，阿姆斯特丹现为欧洲最开放城市。当古老而有韵味的欧式建筑与当代设计相结合，与生俱来的内敛傲娇姿态在现代家居中展现的淋漓尽致。打破空间沉闷，古典糅合时尚，深色家具与黑白灰中的华丽色调完美交融，无彩色风格优雅塑造低奢格调，演绎自信空间的绝妙气质。',
+				intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
+				以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
+				imgUrl: '/static/index/kebo/kebo6.jpg',
+				itemUrl: [{
+					url: '/static/index/case-2.png',
+					name: '卫生间'
 				},{
-					name: '现代八',
-					styles: '作为曾经的海上殖民强国，阿姆斯特丹现为欧洲最开放城市。当古老而有韵味的欧式建筑与当代设计相结合，与生俱来的内敛傲娇姿态在现代家居中展现的淋漓尽致。打破空间沉闷，古典糅合时尚，深色家具与黑白灰中的华丽色调完美交融，无彩色风格优雅塑造低奢格调，演绎自信空间的绝妙气质。',
-					intro: `包括：瓷砖 地板 洁具 卫浴 五金 橱柜 室内门 吊顶 开关面板  家具软装部分：619 /㎡  包括：家具 配饰 窗帘 灯 壁纸  
-					以上价格均为参考价格，不同户型，不同需求，价格略有变化`,
-					imgUrl: '/static/index/kebo/kebo6.jpg',
-					itemUrl: [{
-						url: '/static/index/case-2.png',
-						name: '卫生间'
-					},{
-						url: '/static/index/case-2.png',
-						name: '厨房'
-					}]
-				},],
+					url: '/static/index/case-2.png',
+					name: '厨房'
+				}]
+			},],
+		}
+	},
+	methods: {
+		setHeight(type) {
+			let ret = {}
+			switch (type) {
+				case 0:
+					ret.backgroundImage = `url('/static/index/banner_01.png')`
+					ret.backgroundRepeat = `no-repeat`
+					ret.height = `${this.screenWidth * 800 / 1920}px`
+					break
+				case 1:
+					ret.backgroundImage = `url('/static/index/what.png')`
+					ret.backgroundRepeat = `no-repeat`
+					ret.height = `${this.screenWidth * 750 / 1920}px`
+					break
+				case 2: 
+					ret.backgroundImage = `url('/static/index/why.png')`
+					// ret.height = `${this.screenWidth * 712 / 1920}px`
+					ret.height = '712px'
+					break
+				case 3: 
+					ret.backgroundImage = `url('/static/index/case-bg.png')`
+					// ret.height = `${this.screenWidth * 1024 / 1920}px`
+					ret.height = '1024px'
+					ret.backgroundSize = 'cover'
+					break
+				case 4:
+					ret.backgroundColor = `#f6f6f6`
+					ret.height = `749px`
+					break
+				case 5:
+					ret.backgroundColor = `#fff`
+					ret.height = `1187px`
+					break
+				case 6:
+					ret.backgroundImage = `url('/static/index/loan-bg.png')`
+					// ret.height = `${this.screenWidth * 884 / 1920}px`
+					ret.height = `884px`
+					ret.backgroundSize = 'cover'
+					break
 			}
+			return ret
 		},
-		methods: {
-			setHeight(type) {
-				let ret = {}
-				switch (type) {
+		setPosition(judge, id) {
+			let ret = {}
+			if (judge) {
+				switch (id) {
 					case 0:
-						ret.background = `url('/static/index/banner_01.png') no-repeat`
-						ret.height = `${this.screenWidth * 800 / 1920}px`
-						// ret.height = '800px'
+						ret.left = '0px'
+						ret.top = '196px'
+						
 						break
 					case 1:
-						ret.background = `url('/static/index/what.png') no-repeat`
-						ret.height = `${this.screenWidth * 750 / 1920}px`
-						break
-					case 2: 
-						ret.backgroundImage = `url('/static/index/why.png')`
-						// ret.height = `${this.screenWidth * 712 / 1920}px`
-						ret.height = '712px'
-						break
-					case 3: 
-						ret.backgroundImage = `url('/static/index/case-bg.png')`
-						// ret.height = `${this.screenWidth * 1024 / 1920}px`
-						ret.height = '1024px'
-						ret.backgroundSize = 'cover'
-						break
-					case 4:
-						ret.backgroundColor = `#f6f6f6`
-						ret.height = `749px`
-						break
-					case 5:
-						ret.backgroundColor = `#fff`
-						ret.height = `1187px`
-						break
-					case 6:
-						ret.backgroundImage = `url('/static/index/loan-bg.png')`
-						// ret.height = `${this.screenWidth * 884 / 1920}px`
-						ret.height = `884px`
-						ret.backgroundSize = 'cover'
-						break
-				}
-				return ret
-			},
-			setPosition(judge, id) {
-				let ret = {}
-				if (judge) {
-					switch (id) {
-						case 0:
-							ret.left = '0px'
-							ret.top = '196px'
-							
-							break
-						case 1:
-							ret.left = '920px'
-							ret.top = '196px'
-							ret.transitionDelay = '0.5s'
-							break
-						case 2:
-							ret.left = '0px'
-							ret.top = '457px'
-							ret.transitionDelay = '1s'
-							break
-						case 3:
-							ret.left = '920px'
-							ret.top = '457px'
-							ret.transitionDelay = '1.5s'
-							break
-						}
-					ret.opacity = '1'
-					ret.transform = 'none'
-				}
-				return ret
-			},
-			setLoanStyle(type, id) {
-				let ret = {}
-				if (type) {
-					switch (id) {
-						case 0:
-							ret.transitionDelay = '0s'
-							break
-						case 1: 
-							ret.transitionDelay = '0.3s'
-							break
-						case 2:
-							ret.transitionDelay = '0.6s'
-							break
-						case 3:
-							ret.transitionDelay = '0.9s'
-							break
-					}
-					ret.opacity = '1'
-					ret.transform = 'none'
-				}
-				return ret
-			},
-			setProdImg(imgUrl) {
-				let ret = {}
-				ret.backgroundImage = `url(${imgUrl})`
-				ret.backgroundSize = '100% auto'
-				return ret
-			},
-			colStyle(id, n) {
-				let ret = {}
-				if (id == 0&&n == 1) {
-					ret.flex = '2 2 auto'
-				}
-				return ret 
-			},
-			getTime(timeStamp) {
-				const d = new Date(timeStamp * 1000)
-				const Y = `${d.getFullYear()}-`
-				const M = `${d.getMonth() + 1 < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1}-`
-				const D = (d.getDate() < 10 ? `0${d.getDate()}` : d.getDate())
-				return Y + M + D
-			},
-			getScrollBegin() {
-				this.scrollBegin = document.documentElement.scrollTop || document.body.scrollTop 
-
-				if(document.body.scrollTop) {
-					this.scrollBegin = document.body.scrollTop;
-				} else{
-					this.scrollBegin = document.documentElement.scrollTop
-				}
-			},
-			setAnimation(a, b) {
-				let ret = {}
-				if (a && b == 1) {
-					ret.right = 0
-				} else if (a && b == 2) {
-					ret.opacity = 1
-				}
-				return ret
-			},
-			scrollLimit(type) {
-				let result = 0
-				switch(type) {
-					case 1:
-						result = document.body.clientWidth * 600/1920
+						ret.left = '920px'
+						ret.top = '196px'
+						ret.transitionDelay = '0.5s'
 						break
 					case 2:
-						result = document.body.clientWidth * 1350/1920
+						ret.left = '0px'
+						ret.top = '457px'
+						ret.transitionDelay = '1s'
 						break
 					case 3:
-						result = document.body.clientWidth * 1250/1920 + 3672
+						ret.left = '920px'
+						ret.top = '457px'
+						ret.transitionDelay = '1.5s'
+						break
+					}
+				ret.opacity = '1'
+				ret.transform = 'none'
+			}
+			return ret
+		},
+		setLoanStyle(type, id) {
+			let ret = {}
+			if (type) {
+				switch (id) {
+					case 0:
+						ret.transitionDelay = '0s'
+						break
+					case 1: 
+						ret.transitionDelay = '0.3s'
+						break
+					case 2:
+						ret.transitionDelay = '0.6s'
+						break
+					case 3:
+						ret.transitionDelay = '0.9s'
 						break
 				}
-				return result
+				ret.opacity = '1'
+				ret.transform = 'none'
+			}
+			return ret
+		},
+		setProdImg(imgUrl) {
+			let ret = {}
+			ret.backgroundImage = `url(${imgUrl})`
+			ret.backgroundSize = '100% auto'
+			return ret
+		},
+		colStyle(id, n) {
+			let ret = {}
+			if (id == 0&&n == 1) {
+				ret.flex = '2 2 auto'
+			}
+			return ret 
+		},
+		getTime(timeStamp) {
+			const d = new Date(timeStamp * 1000)
+			const Y = `${d.getFullYear()}-`
+			const M = `${d.getMonth() + 1 < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1}-`
+			const D = (d.getDate() < 10 ? `0${d.getDate()}` : d.getDate())
+			return Y + M + D
+		},
+		getScrollBegin() {
+			this.scrollBegin = document.documentElement.scrollTop || document.body.scrollTop 
+
+			if(document.body.scrollTop) {
+				this.scrollBegin = document.body.scrollTop;
+			} else{
+				this.scrollBegin = document.documentElement.scrollTop
 			}
 		},
+		setAnimation(a, b) {
+			let ret = {}
+			if (a && b == 1) {
+				ret.right = (this.screenWidth - 1238)/2 + 'px'
+			} else if (a && b == 2) {
+				ret.opacity = 1
+			}
+			return ret
+		},
+		scrollLimit(type) {
+			let result = 0
+			switch(type) {
+				case 1:
+					result = document.body.clientWidth * 600/1920
+					break
+				case 2:
+					result = document.body.clientWidth * 1350/1920
+					break
+				case 3:
+					result = document.body.clientWidth * 1250/1920 + 3672
+					break
+			}
+			return result
+		}
+	},
+		
+	mounted(){
+		console.log(this.screenWidth)
+		document.title = '居分期-提供美好生活方式'
+		window.addEventListener('scroll', this.getScrollBegin)	
+		console.log(Number(this.srceenWidth) - 1238)		
+	},
+	watch: {
+		scrollBegin: function(val) {
+			if (val > this.scrollLimit(3)) {
+				this.animation3 = true
+			} else if (val > this.scrollLimit(2)) {
+				this.animation2 = true
+			} else if (val > this.scrollLimit(1)) {
+				this.animation1 = true
+			}
 			
-		mounted(){
-			document.title = '居分期-提供美好生活方式'
-			window.addEventListener('scroll', this.getScrollBegin)			
-		},
-		watch: {
-			scrollBegin: function(val) {
-				console.log(val)
-				if (val > this.scrollLimit(3)) {
-					this.animation3 = true
-				} else if (val > this.scrollLimit(2)) {
-					this.animation2 = true
-				} else if (val > this.scrollLimit(1)) {
-					console.log(this.scrollLimit)
-					this.animation1 = true
-				}
-				
-			}
 		}
 	}
+}
 </script>

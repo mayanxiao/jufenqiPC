@@ -15,6 +15,7 @@ import User from '@/views/User'
 import Strategy from '@/views/Strategy'
 import CaseDc from '@/views/CaseDc'
 import DcDiary from '@/views/DcDiary'
+import Install from '@/views/Install'
 
 Vue.use(Router)
 
@@ -84,12 +85,12 @@ export default new Router({
       path: '/dc-diary',
       name: 'DcDiary',
       component: DcDiary
+    },
+    {
+      path: '/installment',
+      name: 'Install',
+      component: Install
     }
-    // {
-    //   path: '/index',
-    //   name: 'Index',
-    //   component: Index
-    // }
 
   ]
 })

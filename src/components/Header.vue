@@ -5,17 +5,18 @@
 .navbar {
   width: 100%;
   height: 88px;
-  position: fixed;
-  z-index: 99999;
   transition: all 0.7s ease;
+  background-color: #fff;
 }
 .nav-wrapper {
   width: 1238px;
   margin: 0 auto;
   height: 100%;
   position: relative;
+  justify-content: space-between;
   display: flex;
   overflow: hidden;
+  background-color: #fff;
   .img-logo {
     position: relative;
     width: 114px;
@@ -31,20 +32,29 @@
     display: flex;
     height: 100%;
     transition: all 0.2s linear;
-    position: absolute;
-    left: 643px;
-    top: 0;
     .nav-item {
       width: 119px;
       height: 100%;
       line-height: 88px;
       font-size: 18px;
       text-align: center;
-      color: #fff;
+      color: #666;
       cursor: pointer;
-      &:hover {
+      position: relative;
+      .underline {
+        width: calc(~"100% - 40px");
+        height: 3px;
+        position: absolute;
+        bottom: 0;
+        left: 20px;
         background-color: @main;
-        color: #fff !important;
+        display: none;
+      }
+      &:hover {
+        color: @main;
+      }
+      &:hover .underline {
+        display: block;
       }
     }
   }
@@ -104,24 +114,26 @@
 </style>
 
 <template>
-  <div class="navbar" :style="setBack(scrollShow)" id="NavBar">
-    <div class="nav-wrapper" @mouseenter="scroll <= scrollLimit?scrollShow = true:scrollShow = scrollShow" @mouseleave="scroll <= scrollLimit?scrollShow = false:scrollShow = scrollShow" >
-      <div class="img-logo" v-if="scrollShow" ><img src="/static/logo.png"></div>
-      <div class="img-logo" v-if="!scrollShow" ><img src="/static/logo-static.png"></div>
-      <div class="nav-list" id="navLi" :style="setMargin(scrollShow)">
-        <div class="nav-item" v-for="(nav, $index) in navList" @mouseenter="subChange($index)" @mouseleave="subChange($index)" :style="setColor(scrollShow)">{{nav.name}}</div>
-        <div class="login" style="margin-left: 15px;" v-if="scrollShow"><span>登录</span></div>
-        <div class="login" style="padding: 0 0 0 28px;" v-if="scrollShow">
+  <div class="navbar" id="NavBar">
+    <div class="nav-wrapper">
+      <div class="img-logo"><img src="/static/logo.png"></div>
+      <div class="nav-list" id="navLi">
+        <div class="nav-item" v-for="(nav, $index) in navList" @mouseenter="subChange($index)" @mouseleave="subChange($index)">
+          {{nav.name}}
+          <div class="underline"></div>
+        </div>
+        <div class="login" style="margin-left: 15px;"><span>登录</span></div>
+        <div class="login" style="padding: 0 0 0 28px;">
           <span>注册</span>
           <div class="line"></div>
         </div>
       </div>
     </div>
-    <div class="sub-list" v-if="subShow" @mouseleave="scroll <= scrollLimit?change():subShow = false" @mouseenter="scrollShow = true">
+    <div class="sub-list" v-if="subShow" @mouseleave="subShow = false">
       <div class="item-wp">
-        <span style="right: 494px;">家装日记</span>
-        <span style="right: 375px;">家装案例</span>
-        <span style="right: 257px;">家装攻略</span>
+        <span style="right: 480px;">家装日记</span>
+        <span style="right: 361px;">家装案例</span>
+        <span style="right: 243px;">家装攻略</span>
       </div>
     </div>
   </div>
@@ -132,9 +144,7 @@ export default {
   data () {
     return {
       tabIndex: 0,
-      scroll: '',
       scrollLimit: document.body.clientWidth * 800/1920,
-      scrollShow: false,
       subShow: false,
       navList: [{
         name: '首页',
@@ -199,57 +209,17 @@ export default {
       }
     },
     subChange(id) {
-      if (id == 2&&this.scrollShow) {
+      console.log(id)
+      if (id == 2) {
         this.subShow = true
       } else {
         this.subShow = false
       }
     },
-    setBack(val) {
-      let ret = {}
-      if (val) {
-        ret.backgroundColor = '#fff'
-        // rgba(255,255,255,1)
-      }
-      return ret
-    },
-    setMargin(val) {
-      let ret = {}
-      if (val) {
-        ret.left = '530px'
-      } 
-      return ret
-    },
-    setColor(val) {
-      let ret = {}
-      if (val) {
-        ret.color = '#333'
-      }
-      return ret
-    },
-    getScroll() {
-      this.scroll = document.documentElement.scrollTop || document.body.scrollTop;  
-
-      if(document.body.scrollTop)
-        {
-          this.scroll= document.body.scrollTop;
-        }
-        else{
-          this.scroll= document.documentElement.scrollTop
-        }
-    }
   },
   mounted() {
-    window.addEventListener('scroll', this.getScroll)
   },
   watch: {
-    scroll: function(val) {
-      if (val > this.scrollLimit) {
-        this.scrollShow = true
-      } else {
-        this.scrollShow = false
-      }
-    }
   }
 }
 
