@@ -61,7 +61,7 @@
 					color: #333;
 					cursor: pointer;
 					margin-bottom: 10px;
-					padding: 0 1px;
+					width: fit-content;
 					&:hover {
 						text-decoration: underline;
 					}

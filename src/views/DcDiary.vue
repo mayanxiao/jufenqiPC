@@ -35,6 +35,10 @@
 					color: #333;
 					cursor: pointer;
 					margin-bottom: 10px;
+					width: fit-content;
+					&:hover {
+						text-decoration: underline;
+					}
 				}
 				.item-wp {
 					display: flex;
