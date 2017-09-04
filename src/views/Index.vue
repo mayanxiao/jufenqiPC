@@ -538,7 +538,7 @@
 					<div class="block-subtitle" style="font-size: 40px; font-weight: 600;">DECORATION CASE</div>
 					<div class="line"></div>
 					<el-carousel :interval="3500" arrow="always" indicator-position="none" type="card" height="550px">
-						<el-carousel-item v-for="item in decoList" >
+						<el-carousel-item v-for="item in decoList" :key="item.name">
 							<div class="card">
 								<div class="left">
 									<div class="img-wp" :style="setProdImg(item.imgUrl)"></div>

@@ -18,7 +18,6 @@
   <div class="foreman-detail">
     <get-price></get-price>
     <div class="card-wrapper">
-      <design-card :sample="card" v-for="card in cards"></design-card>
     </div>
     <test></test>
   </div>

@@ -7,6 +7,7 @@
   height: 88px;
   transition: all 0.7s ease;
   background-color: #fff;
+  box-shadow: 0px 1px 11px 1px rgba(0, 0, 0, 0.1);
 }
 .nav-wrapper {
   width: 1238px;
@@ -118,7 +119,7 @@
     <div class="nav-wrapper">
       <div class="img-logo"><img src="/static/logo.png"></div>
       <div class="nav-list" id="navLi">
-        <div class="nav-item" v-for="(nav, $index) in navList" @mouseenter="subChange($index)" @mouseleave="subChange($index)">
+        <div class="nav-item" v-for="(nav, $index) in navList" @mouseenter="subChange($index)" @mouseleave="subChange($index)" @click="goto(nav.url)">
           {{nav.name}}
           <div class="underline"></div>
         </div>
@@ -131,9 +132,9 @@
     </div>
     <div class="sub-list" v-if="subShow" @mouseleave="subShow = false">
       <div class="item-wp">
-        <span style="right: 480px;">家装日记</span>
-        <span style="right: 361px;">家装案例</span>
-        <span style="right: 243px;">家装攻略</span>
+        <span style="right: 479px;" @click="goto('/dc-diary')">家装日记</span>
+        <span style="right: 360px;" @click="goto('/case-dc')">家装案例</span>
+        <span style="right: 242px;" @click="goto('/dc-strategy')">家装攻略</span>
       </div>
     </div>
   </div>
@@ -149,49 +150,17 @@ export default {
       navList: [{
         name: '首页',
         url: '/',
-        subNav: []
       },{
         name: '家装分期',
-        url: '/case-dc',
-        subNav: [{
-          name: '风格美图'
-        },{
-          name: '案例美图',
-          url: '/impression'
-        }]
+        url: '/installment',
       },{
         name: '家装指南',
-        url: '/plans',
-        subNav: [{
-          name: '装修日记'
-        },{
-          name: '好物评测',
-          url: ''
-        },{
-          name: '好物发现',
-          url: '/strategy'
-        },{
-          name: '装修大学'
-        },{
-          name: '居分期排行',
-          url: '/dry-goods'
-        }]
       },{
         name: '产品商城',
-        url: '/find-dc',
-        subNav: [{
-          name: '装修公司'
-        },{
-          name: '工长',
-          url: '/foreman'
-        }]
+        url: '/mall',
       },{
         name: '个人中心',
-        subNav: [{
-          name: '买建材'
-        },{
-          name: '家装贷款'
-        }]
+        url: '/user'
       }]
     }
   },

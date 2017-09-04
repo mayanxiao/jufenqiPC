@@ -2,9 +2,35 @@
 @border-big: #999;
 @border-lit: #ebebeb;
 @main: #ff9736;
-.dc-diary {
+.dc-strategy {
 	width: 100%;
 	background-color: #fff;
+}
+.bg {
+	width: 100%;
+	position: relative;
+	img {
+		display: block;
+		width: 100%;
+	}
+	h3 {
+		color: #fff;
+		font-size: 42px;
+		font-weight: 600;
+		text-align: center;
+	}
+	p {
+		color: #fff;
+		font-size: 35px;
+		text-align: center;
+	}
+	.text {
+		position: absolute;
+		text-align: center;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 }
 .mainbody {
 	display: flex;
@@ -35,6 +61,10 @@
 					color: #333;
 					cursor: pointer;
 					margin-bottom: 10px;
+					padding: 0 1px;
+					&:hover {
+						text-decoration: underline;
+					}
 				}
 				.item-wp {
 					display: flex;
@@ -137,8 +167,15 @@
 </style>
 
 <template>
-	<div class="dc-diary">
+	<div class="dc-strategy">
 		<header-new></header-new>
+		<div class="bg">
+			<img src="/static/case-dc/bg.png">
+			<div class="text">
+				<h3>家 装 攻 略</h3>
+				<p>DECORATION STRATEGY</p>
+			</div>
+		</div>
 		<div class="mainbody">
 			<div class="left">
 				<div class="diary-item" v-for="(diary, $index) in diaryList" :style="setBorder($index)">
@@ -158,9 +195,8 @@
 				</div>
 			</div>
 			<div class="right">
-				<div class="btn">写装修日记</div>
 				<div class="block">
-					<div class="title">热门日记</div>
+					<div class="title">攻略推荐</div>
 					<div class="rec-wp">
 						<div class="rec-item" v-for="rec in recList">
 							<img :src="rec.coverImg">
@@ -185,7 +221,7 @@
 import HeaderNew from '@/components/Header'
 
 export default{
-	name: "LitTitle",
+	name: "DcStrategy",
 	components: {
 		HeaderNew
 	},
@@ -303,7 +339,7 @@ export default{
 		},
 	},
 	mounted(){
-		document.title = '家装日记'
+		document.title = '家装攻略'
 	}
 }
 </script>

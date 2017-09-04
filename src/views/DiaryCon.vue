@@ -3,19 +3,99 @@
 	@border-lit: #ebebeb;
 	@main: #ff9736;
 	@border-el: #bfcbd9;
-	.white-back {
+	.diary-con {
 		width: 100%;
 		background-color: #fff;
+	}
+	.diary-bg {
+		width: 100%;
+		img {
+			display: block;
+			width: 100%;
+		}
+		.user-wp {
+			width: 1238px;
+			height: 136px;
+			display: flex;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			img {
+				width: 136px;
+				height: 136px;
+				display: block;
+				margin-right: 29px;
+			}
+			.text-wp {
+				width: calc(~"100% - 165px");
+				height: 100%;
+				color: #fff;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				.text-title {
+					font-size: 24px;
+					color: #fff;
+					font-weight: 600;
+				}
+				.user-btn {
+					width: 114px;
+					height: 25px;
+					line-height: 25px;
+					font-size: 14px;
+					text-align: center;
+					background-color: @main;
+					cursor: pointer;
+					border-radius: 13px;
+				}
+				.itemlist {
+					display: flex;
+					.item {
+						display: flex;
+						img {
+							display: block;
+							margin-right: 16px;
+							width: 20px;
+							height: 20px;
+						}
+						font-size: 18px;
+						margin-right: 56px;
+					}
+				}
+			}
+			.btn-wp {
+				width: 162px;
+				height: 136px;
+				display: flex;
+				justify-content: space-between;
+				flex-direction: column;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				right: 0;
+				.item {
+					width: 100%;
+					height: 52px;
+					line-height: 52px;
+					background-color: #ec522b;
+					color: #fff;
+					font-size: 14px;
+					text-align: center;
+					cursor: pointer;
+				}
+			}
+		}
 	}
 	.plans{
 		width: 1238px;
 		display: flex;
 		margin: 0 auto;
 		padding-top: 92px;
+		justify-content: space-between;
 	}
 	.left-bac{
 		width: 849px;
-		margin-right: 20px;
 		.art_section {
 			padding-bottom: 97px;
 		}
@@ -94,6 +174,7 @@
 					}
 					.text-wp {
 						width: calc(~"100% - 115px");
+						height: 100%;
 						padding-top: 9px;
 						.title-wp {
 							display: flex;
@@ -132,8 +213,28 @@
 </style>
 
 <template>
-	<div class="white-back">
+	<div class="diary-con">
 		<header-new></header-new>
+		<div class="diary-bg">
+			<img src="/static/diary-con/images/bg.png">
+			<div class="user-wp">
+				<img src="/static/diary-con/images/avatar.png">
+				<div class="text-wp">
+					<div class="text-title">120平米大装修</div>
+					<div class="user-btn">查看TA的日记</div>
+					<div class="itemlist">
+						<div class="item" v-for="item in itemList">
+							<img :src="item.img">
+							{{item.name}}
+						</div>
+					</div>
+					<div class="btn-wp">
+						<div class="item">写装修日记</div>
+						<div class="item">写购物清单</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="plans">
 			<div class="left-bac">
 				<div class="art_title">爱情里最长情的告白，他们决定在这样的地方继续</div>
@@ -188,19 +289,11 @@
 					<div class="art_text">
 						卫生间，淋浴房的干湿分离设计，不影响其他成员对卫生间使用，通风、采光和私密性都通过细节设计发挥出来。
 					</div>
-					<!-- <img src="/static/plans/12.png">
-					<div class="art_text">
-						从玄关看过去的客厅和餐厅，右半部是厨房的一角。客厅的设计完全摒弃了传统的中式理念，没有电视北京墙的参与，空间上也不允许，餐厅与客厅没有明显的区分界线却也能一目了然。
-					</div>
-					<img src="/static/plans/13.png">
-					<div class="art_text">
-						从玄关看过去的客厅和餐厅，右半部是厨房的一角。客厅的设计完全摒弃了传统的中式理念，没有电视北京墙的参与，空间上也不允许，餐厅与客厅没有明显的区分界线却也能一目了然。
-					</div> -->
 				</div>
 			</div>
 			<div class="right-bac">
 				<div class="block">
-					<div class="title">相关攻略</div>
+					<div class="title">相关日记</div>
 					<div class="rec-wp">
 						<div class="rec-item" v-for="rec in recList">
 							<img :src="rec.coverImg">
@@ -222,15 +315,15 @@
 </template>
 
 <script>
-	import HeaderNew from "../components/Header"
-	export default{
-		name: "Plans",
-		components: {
-			HeaderNew
-		},
-		data() {
-			return{
-				recList: [{
+import HeaderNew from "../components/Header"
+export default{
+	name: "Plans",
+	components: {
+		HeaderNew
+	},
+	data() {
+		return{
+			recList: [{
 				title: '推荐文章推荐文章推荐文章推荐文章',
 				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
 				recShow: true,
@@ -255,38 +348,54 @@
 				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
 				recShow: false,
 				coverImg: '/static/diary/cover.png'
+			},],
+			itemList: [{
+				name: '120平米',
+				img: '/static/diary-con/images/item-2.png'
+			},{
+				name: '田园',
+				img: '/static/diary-con/images/item-1.png'
+			},{
+				name: '半包',
+				img: '/static/diary-con/images/item-3.png'
+			},{
+				name: '南湖中园',
+				img: '/static/diary-con/images/item-5.png'
+			},{
+				name: '幸福亿家',
+				img: '/static/diary-con/images/item-4.png'
 			},]
-			}
-		},
-		props: {
-			
-		},
-		methods: {
-			taggleStep(id,btnId){
-				this.steps.map((a) => {
-					a.btns.map((c) => {
-						c.status = 0
-					})
-					if(a.id != id){
-						a.status = 0
-
-					}
-					else{
-						a.status = 1
-						a.btns.map((b) => {
-							if(b.id == btnId){
-								b.status = 1
-							}
-							else{
-								b.status = 0
-							}
-						})
-					}
-				})
-			}
-		},
-		mounted(){
-			document.title = '装修攻略'
 		}
+	},
+	props: {
+		
+	},
+	methods: {
+		taggleStep(id,btnId){
+			this.steps.map((a) => {
+				a.btns.map((c) => {
+					c.status = 0
+				})
+				if(a.id != id){
+					a.status = 0
+
+				}
+				else{
+					a.status = 1
+					a.btns.map((b) => {
+						if(b.id == btnId){
+							b.status = 1
+						}
+						else{
+							b.status = 0
+						}
+					})
+				}
+			})
+		}
+	},
+	mounted(){
+		document.title = '装修日记'
 	}
+}
 </script>

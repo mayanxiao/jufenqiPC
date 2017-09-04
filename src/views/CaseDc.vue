@@ -102,7 +102,7 @@
 				<div class="style-text">
 					风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述<br/>风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述
 				</div>
-				<case-item v-for="(room, id) in roomList" :data="room" :id="id" :flexcontent="setDirection(id)"></case-item>
+				<case-item v-for="(room, id) in roomList" :key="id" :data="room" :id="id" :flexcontent="setDirection(id)"></case-item>
 			</div>
 		</div>
 	</div>

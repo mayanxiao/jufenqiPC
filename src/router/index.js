@@ -2,20 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import ForemanDetail from '@/views/ForemanDetail'
-import dryGoods from '@/views/dryGoods'
 import JFooter from '@/components/JFooter'
 import Index from '@/views/Index'
-import Impression from '@/views/Impression'
 import Plans from '@/views/Plans'
-import Foreman from '@/views/Foreman'
-import FindDc from '@/views/FindDc'
-import Build from '@/views/Build'
-import CaseInfo from '@/views/CaseInfo'
+import Mall from '@/views/Mall'
 import User from '@/views/User'
-import Strategy from '@/views/Strategy'
 import CaseDc from '@/views/CaseDc'
 import DcDiary from '@/views/DcDiary'
+import DcStrategy from '@/views/DcStrategy'
 import Install from '@/views/Install'
+import DiaryCon from '@/views/DiaryCon'
+import Order from '@/views/Order'
+import Product from '@/views/Product'
 
 Vue.use(Router)
 
@@ -32,49 +30,19 @@ export default new Router({
       component: ForemanDetail
     },
     {
-      path: '/dry-goods',
-      name: 'dry-goods',
-      component: dryGoods
-    },
-    {
-      path: '/impression',
-      name: 'Impression',
-      component: Impression
-    },
-    {
       path: '/plans',
       name: 'Plans',
       component: Plans
     },
     {
-      path: '/foreman',
-      name: 'Foreman',
-      component: Foreman
-    },
-    {
-      path: '/find-dc',
-      name: 'FindDc',
-      component: FindDc
-    },
-    {
-      path: '/build',
-      name: 'Build',
-      component: Build
-    },
-    {
-      path: '/case-info',
-      name: 'CaseInfo',
-      component: CaseInfo
+      path: '/mall',
+      name: 'Mall',
+      component: Mall
     },
     {
       path: '/user',
       name: 'User',
       component: User
-    },
-    {
-      path: '/strategy',
-      name: 'Strategy',
-      component: Strategy
     },
     {
       path: '/case-dc',
@@ -87,10 +55,30 @@ export default new Router({
       component: DcDiary
     },
     {
+      path: '/dc-Strategy',
+      name: 'DcStrategy',
+      component: DcStrategy
+    },
+    {
       path: '/installment',
       name: 'Install',
       component: Install
-    }
+    },
+    {
+      path: '/diary-con',
+      name: 'DiaryCon',
+      component: DiaryCon
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order
+    },
+    {
+      path: '/product',
+      name: 'Product',
+      component: Product
+    },
 
   ]
 })

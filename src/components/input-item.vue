@@ -3,48 +3,29 @@
 @main: #ff9736;
 
 .input-item {
-  width: 100%;
-  height: 350px;
-  // background-color: #ebebeb;
-  border-top: 2px solid @main;
-  padding: 25px 16px;
-  text-align: center;
-  margin-bottom: 20px;
-  .input-title {
-    margin-bottom: 20px;
-  }
+  display: flex;
+  border-bottom: 1px solid #ddd;
   input {
-    background-color: #fff;
-    padding-left: 10px;
     outline: none;
     width: 100%;
     height: 36px;
     line-height: 36px;
-    border: 1px solid #ebebeb;
+    border: none;
     transition: border-color 0.1s cubic-bezier(.645,.045,.355,1);
     margin-bottom: 15px;
     &:focus {
       border-color: @main;
     }
   }
-  .input-btn {
-    width: 100%;
-    height: 36px;
-    text-align: center;
-    background-color: @main;
-    line-height: 36px;
-    margin-top: 40px;
+  .input-title {
+    color: #666;
   }
 }
 </style>
 
 <template>
-  <div class="input-item" :style="backGround()">
-    <div class="input-title">{{title}}</div>
-    <input type="text" placeholder="姓名">
-    <input type="text" placeholder="电话">
-    <input type="text" placeholder="房屋面积">
-    <div class="input-btn">提交</div>
+  <div class="input-item" :style="setWidth()">
+    <input type="text">
   </div>
 </template>
 
@@ -52,9 +33,9 @@
 export default {
   name: 'InputItem',
   props: {
-    title: {
+    width: {
       type: String,
-      default: ''
+      default: '366px'
     },
     back: {
       type: String,
@@ -67,9 +48,9 @@ export default {
     }
   },
   methods: {
-    backGround() {
+    setWidth(wid) {
       let ret = {}
-      ret.backgroundColor = this.back
+      ret.width = this.width
       return ret
     }
   }

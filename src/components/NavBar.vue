@@ -105,11 +105,11 @@
 
 <template>
   <div class="navbar" :style="setBack(scrollShow)" id="NavBar">
-    <div class="nav-wrapper" @mouseenter="scroll <= scrollLimit?scrollShow = true:scrollShow = scrollShow" @mouseleave="scroll <= scrollLimit?scrollShow = false:scrollShow = scrollShow" >
+    <div class="nav-wrapper" @mouseenter="scroll <= scrollLimit?scrollShow = true:scrollShow = scrollShow" @mouseleave="scroll <= scrollLimit?scrollShow = false:scrollShow = scrollShow">
       <div class="img-logo" v-if="scrollShow" ><img src="/static/logo.png"></div>
       <div class="img-logo" v-if="!scrollShow" ><img src="/static/logo-static.png"></div>
       <div class="nav-list" id="navLi" :style="setMargin(scrollShow)">
-        <div class="nav-item" v-for="(nav, $index) in navList" @mouseenter="subChange($index)" @mouseleave="subChange($index)" :style="setColor(scrollShow)">{{nav.name}}</div>
+        <div class="nav-item" v-for="(nav, $index) in navList" @mouseenter="subChange($index)" @mouseleave="subChange($index)" :style="setColor(scrollShow)" @click="goto(nav.url)">{{nav.name}}</div>
         <div class="login" style="margin-left: 15px;" v-if="scrollShow"><span>登录</span></div>
         <div class="login" style="padding: 0 0 0 28px;" v-if="scrollShow">
           <span>注册</span>
@@ -119,9 +119,9 @@
     </div>
     <div class="sub-list" v-if="subShow" @mouseleave="scroll <= scrollLimit?change():subShow = false" @mouseenter="scrollShow = true">
       <div class="item-wp">
-        <span style="right: 494px;">家装日记</span>
-        <span style="right: 375px;">家装案例</span>
-        <span style="right: 257px;">家装攻略</span>
+        <span style="right: 494px;" @click="goto('/dc-diary')">家装日记</span>
+        <span style="right: 375px;" @click="goto('/case-dc')">家装案例</span>
+        <span style="right: 257px;" @click="goto('/dc-strategy')">家装攻略</span>
       </div>
     </div>
   </div>
@@ -139,49 +139,17 @@ export default {
       navList: [{
         name: '首页',
         url: '/',
-        subNav: []
       },{
         name: '家装分期',
-        url: '/case-dc',
-        subNav: [{
-          name: '风格美图'
-        },{
-          name: '案例美图',
-          url: '/impression'
-        }]
+        url: '/installment',
       },{
         name: '家装指南',
-        url: '/plans',
-        subNav: [{
-          name: '装修日记'
-        },{
-          name: '好物评测',
-          url: ''
-        },{
-          name: '好物发现',
-          url: '/strategy'
-        },{
-          name: '装修大学'
-        },{
-          name: '居分期排行',
-          url: '/dry-goods'
-        }]
       },{
         name: '产品商城',
-        url: '/find-dc',
-        subNav: [{
-          name: '装修公司'
-        },{
-          name: '工长',
-          url: '/foreman'
-        }]
+        url: '/mall',
       },{
         name: '个人中心',
-        subNav: [{
-          name: '买建材'
-        },{
-          name: '家装贷款'
-        }]
+        url: '/user'
       }]
     }
   },
