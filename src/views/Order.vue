@@ -236,7 +236,7 @@
 </template>
 
 <script type="text/javascript">
-import HeaderNew from '@/components/Header'
+import HeaderNew from '@/components/HeaderNew'
 
 export default{
 	name: "order",

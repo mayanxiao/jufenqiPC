@@ -5,17 +5,17 @@
 @border-el: #bfcbd9;
 .install {
 	width: 100%;
-
 	.img-wp {
 		width: 100%;
 		position: relative;
+		overflow: hidden;
 		img {
 			display: block;
 		}
 		.img-mainbody {
 			position: absolute;
-			width: 100%;
 			height: 100%;
+			width: 100%;
 			left: 0;
 			top: 0;
 			.img-content {
@@ -242,7 +242,7 @@
 		</div>
 		<div class="img-wp" style="height: 514px;">
 			<img src="/static/install/bg-1.png">
-			<div class="img-mainbody">
+			<div class="img-mainbody" :style="{'width': SrceenWidth + 'px'}">
 				<div class="img-content" style="padding-top: 60px">
 					<p class="title-cn">分期流程</p>
 					<p class="title-en">居分期贷款消费 <span style="font-weight: 600">轻松搞定</span></p>
@@ -314,7 +314,7 @@
 </template>
 
 <script>
-import HeaderNew from '@/components/Header'
+import HeaderNew from '@/components/HeaderNew'
 
 export default{
 	components: {

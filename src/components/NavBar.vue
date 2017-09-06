@@ -133,7 +133,7 @@ export default {
     return {
       tabIndex: 0,
       scroll: '',
-      scrollLimit: document.body.clientWidth * 800/1920,
+      scrollLimit: document.body.clientWidth * 650/1920,
       scrollShow: false,
       subShow: false,
       navList: [{

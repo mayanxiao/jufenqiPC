@@ -215,7 +215,7 @@
 </template>
 
 <script>
-import HeaderNew from "@/components/header"
+import HeaderNew from "@/components/HeaderNew"
 
 export default {
 	name: 'Product',

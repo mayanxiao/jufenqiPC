@@ -218,7 +218,7 @@
 </template>
 
 <script>
-import HeaderNew from '@/components/Header'
+import HeaderNew from '@/components/HeaderNew'
 
 export default{
 	name: "DcStrategy",

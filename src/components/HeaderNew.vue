@@ -142,6 +142,7 @@
 
 <script>
 export default {
+  name: 'HeaderNew',
   data () {
     return {
       tabIndex: 0,

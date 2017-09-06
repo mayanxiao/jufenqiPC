@@ -110,7 +110,7 @@
 
 <script>
 import CaseItem from '@/components/CaseItem'
-import HeaderNew from '@/components/Header'
+import HeaderNew from '@/components/HeaderNew'
 
 export default{
 	components: {

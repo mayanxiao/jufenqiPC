@@ -655,16 +655,16 @@ export default{
 				textEn: 'Product decoration consulting'
 			},{
 				url: '/static/index/why-item-2.png',
-				text: '整体家装',
-				textEn: 'Product decoration consulting'
+				text: '软装、家装分期贷款',
+				textEn: 'Installment Loan'
 			},{
 				url: '/static/index/why-item-3.png',
-				text: '家装流行产品及装修咨询',
-				textEn: 'Product decoration consulting'
+				text: '软装定制宅配',
+				textEn: 'Soft Loading Customization'
 			},{
 				url: '/static/index/why-item-4.png',
-				text: '家装流行产品及装修咨询',
-				textEn: 'Product decoration consulting'
+				text: '全程管家服务',
+				textEn: 'Manager Service'
 			},],
 			tabList: [{
 				name: '家装攻略',

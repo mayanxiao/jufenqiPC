@@ -16,7 +16,6 @@
 
 <template>
   <div class="foreman-detail">
-    <get-price></get-price>
     <div class="card-wrapper">
     </div>
     <test></test>
@@ -24,13 +23,11 @@
 </template>
 
 <script>
-import GetPrice from '@/components/GetPrice'
-import DesignCard from '@/components/DesignCard'
 import Test from '@/components/test'
 
 
 export default {
-  name: 'foreman-detail',
+  name: 'ForemanDetail',
   data () {
     return {
       cards: [{
@@ -107,8 +104,6 @@ export default {
     }
   },
   components: {
-    GetPrice,
-    DesignCard,
     Test
   },
   methods: {

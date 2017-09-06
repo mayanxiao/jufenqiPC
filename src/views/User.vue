@@ -309,7 +309,7 @@
 </template>
 
 <script>
-import HeaderNew from '@/components/Header'
+import HeaderNew from '@/components/HeaderNew'
 
 export default{
 	name: "LitTitle",
@@ -355,14 +355,14 @@ export default{
 				merchantName: '门店名称门店名称门店名称',
 				totalAmount: 20000,
 				status: 4,
-				createdAt: 1493232323
+				createdAt: 1503976928
 			},{
 				brandName: '品牌名称品牌名称',
 				brandImg: '/static/user/brand.png',
 				merchantName: '门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称',
 				totalAmount: 20000,
 				status: 5,
-				createdAt: 1493232323
+				createdAt: 1504013332
 			},],
 			loanAmount: 200000,
 			bankBranchPeriod: 12,
