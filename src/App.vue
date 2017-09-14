@@ -19,6 +19,7 @@ input {
   font-family: 'Avenir', Helvetica, Arial, sans-serif, '微软雅黑';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 1300px;
 }
 
 </style>

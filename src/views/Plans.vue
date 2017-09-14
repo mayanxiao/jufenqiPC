@@ -222,71 +222,72 @@
 </template>
 
 <script>
-	import HeaderNew from "@/components/HeaderNew"
-	export default{
-		name: "Plans",
-		components: {
-			HeaderNew
-		},
-		data() {
-			return{
-				recList: [{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: true,
-				coverImg: '/static/diary/cover.png'
-			},{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: true,
-				coverImg: '/static/diary/cover.png'
-			},{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: false,
-				coverImg: '/static/diary/cover.png'
-			},{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: true,
-				coverImg: '/static/diary/cover.png'
-			},{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: false,
-				coverImg: '/static/diary/cover.png'
-			},]
-			}
-		},
-		props: {
-			
-		},
-		methods: {
-			taggleStep(id,btnId){
-				this.steps.map((a) => {
-					a.btns.map((c) => {
-						c.status = 0
-					})
-					if(a.id != id){
-						a.status = 0
+import HeaderNew from "@/components/HeaderNew"
 
-					}
-					else{
-						a.status = 1
-						a.btns.map((b) => {
-							if(b.id == btnId){
-								b.status = 1
-							}
-							else{
-								b.status = 0
-							}
-						})
-					}
-				})
-			}
-		},
-		mounted(){
-			document.title = '装修攻略'
+export default{
+	name: "Plans",
+	components: {
+		HeaderNew
+	},
+	data() {
+		return{
+			recList: [{
+			title: '推荐文章推荐文章推荐文章推荐文章',
+			text: '文章说明文章说明文章说明文章说明文章说明文章说明',
+			recShow: true,
+			coverImg: '/static/diary/cover.png'
+		},{
+			title: '推荐文章推荐文章推荐文章推荐文章',
+			text: '文章说明文章说明文章说明文章说明文章说明文章说明',
+			recShow: true,
+			coverImg: '/static/diary/cover.png'
+		},{
+			title: '推荐文章推荐文章推荐文章推荐文章',
+			text: '文章说明文章说明文章说明文章说明文章说明文章说明',
+			recShow: false,
+			coverImg: '/static/diary/cover.png'
+		},{
+			title: '推荐文章推荐文章推荐文章推荐文章',
+			text: '文章说明文章说明文章说明文章说明文章说明文章说明',
+			recShow: true,
+			coverImg: '/static/diary/cover.png'
+		},{
+			title: '推荐文章推荐文章推荐文章推荐文章',
+			text: '文章说明文章说明文章说明文章说明文章说明文章说明',
+			recShow: false,
+			coverImg: '/static/diary/cover.png'
+		},]
 		}
+	},
+	props: {
+		
+	},
+	methods: {
+		taggleStep(id,btnId){
+			this.steps.map((a) => {
+				a.btns.map((c) => {
+					c.status = 0
+				})
+				if(a.id != id){
+					a.status = 0
+
+				}
+				else{
+					a.status = 1
+					a.btns.map((b) => {
+						if(b.id == btnId){
+							b.status = 1
+						}
+						else{
+							b.status = 0
+						}
+					})
+				}
+			})
+		}
+	},
+	mounted(){
+		document.title = '装修攻略'
 	}
+}
 </script>

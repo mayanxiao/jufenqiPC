@@ -219,6 +219,8 @@
 
 <script>
 import HeaderNew from '@/components/HeaderNew'
+import axios from 'axios'
+import Conf from '../assets/conf.js'
 
 export default{
 	name: "DcStrategy",
@@ -305,7 +307,9 @@ export default{
 				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
 				recShow: false,
 				coverImg: '/static/diary/cover.png'
-			},]
+			},],
+			newDiaryList: [],
+			newRecList: []
 		}
 	},
 	props: {
@@ -337,9 +341,31 @@ export default{
 				this.$router.push(url)
 			}
 		},
+		getStrategy() {
+			axios.get('http://wx.jufenqi.com:8080/content/api/articles', {
+				params: {
+					filter: `enabled:true`,
+					size: 100,
+					sort: 'createdAt,DESC'
+				}
+			}).then((res) => {
+				console.log(res.data.data)
+			}).catch((err) => {
+				console.log(err)
+				throw err
+			})
+		},
+		getDiary() {
+			axios.get('http://wx.jufenqi.com:8080/content/api/articles').then((res) => {
+
+			}).catch((err) => {
+
+			})
+		}
 	},
 	mounted(){
 		document.title = '家装攻略'
+		this.getStrategy()
 	}
 }
 </script>
