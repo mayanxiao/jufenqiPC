@@ -47,15 +47,20 @@
 			height: 162px;
 			margin-bottom: 38px;
 			border-bottom: 1px solid #ddd;
-			img {
-				display: block;
-				width: 60px;
-				height: 60px;
+			.diary-img {
+				width: 200px;
+				height: 130px;
 				margin-right: 25px;
+				overflow: hidden;
+				img {
+					display: block;
+					width: 100%;
+					height: auto;
+				}
 			}
 			.text-wp {
 				padding-top: 6px;
-				width: 764px;
+				width: 624px;
 				.diary-title {
 					font-size: 18px;
 					color: #333;
@@ -116,12 +121,12 @@
 			}
 			.rec-wp {
 				width: 100%;
-				padding: 18px 15px;
+				padding: 18px 15px 0 15px;
 				.rec-item {
 					display: flex;
 					justify-content: space-between;
-					margin-bottom: 18px;
 					width: 100%;
+					height: 113px;
 					img {
 						display: block;
 						width: 109px;
@@ -134,6 +139,7 @@
 							display: flex;
 							justify-content: space-between;
 							width: 100%;
+							white-space: nowrap;
 							margin-bottom: 10px;
 							color: #333;
 							.text-title {
@@ -142,6 +148,10 @@
 								text-overflow: ellipsis;
 								height: 20px;
 								line-height: 20px;
+								cursor: pointer;
+								&:hover {
+									text-decoration: underline;
+								}
 							}
 							.thumb {
 								width: 35px;
@@ -157,6 +167,13 @@
 						.text {
 							font-size: 14px;
 							color: #666;
+							display: -webkit-box;
+							-webkit-line-clamp: 2;
+							-webkit-box-orient: vertical;
+							height: 40px;
+							width: 100%;
+							// white-space: nowrap;
+							overflow: hidden;
 						}
 					}
 				}
@@ -178,35 +195,35 @@
 		</div>
 		<div class="mainbody">
 			<div class="left">
-				<div class="diary-item" v-for="(diary, $index) in diaryList" :style="setBorder($index)">
-					<img :src="diary.avatar">
+				<div class="diary-item" v-for="(diary, $index) in newDiaryList" :style="setBorder($index)">
+					<div class="diary-img"><img :src="diary.imgUrl"></div>
 					<div class="text-wp">
-						<div class="diary-title" @click="goto('/plans')">{{diary.title}}</div>
+						<div class="diary-title" @click="gotoCon(diary.id)">{{diary.title}}</div>
 						<div class="item-wp">
-							<div class="item" v-for="(item,id) in diary.itemList" :style="setPadding(id)">
+							<!-- <div class="item" v-for="(item,id) in diary.itemList" :style="setPadding(id)">
 								{{item.name}}
 								<div class="line" v-if="lineShow(id, diary.itemList)"></div>
-							</div>
+							</div> -->
 						</div>
 						<div class="comment">
-							{{diary.comment}}
+							{{diary.introduction}}
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="right">
 				<div class="block">
-					<div class="title">攻略推荐</div>
+					<div class="title">相关推荐</div>
 					<div class="rec-wp">
-						<div class="rec-item" v-for="rec in recList">
-							<img :src="rec.coverImg">
+						<div class="rec-item" v-for="rec in newRecList">
+							<img :src="rec.imgUrl">
 							<div class="text-wp">
 								<div class="title-wp">
-									<div class="text-title">{{rec.title}}</div>
-									<div class="thumb" v-if="rec.recShow">推荐</div>
+									<div class="text-title" @click="gotoCon(rec.id)"><span>{{rec.title}}</span></div>
+									<div class="thumb">推荐</div>
 								</div>
 								<div class="text">
-									{{rec.text}}
+									{{rec.introduction}}
 								</div>
 							</div>
 						</div>
@@ -229,85 +246,6 @@ export default{
 	},
 	data() {
 		return{
-			diaryList: [{
-				title: '40㎡ 小猪窝自装',
-				avatar: '/static/diary/avatar.png',
-				itemList: [{
-					name: '北京市',
-				},{
-					name: '55㎡',
-				},{
-					name: '简约',
-				},{
-					name: '半包',
-				},],
-				comment: '日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介'
-			},{
-				title: '40㎡ 小猪窝自装',
-				avatar: '/static/diary/avatar.png',
-				itemList: [{
-					name: '北京市',
-				},{
-					name: '55㎡',
-				},{
-					name: '简约',
-				},{
-					name: '半包',
-				},],
-				comment: '日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介'
-			},{
-				title: '40㎡ 小猪窝自装',
-				avatar: '/static/diary/avatar.png',
-				itemList: [{
-					name: '北京市',
-				},{
-					name: '55㎡',
-				},{
-					name: '简约',
-				},{
-					name: '半包',
-				},],
-				comment: '日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介'
-			},{
-				title: '40㎡ 小猪窝自装',
-				avatar: '/static/diary/avatar.png',
-				itemList: [{
-					name: '北京市',
-				},{
-					name: '55㎡',
-				},{
-					name: '简约',
-				},{
-					name: '半包',
-				},],
-				comment: '日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介日记简介'
-			},],
-			recList: [{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: true,
-				coverImg: '/static/diary/cover.png'
-			},{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: true,
-				coverImg: '/static/diary/cover.png'
-			},{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: false,
-				coverImg: '/static/diary/cover.png'
-			},{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: true,
-				coverImg: '/static/diary/cover.png'
-			},{
-				title: '推荐文章推荐文章推荐文章推荐文章',
-				text: '文章说明文章说明文章说明文章说明文章说明文章说明',
-				recShow: false,
-				coverImg: '/static/diary/cover.png'
-			},],
 			newDiaryList: [],
 			newRecList: []
 		}
@@ -325,7 +263,7 @@ export default{
 		},
 		setBorder(id) {
 			let ret = {}
-			if (id == this.diaryList.length - 1) {
+			if (id == this.newDiaryList.length - 1) {
 				ret.border = 'none'
 			} 
 			return ret
@@ -341,6 +279,9 @@ export default{
 				this.$router.push(url)
 			}
 		},
+		gotoCon(id) {
+			this.$router.push(`/plans?artId=${id}`)
+		},
 		getStrategy() {
 			axios.get('http://wx.jufenqi.com:8080/content/api/articles', {
 				params: {
@@ -349,23 +290,42 @@ export default{
 					sort: 'createdAt,DESC'
 				}
 			}).then((res) => {
-				console.log(res.data.data)
+				let arr = res.data.data
+				arr.map((e, id) => {
+					let content = JSON.parse(e.contentDelta)
+					let imgList = []
+					content.ops.map((l) => {
+						if (l.insert.image) {
+							imgList.push(l.insert.image)
+						}
+					})
+					if (e.type == 1) {
+						this.newDiaryList.push({
+							id: e.id,
+							title: e.title,
+							introduction: e.introduction,
+							imgUrl: imgList[0],
+						})
+					}
+					if (e.type == 0&&id < 5) {
+						this.newRecList.push({
+							id: e.id,
+							title: e.title,
+							introduction: e.introduction,
+							imgUrl: imgList[0],
+						})
+					}
+				})
 			}).catch((err) => {
 				console.log(err)
 				throw err
 			})
 		},
-		getDiary() {
-			axios.get('http://wx.jufenqi.com:8080/content/api/articles').then((res) => {
-
-			}).catch((err) => {
-
-			})
-		}
 	},
 	mounted(){
 		document.title = '家装攻略'
 		this.getStrategy()
 	}
 }
+
 </script>

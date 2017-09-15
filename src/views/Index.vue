@@ -286,13 +286,26 @@
 						.text {
 							width: calc(~"100% - 294px");
 							height: 100%;
-							padding: 28px 0 0 15px;
-							p {
+							padding: 28px 0 15px 15px;
+							.title {
 								margin: 0;
 								cursor: pointer;
+								height: 25px;
+								overflow: hidden;
+								white-space: nowrap;
+								text-overflow: ellipsis;
+								width: 100%;
 								&:hover {
 									color: @main !important;
 								}
+							}
+							.intro {
+								height: 48px;
+								overflow: hidden;
+								display: -webkit-box;
+								-webkit-line-clamp: 2;
+								-webkit-box-orient: vertical;
+								width: 100%;
 							}
 						}
 					}
@@ -560,7 +573,7 @@
 							</div>
 						</el-carousel-item>
 					</el-carousel>
-					<div class="btn">查看更多</div>
+					<div class="btn" @click="goto('/case-dc')">查看更多</div>
 				</div>
 			</div>
 		</div>
@@ -568,20 +581,21 @@
 		<div class="pic-bg" :style="setHeight(4)">
 			<div class="mainbody">
 				<div class="text-wp">
-					<div class="btn">更多 +</div>
+					
 					<div class="tabs">
 						<div class="tab-item" v-for="(tab, tabId) in tabList" @click="tabIndex = tabId" :class="{'active': tabIndex == tabId}">
 							{{tab.name}}
 						</div>
+						<!-- <div class="btn" @click="tabId == 1?goto('/dc-strategy'):goto('/dc-diary')">更多 +</div> -->
 					</div>
 					<div class="tab-content">
-						<div class="content-item" v-for="content in tabContent[tabIndex]">
+						<div class="content-item" v-for="content in artArr[tabIndex]">
 							<div class="img-wrapper"><img :src="content.coverImg"></div>
 							<div class="text">
 								<p style="font-size: 14px; color: #999; font-weight: 400">{{getTime(content.createdAt)}}</p>
-								<p style="font-size: 18px; color: #333; margin: 29px 0 10px 0"><b>{{content.title}}</b></p>
-								<p style="font-size: 16px; color: #666; height: 60px; margin-bottom: 10px; padding-right: 27px;">{{content.intro}}</p>
-								<p style="font-size: 14px; color: #ff9736">MORE+</p>
+								<p class="title" style="font-size: 18px; color: #333; margin: 29px 0 10px 0" @click="gotoCon(content.id)"><b>{{content.title}}</b></p>
+								<p class="intro" style="font-size: 16px; color: #666; margin-bottom: 10px; padding-right: 27px;">{{content.intro}}</p>
+								<p style="font-size: 14px; color: #ff9736;cursor: pointer" @click="gotoCon(content.id)">MORE+</p>
 							</div>
 						</div>
 					</div>
@@ -589,7 +603,7 @@
 			</div>
 		</div>
 		<!-- 产品 -->
-		<div class="pic-bg" :style="setHeight(5)">
+		<!-- <div class="pic-bg" :style="setHeight(5)">
 			<div class="mainbody">
 				<div class="prod-wp">
 					<div class="block-title" style="font-size: 30px; font-weight: 400">软装商城</div>
@@ -612,7 +626,7 @@
 					<div class="btn">查看更多</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- 贷款流程 -->
 		<div class="pic-bg" :style="setHeight(6)" id="animation3">
 			<div class="mainbody">
@@ -626,7 +640,7 @@
 							<div class="item-text">{{item.name}}</div>
 						</div>
 					</div>
-					<div class="loan-btn">去分期</div>
+					<div class="loan-btn" @click="goto('/installment')">去分期</div>
 				</div>
 			</div>
 		</div>
@@ -635,6 +649,7 @@
 
 <script type="text/javascript">
 import NavBar from '@/components/NavBar'
+import axios from 'axios'
 
 export default{
 	components: {
@@ -833,6 +848,7 @@ export default{
 					name: '厨房'
 				}]
 			},],
+			artArr: [[],[]],
 		}
 	},
 	methods: {
@@ -977,18 +993,68 @@ export default{
 					result = document.body.clientWidth * 1350/1920
 					break
 				case 3:
-					result = document.body.clientWidth * 1250/1920 + 3672
+					result = document.body.clientWidth * 1250/1920 + 3672 - 1187
 					break
 			}
 			return result
-		}
+		},
+		goto(url) {
+			if (url) {
+				this.$router.push(url)
+			}
+		},
+		getStrategy() {
+			axios.get('http://wx.jufenqi.com:8080/content/api/articles', {
+				params: {
+					filter: `enabled:true`,
+					size: 1000,
+					sort: 'createdAt,DESC'
+				}
+			}).then((res) => {
+				let arr = res.data.data
+				arr.map((e, id) => {
+					let content = JSON.parse(e.contentDelta)
+					let imgList = []
+					content.ops.map((l) => {
+						if (l.insert.image) {
+							imgList.push(l.insert.image)
+						}
+					})
+					if (e.type == 1&&id < 8) {
+						this.artArr[0].push({
+							id: e.id,
+							title: e.title,
+							intro: e.introduction,
+							coverImg: imgList[0],
+							createdAt: e.createdAt
+						})
+					}
+					if (e.type == 0&&id < 8) {
+						this.artArr[1].push({
+							id: e.id,
+							title: e.title,
+							intro: e.introduction,
+							coverImg: imgList[0],
+							createdAt: e.createdAt
+						})
+					}
+				})
+			}).catch((err) => {
+				console.log(err)
+				throw err
+			})
+		},
+		gotoCon(id) {
+			this.$router.push(`/plans?artId=${id}`)
+		},
 	},
 		
 	mounted(){
 		console.log(this.screenWidth)
 		document.title = '居分期-提供美好生活方式'
 		window.addEventListener('scroll', this.getScrollBegin)	
-		console.log(Number(this.srceenWidth) - 1238)		
+		console.log(Number(this.srceenWidth) - 1238)
+		this.getStrategy()		
 	},
 	watch: {
 		scrollBegin: function(val) {
@@ -999,8 +1065,8 @@ export default{
 			} else if (val > this.scrollLimit(1)) {
 				this.animation1 = true
 			}
-			
-		}
+		},
+
 	}
 }
 </script>

@@ -42,16 +42,16 @@
 			display: flex;
 			width: 942px;
 			position: absolute;
-			top: -45px;
+			top: -33px;
 			left: 50%;
 			transform: translateX(-50%);
 			background-color: #fff;
 			.style-item {
-				width: 157px;
-				height: 89px;
-				line-height: 89px;
+				width: 10%;
+				height: 60px;
+				line-height: 60px;
 				text-align: center;
-				font-size: 18px;
+				font-size: 14px;
 				color: #666;
 				border-bottom: 1px solid #eee;
 				border-right: 1px solid #eee;
@@ -59,6 +59,9 @@
 				&:hover {
 					color: @main;
 				}
+			}
+			.active {
+				color: @main;
 			}
 		}
 		.mainbody {
@@ -95,14 +98,13 @@
 		</div>
 		<div class="content">
 			<div class="style-list">
-				<div class="style-item" v-for="(item, $index) in styleList" :style="setBorder($index)">{{item.name}}</div>
+				<div class="style-item" :class="{'active': $index == tabIndex}" v-for="(item, $index) in tabList" :style="setBorder($index)" @click="getDecStyleId(item.id, $index)">{{item.name}}</div>
 			</div>
 			<div class="mainbody">
-				<p class="style-title">风格标题</p>
-				<div class="style-text">
-					风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述<br/>风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述风格描述
-				</div>
-				<case-item v-for="(room, id) in roomList" :key="id" :data="room" :id="id" :flexcontent="setDirection(id)"></case-item>
+				<p class="style-title">{{itemDisc.name}}</p>
+				<div class="style-text">{{itemDisc.disc}}</div>
+				<div class="layout-wp"></div>
+				<case-item v-for="(room, id) in itemDisc.itemList" :key="id" :data="room" :id="id" :flexcontent="setDirection(id)"></case-item>
 			</div>
 		</div>
 	</div>
@@ -111,6 +113,8 @@
 <script>
 import CaseItem from '@/components/CaseItem'
 import HeaderNew from '@/components/HeaderNew'
+import axios from 'axios'
+import Conf from '../assets/conf.js'
 
 export default{
 	components: {
@@ -120,42 +124,13 @@ export default{
 	data() {
 		return{
 			SrceenWidth: document.body.clientWidth,
-			styleList: [{
-				name: '时尚现代',
-				id: 0,
-			},{
-				name: '新中式',
-				id: 1
-			},{
-				name: '北欧现代',
-				id: 2
-			},{
-				name: '北欧新竹',
-				id: 3
-			},{
-				name: '现代八',
-				id: 4
-			},{
-				name: '台湾温暖',
-				id: 5
-			},],
-			roomList: [{
-				name: '客厅',
-				disc: '房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说',
-				url: '/static/case-dc/case-0.png'
-			},{
-				name: '卧室',
-				disc: '房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说',
-				url: '/static/case-dc/case-1.png'
-			},{
-				name: '厨房',
-				disc: '房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说',
-				url: '/static/case-dc/case-2.png'
-			},{
-				name: '卫生间',
-				disc: '房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说房间风格解说',
-				url: '/static/case-dc/case-3.png'
-			},]
+			tabList: [],
+			itemDisc: {
+				name: '',
+				disc: '',
+				itemList: [],
+			},
+			tabIndex: 0
 		}
 	},
 	methods: {
@@ -185,10 +160,58 @@ export default{
 				result = 'right'
 			}
 			return result
+		},
+		getDecStyle() {
+			axios.get(`http://wx.jufenqi.com:8080/content/api/decoration-styles`).then((res) => {
+				res.data.data.map((e) => {
+					this.tabList.push({
+						id: e.id,
+						name: e.name
+					})
+				})
+				this.itemDisc.name = res.data.data[0].name
+				this.itemDisc.disc = res.data.data[0].description
+				res.data.data[0].decorationComponents.map((e) => {
+					if (e.enabled) {
+						this.itemDisc.itemList.push({
+							id: e.id,
+							name: e.name,
+							disc: e.description,
+							url: Conf.imgUrl + componentImg
+						})
+					}
+				})
+			}).catch((err) => {
+				console.log(err)
+				throw err
+			})
+		},
+		getDecStyleId(id, tab) {
+			this.tabIndex = tab
+			this.itemDisc.itemList = []
+			axios.get(`http://wx.jufenqi.com:8080/content/api/decoration-styles/${id}`).then((res) => {
+				// console.log(res.data.data)
+				this.itemDisc.name = res.data.data.name
+				this.itemDisc.disc = res.data.data.description
+				res.data.data.decorationComponents.map((e) => {
+					this.itemDisc.itemList.push({
+						id: e.id,
+						name: e.name,
+						disc: e.description,
+						url: Conf.imgUrl + e.componentImg
+					})
+				})
+				console.log(this.itemDisc)
+			}).catch((err) => {
+				console.log(err)
+				throw err
+			})
 		}
 	},
 	mounted(){
 		document.title = '装修案例'
+		document.body.scrollTop = 0
+		this.getDecStyle()
 	}
 }
 </script>

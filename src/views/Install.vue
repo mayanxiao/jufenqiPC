@@ -97,7 +97,7 @@
 						color: #333;
 						display: block;	
 						&::placeholder {
-							color: #ddd;
+							color: #ccc;
 							font-size: 18px;
 						}
 					}
@@ -116,12 +116,13 @@
 				text-align: center;
 				line-height: 46px;
 				margin: 30px auto;
-				cursor: pointer;
+				cursor: no-drop;
 				transition: all 0.2s cubic-bezier(.645,.045,.355,1);
-				&:hover {
-					background-color: @main;
-					color: #fff;
-				}
+			}
+			.btn-active {
+				background-color: @main;
+				color: #fff;
+				cursor: pointer;
 			}
 		}
 	}
@@ -215,6 +216,34 @@
 	}
 }
 </style>
+<style>
+.input-item .el-select {
+	width: 80%;
+}
+.input-item .el-select .el-input__inner::placeholder {
+	font-size: 18px;
+	color: #ccc;
+}
+.input-item .el-select .el-input__inner:focus {
+	border-color: #ff9736;
+}
+.input-item .el-select:hover .el-input__inner {
+	border-color: #ddd;
+}
+.input-item .el-input__inner {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: #ddd;
+    border-radius: 0;
+    padding-left: 0;
+    font-size: 18px;
+    color: #333;
+}
+.input-item .el-input .el-input__icon {
+	display: none;
+}
+</style>
 
 <template>
 	<div class="install">
@@ -270,7 +299,7 @@
 		</div>
 		<div class="img-wp">
 			<img src="/static/install/bg-2.png" style="width: 100%;">
-			<div class="form-body">
+			<div class="form-body" v-if="">
 				<p class="title-cn">贷款申请</p>
 				<p class="title-en" style="margin-bottom: 52px;">线上极速提交申请 VIP客服全程跟进</p>
 				<div class="form-wp">
@@ -280,34 +309,58 @@
 							<div class="input-title">申请人</div>
 						</div>
 						<div class="input-item" :style="setBorder(phone.focus, 0)">
-							<input type="text" name="手机号" v-model="phone.value" @focus="focusChange('phone')" @blur="focusChange('phone')">
+							<input type="text" name="手机号" placeholder="请输入您的手机号" v-model="phone.value" @focus="focusChange('phone')" @blur="focusChange('phone')">
 							<div class="input-title">手机号</div>
 						</div>
 						<div class="input-item" :style="setBorder(bankBranch.focus, 0)">
-							<input type="text" name="银行网点" v-model="bankBranch.value" @focus="focusChange('bankBranch')" @blur="focusChange('bankBranch')">
+							<!-- <input type="text" name="银行网点" placeholder="请输入您的手机号" v-model="bankBranch.value" @focus="focusChange('bankBranch')" @blur="focusChange('bankBranch')"> -->
+							<el-select v-model="bankBranch.value" no-data-text="请先选择您要申请的银行" clearable placeholder="请选择申请银行网点" @change="bankBranchChoose(bankBranch.value)">
+								<el-option
+									v-for="item in bankBranchOptions"
+									:key="item.value"
+									:label="item.label"
+									:value="item.value">
+								</el-option>
+							</el-select>
 							<div class="input-title">银行网点</div>
 						</div>
 						<div class="input-item" :style="setBorder(money.focus, 0)">
-							<input type="text" name="期望额度" v-model="money.value" @focus="focusChange('money')" @blur="focusChange('money')">
+							<input type="text" name="期望额度" placeholder="请输入您的期望额度" v-model="money.value" @focus="focusChange('money')" @blur="focusChange('money')">
 							<div class="input-title">期望额度</div>
 						</div>
 					</div>
 					<div class="right">
 						<div class="input-item" :style="setBorder(idCard.focus, 1)">
 							<div class="input-title">身份证</div>
-							<input type="text" name="身份证" v-model="idCard.value" @focus="focusChange('idCard')" @blur="focusChange('idCard')">	
+							<input type="text" name="身份证" placeholder="请输入您的身份证号" v-model="idCard.value" @focus="focusChange('idCard')" @blur="focusChange('idCard')">	
 						</div>
 						<div class="input-item" :style="setBorder(bank.focus, 1)">
 							<div class="input-title">申请银行</div>
-							<input type="text" name="申请银行" v-model="bank.value" @focus="focusChange('bank')" @blur="focusChange('bank')">	
+							<!-- <input type="text" name="申请银行" v-model="bank.value" @focus="focusChange('bank')" @blur="focusChange('bank')">	 -->
+							<el-select v-model="bank.value" clearable placeholder="请选择申请银行" @change="bankChoose(bank.value)">
+								<el-option
+									v-for="item in bankOptions"
+									:key="item.value"
+									:label="item.label"
+									:value="item.value">
+								</el-option>
+							</el-select>
 						</div>
 						<div class="input-item" :style="setBorder(bankBranchPeriod.focus, 1)">
 							<div class="input-title">分期期数</div>
-							<input type="text" name="分期期数" v-model="bankBranchPeriod.value" @focus="focusChange('bankBranchPeriod')" @blur="focusChange('bankBranchPeriod')">	
+							<!-- <input type="text" name="分期期数" v-model="bankBranchPeriod.value" @focus="focusChange('bankBranchPeriod')" @blur="focusChange('bankBranchPeriod')">	 -->
+							<el-select v-model="bankBranchPeriod.value" no-data-text="请先选择您要申请的银行网点" clearable placeholder="请选择申请分期期数">
+								<el-option
+									v-for="item in periodOptions"
+									:key="item.value"
+									:label="item.label"
+									:value="item.value">
+								</el-option>
+							</el-select>
 						</div>
 					</div>
 				</div>
-				<div class="btn">立即申请</div>
+				<div class="btn" :class="{'btn-active': isFinished()}" @click="isFinished()?submit():false">立即申请</div>
 			</div>
 		</div>
 	</div>
@@ -315,14 +368,32 @@
 
 <script>
 import HeaderNew from '@/components/HeaderNew'
+import axios from 'axios'
+import Conf from '../assets/conf.js'
 
-export default{
+export default {
 	components: {
 		HeaderNew
 	},
 	data() {
 		return{
 			SrceenWidth: document.body.clientWidth,
+			options: [{
+				value: '选项1',
+				label: '黄金糕'
+			}, {
+				value: '选项2',
+				label: '双皮奶'
+			}, {
+				value: '选项3',
+				label: '蚵仔煎'
+			}, {
+				value: '选项4',
+				label: '龙须面'
+			}, {
+				value: '选项5',
+				label: '北京烤鸭'
+			}],
 			name: {
 				value: '',
 				focus: false
@@ -434,6 +505,12 @@ export default{
 				disc: '五家银行 极速发卡',
 				url: '/static/install/ins-4.png'
 			},],
+			bankOptions: [],
+			bankBranchOptions: [],
+			periodOptions: [],
+			tmpBank: '',
+			tmpBankBranch: '',
+
 		}
 	},
 	methods: {
@@ -479,34 +556,26 @@ export default{
 		focusChange(val) {
 			switch(val) {
 				case 'name':
-					// this.name.focus = true
 					this.name.focus = !this.name.focus
 					break
 				case 'phone':
-					// this.phone.focus = true
 					this.phone.focus = !this.phone.focus
 					break
 				case 'bank':
-					// this.bank.focus = true
 					this.bank.focus = !this.bank.focus
 					break
 				case 'idCard':
-					// this.idCard.focus = true
 					this.idCard.focus = !this.idCard.focus
 					break
 				case 'bankBranch':
-					// this.bankBranch.focus = true
 					this.bankBranch.focus = !this.bankBranch.focus
 					break
 				case 'bankBranchPeriod':
-					// this.bankBranchPeriod.focus = true
 					this.bankBranchPeriod.focus = !this.bankBranchPeriod.focus
 					break
 				case 'money':
-					// this.money.focus = true
 					this.money.focus = !this.money.focus
 					break
-
 			}
 		},
 		blurChange(obj) {
@@ -535,11 +604,98 @@ export default{
 				ret.color = '#ff9736'
 			} 
 			return ret
+		},
+		bankChoose(val) {
+			console.log(val)
+			this.bankBranchOptions = []
+			axios.get(`${Conf.loanApi}bank-branches?filter=bank.id:${val}`).then((res) => {
+				res.data.data.map((e) => {
+					this.bankBranchOptions.push({
+						value: e.id,
+						label: e.name
+					})
+				})
+			}).catch((err) => {
+				console.log(err)
+				throw err
+			})
+			// this.bankBranch.value = ''
+			// this.bankBranchPeriod = ''
+		},
+		bankBranchChoose(val) {
+			console.log(val)
+			this.periodOptions = []
+			axios.get(`${Conf.loanApi}bank-branch-periods?filter=bankBranch.id:${val}`).then((res) => {
+				res.data.data.map((e) => {
+					this.periodOptions.push({
+						value: e.id,
+						label: e.name
+					})
+				})
+			}).catch((err) => {
+				console.log(err)
+				throw err
+			})
+			// this.bankBranchPeriod = ''
+		},
+		getBanks() {
+			axios.get(`${Conf.loanApi}banks`).then((res) => {
+				res.data.data.map((e) => {
+					this.bankOptions.push({
+						value: e.id,
+						label: e.name
+					})
+				})
+			}).catch((err) => {
+				console.log(err)
+				throw err
+			})
+		},
+		// 各种验证
+		isIdCard() {
+			let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+			return reg.test(Number(this.idCard.value))
+		},
+		isTruePhoneNum() {
+			let reg = /^1[3|4|5|7|8]\d{9}$/
+			return reg.test(Number(this.phone.value))
+		},
+		isNumber() {
+			let reg = /(^[0-9]*$)/
+			return reg.test(Number(this.money.value))
+		},
+		isFinished() {
+			return this.isIdCard() && this.isTruePhoneNum() && this.isNumber() && this.bank.value && this.bankBranch.value && this.bankBranchPeriod.value && this.name.value
+		},
+		submit() {
+			let result = {
+				userId: JSON.parse(localStorage.getItem('userInfo')).userId,
+				idCardNo: this.idCard.value,
+				mobile: this.phone.value,
+				bank: {id: Number(this.bank.value)},
+				bankBranch: {id: Number(this.bankBranch.value)},
+				bankBranchPeriod: {id:Number(this.bankBranchPeriod.value)},
+				fullname: this.name.value,
+				expectQuota: this.money.value,
+				statusEnum: 1
+			}
+			axios.post(`${Conf.loanApi}loan-applications`, result).then((res) => {
+				this.$message({
+					message: '贷款申请已提交！后续会有工作人员继续为您服务',
+					type: 'success'
+				});
+			}).catch((err) => {
+				console.log(err)
+				this.$message.error('连接服务器失败，请稍后再试。。');
+				throw err
+			})
 		}
-		
 	},
 	mounted(){
 		document.title = '家装分期'
+		document.body.scrollTop = 0
+		this.phone.value = JSON.parse(localStorage.getItem('userName')).name
+		this.getBanks()
 	}
 }
 </script>

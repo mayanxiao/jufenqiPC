@@ -6,7 +6,7 @@
   width: 100%;
   height: 88px;
   position: fixed;
-  z-index: 99999;
+  z-index: 99;
   transition: all 0.7s ease;
 }
 .nav-wrapper {
@@ -110,10 +110,13 @@
       <div class="img-logo" v-if="!scrollShow" ><img src="/static/logo-static.png"></div>
       <div class="nav-list" id="navLi" :style="setMargin(scrollShow)">
         <div class="nav-item" v-for="(nav, $index) in navList" @mouseenter="subChange($index)" @mouseleave="subChange($index)" :style="setColor(scrollShow)" @click="goto(nav.url)">{{nav.name}}</div>
-        <div class="login" style="margin-left: 15px;" v-if="scrollShow"><span>登录</span></div>
-        <div class="login" style="padding: 0 0 0 28px;" v-if="scrollShow">
-          <span>注册</span>
+        <div class="login" style="margin-left: 15px;" v-if="scrollShow&&!signSuccess"><span @click="signChange(0)">登录</span></div>
+        <div class="login" style="padding: 0 0 0 28px;" v-if="scrollShow&&!signSuccess">
+          <span @click="signChange(1)">注册</span>
           <div class="line"></div>
+        </div>
+        <div class="login" v-if="scrollShow&&signSuccess">
+          <span style="cursor: default; font-size: 12px;">欢迎！{{signName}}</span>
         </div>
       </div>
     </div>
@@ -124,10 +127,14 @@
         <span style="right: 257px;" @click="goto('/dc-strategy')">家装攻略</span>
       </div>
     </div>
+    <sign :sign="sign"></sign>
   </div>
 </template>
 
 <script>
+import Sign from '@/components/Sign'
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -136,6 +143,13 @@ export default {
       scrollLimit: document.body.clientWidth * 650/1920,
       scrollShow: false,
       subShow: false,
+      sign: {
+        signShow: false,
+        signIndex: 0,
+        userName: ''
+      },
+      signName: '',
+      signSuccess: false,
       navList: [{
         name: '首页',
         url: '/',
@@ -145,13 +159,17 @@ export default {
       },{
         name: '家装指南',
       },{
-        name: '产品商城',
-        url: '/mall',
-      },{
         name: '个人中心',
         url: '/user'
       }]
+      // {
+      //   name: '产品商城',
+      //   url: '/mall',
+      // },
     }
+  },
+  components: {
+    Sign
   },
   methods: {
     change() {
@@ -205,10 +223,21 @@ export default {
         else{
           this.scroll= document.documentElement.scrollTop
         }
+    },
+    signChange(id) {
+      this.sign.signShow = true
+      this.sign.signIndex = id
     }
   },
   mounted() {
     window.addEventListener('scroll', this.getScroll)
+    if (localStorage.getItem('userName')&&localStorage.getItem('userInfo')) {
+      this.signSuccess = true
+      this.signName = JSON.parse(localStorage.getItem('userName')).name
+      axios.defaults.headers.common['Authorization'] = `${JSON.parse(localStorage.getItem('userInfo')).tokenType} ${JSON.parse(localStorage.getItem('userInfo')).token}`
+    } else {
+      this.signSuccess = false
+    }
   },
   watch: {
     scroll: function(val) {

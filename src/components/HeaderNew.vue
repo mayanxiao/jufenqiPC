@@ -123,10 +123,13 @@
           {{nav.name}}
           <div class="underline"></div>
         </div>
-        <div class="login" style="margin-left: 15px;"><span>登录</span></div>
-        <div class="login" style="padding: 0 0 0 28px;">
-          <span>注册</span>
+        <div class="login" style="margin-left: 15px;" v-if="!signSuccess"><span @click="signChange(0)">登录</span></div>
+        <div class="login" style="padding: 0 0 0 28px;" v-if="!signSuccess">
+          <span @click="signChange(1)">注册</span>
           <div class="line"></div>
+        </div>
+        <div class="login" v-if="signSuccess">
+          <span style="cursor: default; font-size: 12px;">欢迎！{{signName}}</span>
         </div>
       </div>
     </div>
@@ -137,17 +140,31 @@
         <span style="right: 242px;" @click="goto('/dc-strategy')">家装攻略</span>
       </div>
     </div>
+    <sign :sign="sign"></sign>
   </div>
 </template>
 
 <script>
+import Sign from '@/components/Sign'
+import axios from 'axios'
+
 export default {
   name: 'HeaderNew',
+  components: {
+    Sign
+  },
   data () {
     return {
       tabIndex: 0,
       scrollLimit: document.body.clientWidth * 800/1920,
       subShow: false,
+      sign: {
+        signShow: false,
+        signIndex: 0,
+        userName: ''
+      },
+      signName: '',
+      signSuccess: false,
       navList: [{
         name: '首页',
         url: '/',
@@ -157,12 +174,13 @@ export default {
       },{
         name: '家装指南',
       },{
-        name: '产品商城',
-        url: '/mall',
-      },{
         name: '个人中心',
         url: '/user'
       }]
+      // {
+      //   name: '产品商城',
+      //   url: '/mall',
+      // },
     }
   },
   methods: {
@@ -186,8 +204,19 @@ export default {
         this.subShow = false
       }
     },
+    signChange(id) {
+      this.sign.signShow = true
+      this.sign.signIndex = id
+    },
   },
   mounted() {
+    if (localStorage.getItem('userName')&&localStorage.getItem('userInfo')) {
+      this.signSuccess = true
+      this.signName = JSON.parse(localStorage.getItem('userName')).name
+      axios.defaults.headers.common['Authorization'] = `${JSON.parse(localStorage.getItem('userInfo')).tokenType} ${JSON.parse(localStorage.getItem('userInfo')).token}`
+    } else {
+      this.signSuccess = false
+    }
   },
   watch: {
   }

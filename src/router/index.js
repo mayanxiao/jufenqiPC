@@ -78,6 +78,5 @@ export default new Router({
       name: 'Product',
       component: Product
     },
-
-  ]
+  ],
 })

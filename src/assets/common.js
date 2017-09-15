@@ -11,9 +11,8 @@ var Rxports = {
    * 获取当前页面所带的参数
    */
   GetRequest: () => {
-    let url = window.location.search
+    let url = window.location.hash
     let theRequest = {}
-    // if (url.includes('?')) {
     if (url.indexOf('?') !== -1) {
       let strs = url.substr(1).split('&')
       for (let str of strs) {
@@ -49,14 +48,14 @@ var Rxports = {
   auth: (axios, requirePhone) => {
     try {
       let now = Number(new Date().getTime())
-      if (Number(JSON.parse(localStorage.user).expiredAt) < now || (!!requirePhone && !JSON.parse(localStorage.user).profile.mobile)) {
+      if (Number(JSON.parse(localStorage.user).expiredAt) < now || (!!requirePhone && !JSON.parse(localStorage.getItem('userName')).name)) {
         localStorage.removeItem('user')
         location.href = `./wxAuth.html?url=${encodeURIComponent(location.href)}`
       }
       axios.defaults.headers.common['Authorization'] = `${JSON.parse(localStorage.getItem('user')).tokenType} ${JSON.parse(localStorage.getItem('user')).token}`
     } catch (e) {
       localStorage.clear()
-      location.href = `./wxAuth.html?url=${encodeURIComponent(location.href)}`
+      // location.href = `./wxAuth.html?url=${encodeURIComponent(location.href)}`
     }
   },
   authOnlyPhone: (axios) => {
