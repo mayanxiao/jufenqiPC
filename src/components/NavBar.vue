@@ -102,7 +102,16 @@
 }
 
 </style>
-
+<style>
+.nav-list .el-dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 12px;
+  color: #666;
+}
+  
+</style>
 <template>
   <div class="navbar" :style="setBack(scrollShow)" id="NavBar">
     <div class="nav-wrapper" @mouseenter="scroll <= scrollLimit?scrollShow = true:scrollShow = scrollShow" @mouseleave="scroll <= scrollLimit?scrollShow = false:scrollShow = scrollShow">
@@ -118,6 +127,14 @@
         <div class="login" v-if="scrollShow&&signSuccess">
           <span style="cursor: default; font-size: 12px;">欢迎！{{signName}}</span>
         </div>
+        <!-- <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            欢迎！{{signName}}<i class="el-icon-caret-bottom el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="a">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown> -->
       </div>
     </div>
     <div class="sub-list" v-if="subShow" @mouseleave="scroll <= scrollLimit?change():subShow = false" @mouseenter="scrollShow = true">
@@ -227,17 +244,36 @@ export default {
     signChange(id) {
       this.sign.signShow = true
       this.sign.signIndex = id
+    },
+    handleCommand(command) {
+      if (command == 'logout') {
+        localStorage.clear()
+        location.reload()
+      }
+    },
+    loginShow() {
+      let now  = Number(new Date().getTime())
+      let userInfo = localStorage.getItem('userInfo')?JSON.parse(localStorage.getItem('userInfo')): null
+      if (userInfo == null) {
+        this.signSuccess = false
+        console.log('heihei')
+        localStorage.removeItem('userInfo')
+        localStorage.removeItem('userName')
+      } else if (Number(userInfo.expiredAt) < now) {
+        console.log(JSON.parse(localStorage.getItem('userInfo').expiredAt))
+        this.signSuccess = false
+        localStorage.removeItem('userInfo')
+        localStorage.removeItem('userName')
+      } else {
+        this.signSuccess = true
+        this.signName = JSON.parse(localStorage.getItem('userName')).name
+        axios.defaults.headers.common['Authorization'] = `${userInfo.tokenType} ${userInfo.token}`
+      }
     }
   },
   mounted() {
     window.addEventListener('scroll', this.getScroll)
-    if (localStorage.getItem('userName')&&localStorage.getItem('userInfo')) {
-      this.signSuccess = true
-      this.signName = JSON.parse(localStorage.getItem('userName')).name
-      axios.defaults.headers.common['Authorization'] = `${JSON.parse(localStorage.getItem('userInfo')).tokenType} ${JSON.parse(localStorage.getItem('userInfo')).token}`
-    } else {
-      this.signSuccess = false
-    }
+    this.loginShow()
   },
   watch: {
     scroll: function(val) {
@@ -248,6 +284,7 @@ export default {
       }
     }
   }
+
 }
 
 </script>

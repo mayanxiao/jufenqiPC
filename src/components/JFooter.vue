@@ -104,7 +104,7 @@
         <img src="/static/phone.png">
         <div>
           <p>客服电话</p>
-          <p>400 0039 0808</p>
+          <p>400-039-0808</p>
         </div>
       </div>
     </div>

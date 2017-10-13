@@ -517,7 +517,7 @@
 			<img class="img-bg" src="/static/index/banner_01.png">
 		</div>
 		<!-- what -->
-		<div class="pic-bg">
+		<div class="pic-bg" style="overflow: hidden;">
 			<img class="img-bg" src="/static/index/what.png">
 			<div class="info" :style="setAnimation(animation1, 1)">
 				<div class="text" :style="setAnimation(animation1, 2)">

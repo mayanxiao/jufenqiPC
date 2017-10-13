@@ -113,6 +113,10 @@
 }
 
 </style>
+<style>
+
+  
+</style>
 
 <template>
   <div class="navbar" id="NavBar">
@@ -135,9 +139,9 @@
     </div>
     <div class="sub-list" v-if="subShow" @mouseleave="subShow = false">
       <div class="item-wp">
-        <span style="right: 479px;" @click="goto('/dc-diary')">家装日记</span>
-        <span style="right: 360px;" @click="goto('/case-dc')">家装案例</span>
-        <span style="right: 242px;" @click="goto('/dc-strategy')">家装攻略</span>
+        <span style="right: 360px;" @click="goto('/dc-diary')">家装日记</span>
+        <span style="right: 242px;" @click="goto('/case-dc')">家装案例</span>
+        <span style="right: 123px;" @click="goto('/dc-strategy')">家装攻略</span>
       </div>
     </div>
     <sign :sign="sign"></sign>
@@ -208,15 +212,26 @@ export default {
       this.sign.signShow = true
       this.sign.signIndex = id
     },
+    loginShow() {
+      let now  = Number(new Date().getTime())
+      let userInfo = localStorage.getItem('userInfo')?JSON.parse(localStorage.getItem('userInfo')): null
+      if (userInfo == null) {
+        this.signSuccess = false
+        console.log('heihei')
+        localStorage.clear()
+      } else if (Number(userInfo.expiredAt) < now) {
+        console.log(JSON.parse(localStorage.getItem('userInfo').expiredAt))
+        this.signSuccess = false
+        localStorage.clear()
+      } else {
+        this.signSuccess = true
+        this.signName = JSON.parse(localStorage.getItem('userName')).name
+        axios.defaults.headers.common['Authorization'] = `${userInfo.tokenType} ${userInfo.token}`
+      }
+    }
   },
   mounted() {
-    if (localStorage.getItem('userName')&&localStorage.getItem('userInfo')) {
-      this.signSuccess = true
-      this.signName = JSON.parse(localStorage.getItem('userName')).name
-      axios.defaults.headers.common['Authorization'] = `${JSON.parse(localStorage.getItem('userInfo')).tokenType} ${JSON.parse(localStorage.getItem('userInfo')).token}`
-    } else {
-      this.signSuccess = false
-    }
+    this.loginShow()
   },
   watch: {
   }

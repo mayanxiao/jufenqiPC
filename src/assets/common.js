@@ -75,7 +75,7 @@ var Rxports = {
     const M = `${d.getMonth() + 1 < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1}-`
     const D = (d.getDate() < 10 ? `0${d.getDate()}` : d.getDate())
     return Y + M + D
-  }
+  },
 }
 
 export default Rxports

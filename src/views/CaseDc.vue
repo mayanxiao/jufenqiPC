@@ -172,14 +172,14 @@ export default{
 				this.itemDisc.name = res.data.data[0].name
 				this.itemDisc.disc = res.data.data[0].description
 				res.data.data[0].decorationComponents.map((e) => {
-					if (e.enabled) {
+					// if (e.enabled) {
 						this.itemDisc.itemList.push({
 							id: e.id,
 							name: e.name,
 							disc: e.description,
-							url: Conf.imgUrl + componentImg
+							url: Conf.imgUrl + e.componentImg
 						})
-					}
+					// }
 				})
 			}).catch((err) => {
 				console.log(err)

@@ -361,10 +361,13 @@ export default {
 						message: '登录成功！',
 						type: 'success'
 					});
-					localStorage.setItem('userInfo', JSON.stringify(res.data.data))
+					let Data = res.data.data
+					let now = new Date().getTime()
+					Data.expiredAt = Number(now) + Number(Data.expiresIn * 1000 - 60 * 1000 * 100)
+					localStorage.setItem('userInfo', JSON.stringify(Data))
 					localStorage.setItem('userName', JSON.stringify({name: this.lMobile.value}))
 					this.sign.signShow = false
-					console.log(this.lMobile.value)
+					location.reload()
 				}).catch((err) => {
 					if (err.response.data.message) {
 						this.$message.error(err.response.data.message);
@@ -377,10 +380,14 @@ export default {
 						message: '登录成功！',
 						type: 'success'
 					});
-					localStorage.setItem('userInfo', JSON.stringify(res.data.data))
+					let Data = res.data.data
+					let now = new Date().getTime()
+					Data.expiredAt = Number(now) + Number(Data.expiresIn * 1000 - 60 * 1000 * 100)
+					localStorage.setItem('userInfo', JSON.stringify(Data))
 					localStorage.setItem('userName', JSON.stringify({name: this.lMobile.value}))
 					this.sign.signShow = false
 					console.log(this.lMobile.value)
+					location.reload()
 				}).catch((err) => {
 					if (err.response.data.message) {
 						this.$message.error(err.response.data.message);

@@ -237,6 +237,85 @@
     		}
     	}
     }
+    .user-setting {
+        width: 977px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        background-color: #fff;
+        p {
+            font-size: 24px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .input-item {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+            margin-bottom: 40px;
+            width: 366px;
+            height: 36px;
+            line-height: 36px;
+            transition: all 0.3s cubic-bezier(.645,.045,.355,1);
+            color: #999;
+            input {
+                outline: none;
+                border: none;
+                font-size: 18px;
+                width: 75%;
+                color: #333;
+                display: block; 
+                &::placeholder {
+                    color: #ccc;
+                    font-size: 18px;
+                }
+            }
+            .input-title {
+                font-size: 18px;
+                width: 25%;
+                cursor: default;
+            }
+            .code-btn {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                font-size: 14px;
+                border: 1px solid #ddd;
+                cursor: no-drop;
+                color: #ccc;
+                transition: all 0.3s cubic-bezier(.645,.045,.355,1);
+            }
+            .code-active {
+                color: @main;
+                border-color: @main;
+                cursor: pointer;
+            }
+        }
+        .btn {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            cursor: no-drop;
+            margin: 0 auto;
+            color: #ccc;
+            position: relative;
+        }
+        .btn-active {
+            color: @main;
+            border-color: @main;
+            cursor: pointer;
+        }
+    }
 }
 </style>
 
@@ -245,29 +324,29 @@
 		<header-new></header-new>
 		<div class="mainbody">
 			<div class="sidebar">
-				<div v-for="list in sideBars">
+				<div v-for="(list,id) in sideBars" @click="logOut(id)" :style="setMouse(id)">
 					<div class="list-1">
 						<img :src="list.img">
 						{{list.name}}
 					</div>
-					<div class="list-2" v-for="sub in list.subList">{{sub}}</div>
+					<div class="list-2" v-for="(sub, subId) in list.subList" @click="settingChange(id, subId)">{{sub}}</div>
 				</div> 
 			</div>
-			<div class="user-info">
+			<div class="user-info" v-if="infoSetting == 0">
 				<div class="intro">
 					<div class="info-wp">
 						<img src="/static/user/avatar.png">
 						<div class="name-phone">
-							<div class="user-name">用户名称</div>
+							<div class="user-name">{{userName}}</div>
 							<div class="item-wp">
 								<div class="item">
 									手机号
-									<span>18792788035</span>
+									<span>{{userMobile}}</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="more" style="top: 57px;">修改资料</div>
+					<div class="more" style="top: 57px;" @click="infoSetting = 4">修改资料</div>
 				</div>
 				<div class="instalment">
 					<div class="block">我的分期</div>
@@ -288,7 +367,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="material">
+				<!-- <div class="material">
 					<div class="block">我的订单</div>
 					<div class="more">查看全部订单</div>
 					<div class="mt-item" v-for="order in mOrders">
@@ -302,89 +381,150 @@
 						</div>
 						<div class="time">{{getTime(order.createdAt)}}</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
+            <div class="user-setting-wp" style="padding-bottom: 40px;">
+                <div class="user-setting" v-if="infoSetting == 1||infoSetting == 4">
+                    <p>修改用户名</p>
+                    <div class="input-item" :style="setBorder(tmpName.focus)">
+                        <div class="input-title">用户名</div>
+                        <input type="text" name="新用户名" placeholder="请输入您的新用户名" v-model="tmpName.value" @focus="focusChange('tmpName')" @blur="focusChange('tmpName')">  
+                    </div>
+                    <div class="btn" :class="{'btn-active': isFinished(1)}" @click="isFinished(1)?changeName():false">确认修改</div>
+                </div>
+                <div class="user-setting" v-if="infoSetting == 2||infoSetting == 4">
+                    <p>修改手机号</p>
+                    <div class="input-item" :style="setBorder(tmpMobile.focus)">
+                        <div class="input-title">修改手机</div>
+                        <input type="text" name="新手机" placeholder="请输入您的新手机号" v-model="tmpMobile.value" @focus="focusChange('tmpMobile')" @blur="focusChange('tmpMobile')">  
+                        <div class="code-btn" :class="{'code-active': isTruePhoneNum()}" v-if="!isSend" @click="send()">获取验证码</div>
+                        <div class="code-btn" v-if="isSend">{{time}} 秒后可重试</div>
+                    </div>
+                    <div class="input-item" :style="setBorder(tmpVerti.focus)">
+                        <div class="input-title">验证码</div>
+                        <input type="text" name="验证码" placeholder="请输入您收到的验证码" v-model="tmpVerti.value" @focus="focusChange('tmpVerti')" @blur="focusChange('tmpVerti')">  
+                    </div>
+                    <div class="btn" :class="{'btn-active': isFinished(2)}" @click="isFinished(2)?changeMobile():false">确认修改</div>
+                </div>
+            </div>
 		</div>
+        <el-dialog
+        title="确认退出"
+        :visible.sync="dialogVisible"
+        size="tiny">
+        <span>您确认退出吗</span>
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="confirmLogOut()">确 定</el-button>
+        </span>
+    </el-dialog>
 	</div>
 </template>
 
 <script>
 import HeaderNew from '@/components/HeaderNew'
+import axios from 'axios'
+import Conf from '../assets/conf.js'
 
 export default{
-	name: "LitTitle",
+	name: "User",
 	components: {
 		HeaderNew
 	},
 	data() {
 		return{
 			sideBars: [{
-				name: '我的收藏',
-				img: '/static/user/icon-1.png',
-				subList: ['装修日记','装修攻略']
-			},{
 				name: '我的分期',
 				img: '/static/user/icon-2.png',
 				subList: ['查看分期',]
 			},{
-				name: '我的订单',
-				img: '/static/user/icon-3.png',
-				subList: ['主材订单',]
-			},{
 				name: '个人资料',
 				img: '/static/user/icon-4.png',
-				subList: ['昵称修改','绑定手机号修改','地址管理',]
-			}],
-			mOrders: [{
-				brandName: '品牌名称品牌名称',
-				brandImg: '/static/user/brand.png',
-				merchantName: '门店名称门店名称门店名称',
-				totalAmount: 20000,
-				status: 2,
-				createdAt: 1493232323
+				subList: ['昵称修改','绑定手机号修改',]
 			},{
-				brandName: '品牌名称品牌名称品牌名称品牌名称品牌名称品牌名称',
-				brandImg: '/static/user/brand.png',
-				merchantName: '门店名称门店名称门店名称',
-				totalAmount: 20000,
-				status: 3,
-				createdAt: 1493232323
-			},{
-				brandName: '品牌名称品牌名称',
-				brandImg: '/static/user/brand.png',
-				merchantName: '门店名称门店名称门店名称',
-				totalAmount: 20000,
-				status: 4,
-				createdAt: 1503976928
-			},{
-				brandName: '品牌名称品牌名称',
-				brandImg: '/static/user/brand.png',
-				merchantName: '门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称',
-				totalAmount: 20000,
-				status: 5,
-				createdAt: 1504013332
-			},],
+                name: '退出',
+                img: '/static/user/icon-1.png',
+                subList: []
+            }],
+            // {
+            //     name: '我的收藏',
+            //     img: '/static/user/icon-1.png',
+            //     subList: ['装修日记','装修攻略']
+            // },
+            // {
+            //     name: '我的订单',
+            //     img: '/static/user/icon-3.png',
+            //     subList: ['主材订单',]
+            // },
+			// mOrders: [{
+			// 	brandName: '品牌名称品牌名称',
+			// 	brandImg: '/static/user/brand.png',
+			// 	merchantName: '门店名称门店名称门店名称',
+			// 	totalAmount: 20000,
+			// 	status: 2,
+			// 	createdAt: 1493232323
+			// },{
+			// 	brandName: '品牌名称品牌名称品牌名称品牌名称品牌名称品牌名称',
+			// 	brandImg: '/static/user/brand.png',
+			// 	merchantName: '门店名称门店名称门店名称',
+			// 	totalAmount: 20000,
+			// 	status: 3,
+			// 	createdAt: 1493232323
+			// },{
+			// 	brandName: '品牌名称品牌名称',
+			// 	brandImg: '/static/user/brand.png',
+			// 	merchantName: '门店名称门店名称门店名称',
+			// 	totalAmount: 20000,
+			// 	status: 4,
+			// 	createdAt: 1503976928
+			// },{
+			// 	brandName: '品牌名称品牌名称',
+			// 	brandImg: '/static/user/brand.png',
+			// 	merchantName: '门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称门店名称',
+			// 	totalAmount: 20000,
+			// 	status: 5,
+			// 	createdAt: 1504013332
+			// },],
 			loanAmount: 200000,
 			bankBranchPeriod: 12,
-			statusArr: [{
-				id: 0,
-				value: '已预约'
-			},{
-				id: 1,
-				value: '已取消'
-			},{
-				id: 2,
-				value: '待支付'
-			},{
-				id: 3,
-				value: '待确认'
-			},{
-				id: 4,
-				value: '待收货'
-			},{
-				id: 5,
-				value: '已完成'
-			},]
+			// statusArr: [{
+			// 	id: 0,
+			// 	value: '已预约'
+			// },{
+			// 	id: 1,
+			// 	value: '已取消'
+			// },{
+			// 	id: 2,
+			// 	value: '待支付'
+			// },{
+			// 	id: 3,
+			// 	value: '待确认'
+			// },{
+			// 	id: 4,
+			// 	value: '待收货'
+			// },{
+			// 	id: 5,
+			// 	value: '已完成'
+			// },]
+            dialogVisible: false,
+            userName: '',
+            userMobile: localStorage.getItem('userName')?JSON.parse(localStorage.getItem('userName')).name:'您还未登录',
+            infoSetting: 0,
+            tmpName: {
+                value: '',
+                focus: false
+            },
+            tmpMobile: {
+                value: '',
+                focus: false
+            },
+            tmpVerti: {
+                value: '',
+                focus: false
+            },
+            time: 60,
+            timekeeper: null,
+            isSend: false,
 		}
 	},
 	props: {
@@ -406,10 +546,113 @@ export default{
 				}
 			})
 			return result
-		}
+		},
+        getName() {
+            if (localStorage.getItem('userInfo')) {
+                if (JSON.parse(localStorage.getItem('userInfo')).profile.username) {
+                    this.userName = JSON.parse(localStorage.getItem('userInfo')).profile.username
+                } else {
+                    this.userName = '您还未设置用户名称'
+                }
+            } else {
+                this.userName = '您还未登录'
+            }
+        },
+        settingChange(id, subId) {
+            if (id == 1) {
+                this.infoSetting = (subId + 1)
+                console.log(this.infoSetting)
+            } else {
+                this.infoSetting = 0
+            }
+        },
+        setMouse(id) {
+            let ret = {}
+            if (id == 2) {
+                ret.cursor = 'pointer'
+            }
+            return ret
+        },
+        logOut(id) {
+            if (id == 2) {
+                this.dialogVisible = true
+            }
+        },
+        confirmLogOut() {
+            localStorage.clear()
+            alert('退出成功！')
+            location.reload()
+        },
+        focusChange(val) {
+            switch(val) {
+                case 'tmpName':
+                    this.tmpName.focus = !this.tmpName.focus
+                    break
+                case 'tmpMobile':
+                    this.tmpMobile.focus = !this.tmpMobile.focus
+                    break
+                case 'tmpVerti':
+                    this.tmpVerti.focus = !this.tmpVerti.focus
+                    break
+            }
+        },
+        setBorder(val) {
+            let ret = {}
+            if (val) {
+                ret.borderColor = '#ff9736'
+                ret.color = '#ff9736'
+            }
+            return ret
+        },
+        isTruePhoneNum() {
+            let reg = /^1[3|4|5|7|8]\d{9}$/
+            return reg.test(Number(this.tmpMobile.value))
+        },
+        isCode() {
+            let reg = /^\d{6}$/
+            return reg.test(Number(this.tmpVerti.value))
+        },
+        isFinished(type) {
+            if (type == 1) {
+                return this.tmpName.value != ''
+            } else if (type == 2) {
+                return this.isTruePhoneNum() && this.isCode()
+            }
+        },
+        send() {
+            let that = this
+            axios.post(`${Conf.userApi}sms/sendCode`, {}, {
+                params: {
+                    mobile:  Number(this.tmpMobile.value)
+                },
+                withCredentials: true,
+            }).then(
+            (res)=>{
+                this.isSend = true
+                this.time = 60
+                this.timekeeper = setInterval(() => {
+                    that.time --
+                    if (that.time === 0) {
+                        clearInterval(that.timekeeper)
+                        this.isSend = false
+                    }
+                }, 1000)
+            }).catch((res) => {
+                this.loading = false
+                alert('服务器繁忙，请稍后重试')
+                this.isSendId = false
+            })
+        },
+        changeName() {
+            console.log('名称：'+this.tmpName.value)
+        },
+        changeMobile() {
+            console.log('手机号：'+this.tmpMobile.value,'验证码：'+this.tmpVerti.value,)
+        }
 	},
 	mounted(){
 		document.title = '个人中心'
+        this.getName()
 	}
 }
 </script>

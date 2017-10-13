@@ -73,13 +73,56 @@
 			top: 50%;
 			transform: translate(-50%, -50%);
 			background-color: #fff;
-			opacity: 0.9;
+			opacity: 0.97;
 			text-align: center;
 			.form-wp {
 				width: 920px;
 				margin: 0 auto;
 				display: flex;
 				justify-content: space-between;
+				.right {
+					width: 40%;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					transition: all 0.3s cubic-bezier(.645,.045,.355,1);
+					position: relative;
+					p {
+						font-size: 14px;
+						color: #666;
+						margin: 20px 0;
+					}
+					h3 {
+						font-size: 20px;
+						margin-bottom: 30px;
+					}
+					.calc-wp {
+						position: absolute;
+					}
+					.outside {
+						width: 140px;
+						height: 140px;
+						border-radius: 50%;
+						position: relative;
+						background-color: #f4f4f4;
+						margin: 0 auto;
+					}
+					.inside {
+						width: 120px;
+						height: 120px;
+						border-radius: 50%;
+						position: absolute;
+						background-color: @main;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+					}
+				}
 				.input-item {
 					display: flex;
 					border-bottom: 1px solid #ddd;
@@ -88,7 +131,7 @@
 					height: 36px;
 					line-height: 36px;
 					transition: all 0.3s cubic-bezier(.645,.045,.355,1);
-					color: #999;
+					color: #666;
 					input {
 						outline: none;
 						border: none;
@@ -125,6 +168,72 @@
 				cursor: pointer;
 			}
 		}
+		.loan-body {
+			width: 1238px;
+			height: 680px;
+			background-color: #fff;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			.block-up {
+				width: 886px;
+				height: 338px;
+				display: flex;
+				.item-up {
+					width: 50%;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					.text-up {
+						font-size: 50px;
+						color: #333;
+					}
+					.text-down {
+						font-size: 30px;
+						color: #666;
+						span {
+							color: #ff410e;
+						}
+					}
+				}
+			}
+			.block-down {
+				width: 886px;
+				height: 217px;
+				background-color: #f4f4f4;
+				display: flex;
+				.item-down {
+					width: 50%;
+					height: 100%;
+					flex-direction: column;
+					display: flex;
+					padding-top: 30px;
+					.text-wp {
+						display: flex;
+						justify-content: center;
+						font-size: 18px;
+						margin-bottom: 20px;
+						width: 100%;
+						.text-title {
+							color: #999;
+							margin-right: 30px;
+							width: 35%;
+							text-align: right;
+						}
+						.text-con {
+							color: #333;
+							width: 60%;
+							text-align: left;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	.content {
@@ -157,15 +266,20 @@
 						color: #fff;
 						font-weight: 600;
 						font-size: 18px;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
 					}
 					.block-2 {
 						padding: 30px 0;
 						transition: all 0.2s cubic-bezier(.645,.045,.355,1);
 						font-weight: 900;
 						font-size: 16px;
-						&:hover {
-
-						}
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
 					}
 					.block-3 {
 						height: 65px;
@@ -175,6 +289,10 @@
 					.block-4 {
 						padding: 30px 0;
 						transition: all 0.2s cubic-bezier(.645,.045,.355,1);
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
 					}
 					.line-dash {
 						width: calc(~"100% - 40px");
@@ -256,7 +374,7 @@
 				<div class="stage-wp">
 					<div class="stage-item" v-for="(item,id) in stageList" :style="setHeight(id)">
 						<div class="block-1">{{item.name}}</div>
-						<div class="block-2" :style="setPadding(id)"><p v-for="text in item.first">{{text.text}}</p></div>
+						<div class="block-2" :style="setPadding(id)"><span v-for="text in item.first">{{text.text}}</span></div>
 						<div class="line-dash">
 							<div class="dash-item" v-for="n in 9"></div>
 						</div>
@@ -264,7 +382,7 @@
 						<div class="line-dash">
 							<div class="dash-item" v-for="n in 9"></div>
 						</div>
-						<div class="block-4"><p v-for="text in item.third">{{text.text}}</p></div>			
+						<div class="block-4"><span v-for="text in item.third">{{text.text}}</span></div>			
 					</div>
 				</div>
 			</div>
@@ -299,7 +417,7 @@
 		</div>
 		<div class="img-wp">
 			<img src="/static/install/bg-2.png" style="width: 100%;">
-			<div class="form-body" v-if="">
+			<div class="form-body" v-if="!loanSubmit">
 				<p class="title-cn">贷款申请</p>
 				<p class="title-en" style="margin-bottom: 52px;">线上极速提交申请 VIP客服全程跟进</p>
 				<div class="form-wp">
@@ -312,32 +430,32 @@
 							<input type="text" name="手机号" placeholder="请输入您的手机号" v-model="phone.value" @focus="focusChange('phone')" @blur="focusChange('phone')">
 							<div class="input-title">手机号</div>
 						</div>
+						<div class="input-item" :style="setBorder(money.focus, 0)">
+							<input type="text" name="期望额度" placeholder="请输入您的期望额度" v-model="money.value" @focus="focusChange('money')" @blur="focusChange('money')">
+							<div class="input-title">期望额度</div>
+						</div>
 						<div class="input-item" :style="setBorder(bankBranch.focus, 0)">
-							<!-- <input type="text" name="银行网点" placeholder="请输入您的手机号" v-model="bankBranch.value" @focus="focusChange('bankBranch')" @blur="focusChange('bankBranch')"> -->
-							<el-select v-model="bankBranch.value" no-data-text="请先选择您要申请的银行" clearable placeholder="请选择申请银行网点" @change="bankBranchChoose(bankBranch.value)">
+							<!-- <input type="text" name="银行网点" placeholder="请输入您期望的期数" v-model="bankBranch.value" @focus="focusChange('bankBranch')" @blur="focusChange('bankBranch')"> -->
+							<el-select v-model="expectInstalment.value" clearable placeholder="请选择您期望的期数" @change="periodChange(expectInstalment.value)">
 								<el-option
-									v-for="item in bankBranchOptions"
+									v-for="item in periodOptions"
 									:key="item.value"
 									:label="item.label"
 									:value="item.value">
 								</el-option>
 							</el-select>
-							<div class="input-title">银行网点</div>
-						</div>
-						<div class="input-item" :style="setBorder(money.focus, 0)">
-							<input type="text" name="期望额度" placeholder="请输入您的期望额度" v-model="money.value" @focus="focusChange('money')" @blur="focusChange('money')">
-							<div class="input-title">期望额度</div>
+							<div class="input-title">期望期数</div>
 						</div>
 					</div>
 					<div class="right">
-						<div class="input-item" :style="setBorder(idCard.focus, 1)">
+						<!-- <div class="input-item" :style="setBorder(idCard.focus, 1)">
 							<div class="input-title">身份证</div>
 							<input type="text" name="身份证" placeholder="请输入您的身份证号" v-model="idCard.value" @focus="focusChange('idCard')" @blur="focusChange('idCard')">	
 						</div>
 						<div class="input-item" :style="setBorder(bank.focus, 1)">
 							<div class="input-title">申请银行</div>
-							<!-- <input type="text" name="申请银行" v-model="bank.value" @focus="focusChange('bank')" @blur="focusChange('bank')">	 -->
-							<el-select v-model="bank.value" clearable placeholder="请选择申请银行" @change="bankChoose(bank.value)">
+							<input type="text" name="申请银行" v-model="bank.value" @focus="focusChange('bank')" @blur="focusChange('bank')">	
+							<el-select v-model="bank.value" clearable :no-data-text="loginText" placeholder="请选择申请银行" @change="bankChoose(bank.value)">
 								<el-option
 									v-for="item in bankOptions"
 									:key="item.value"
@@ -348,7 +466,7 @@
 						</div>
 						<div class="input-item" :style="setBorder(bankBranchPeriod.focus, 1)">
 							<div class="input-title">分期期数</div>
-							<!-- <input type="text" name="分期期数" v-model="bankBranchPeriod.value" @focus="focusChange('bankBranchPeriod')" @blur="focusChange('bankBranchPeriod')">	 -->
+							<input type="text" name="分期期数" v-model="bankBranchPeriod.value" @focus="focusChange('bankBranchPeriod')" @blur="focusChange('bankBranchPeriod')">	
 							<el-select v-model="bankBranchPeriod.value" no-data-text="请先选择您要申请的银行网点" clearable placeholder="请选择申请分期期数">
 								<el-option
 									v-for="item in periodOptions"
@@ -357,10 +475,72 @@
 									:value="item.value">
 								</el-option>
 							</el-select>
+						</div> -->
+						<div v-if="!calcShow" class="btn" :class="{'btn-active': isFilled()}" @click="isFilled()?calcShow = true:false">计算分期计划</div>
+						<p v-if="!calcShow">本计算公式以费率4%为例</p>
+						<div v-if="calcShow" class="calc-wp">
+							<h3>计算结果</h3>
+							<div>
+								手续费是否分期？
+								<el-switch
+									v-model="moneyAverage"
+									on-text="是"
+									off-text="否"
+									on-color="#ff9736"
+									off-color="#666">
+								</el-switch>
+							</div>
+							<div style="margin: 10px 0; font-size: 14px;">首月还款:<span style="color: #ff9736">  {{getMoney(moneyAverage).first}}</span>元</div>
+							<div style="margin: 10px 0; font-size: 14px;">每月还款:<span style="color: #ff9736">  {{getMoney(moneyAverage).every}}</span>元</div>
+							<div>居分期将为您贴息:<div class="outside" style="color: #fff;font-size: 20px;"><div class="inside">{{getMoney(moneyAverage).save}}元</div></div></div>
+							<p>具体还款计划以实际银行账单为准</p>
 						</div>
+						
 					</div>
 				</div>
 				<div class="btn" :class="{'btn-active': isFinished()}" @click="isFinished()?submit():false">立即申请</div>
+			</div>
+			<div class="loan-body" v-if="loanSubmit">
+				<div class="block-up">
+					<div class="item-up"><img src="/static/install/loan.png"></div>
+					<div class="item-up">
+						<p class="text-up">申请已提交</p>
+						<!-- <p class="text-down">已申请额度 <span>3000000</span></p> -->
+						<p class="text-down">您的申请已提交</p>
+					</div>
+				</div>
+				<div class="block-down">
+					<div class="item-down">
+						<div class="text-wp">
+							<div class="text-title">申请人</div>
+							<div class="text-con">{{result.fullname}}</div>
+						</div>
+						<div class="text-wp">
+							<div class="text-title">手机号</div>
+							<div class="text-con">{{result.mobile}}</div>
+						</div>
+						<div class="text-wp">
+							<div class="text-title">期望期数</div>
+							<div class="text-con">{{result.expectInstalment}}</div>
+						</div>
+						<div class="text-wp">
+							<div class="text-title">期望额度</div>
+							<div class="text-con">{{result.expectQuota}}</div>
+						</div>
+					</div>
+					<!-- <div class="item-down">
+						<div class="text-wp">
+							<div class="text-title">身份证</div>
+							<div class="text-con">{{result.idCardNo}}</div>
+						</div><div class="text-wp">
+							<div class="text-title">申请银行</div>
+							<div class="text-con">{{findLabel(result.bank.id, bankOptions)}}</div>
+						</div><div class="text-wp">
+							<div class="text-title">分期期数</div>
+							<div class="text-con">{{findLabel(result.bankBranchPeriod.id, periodOptions)}}期</div>
+						</div>
+					</div> -->
+				</div>
 			</div>
 		</div>
 	</div>
@@ -378,22 +558,7 @@ export default {
 	data() {
 		return{
 			SrceenWidth: document.body.clientWidth,
-			options: [{
-				value: '选项1',
-				label: '黄金糕'
-			}, {
-				value: '选项2',
-				label: '双皮奶'
-			}, {
-				value: '选项3',
-				label: '蚵仔煎'
-			}, {
-				value: '选项4',
-				label: '龙须面'
-			}, {
-				value: '选项5',
-				label: '北京烤鸭'
-			}],
+			loginText: '',
 			name: {
 				value: '',
 				focus: false
@@ -507,10 +672,33 @@ export default {
 			},],
 			bankOptions: [],
 			bankBranchOptions: [],
-			periodOptions: [],
+			expectInstalment: {
+				value: '',
+				label: ''
+			},
+			periodOptions: [{
+				value: '0',
+				label: '12期'
+			},{
+				value: '1',
+				label: '24期'
+			},{
+				value: '2',
+				label: '36期'
+			},{
+				value: '3',
+				label: '48期'
+			},{
+				value: '4',
+				label: '60期'
+			},],
 			tmpBank: '',
 			tmpBankBranch: '',
-
+			loanSubmit: false,
+			result: null,
+			calcShow: false,
+			moneyAverage: false,
+			hasLogin: false
 		}
 	},
 	methods: {
@@ -605,52 +793,23 @@ export default {
 			} 
 			return ret
 		},
-		bankChoose(val) {
-			console.log(val)
-			this.bankBranchOptions = []
-			axios.get(`${Conf.loanApi}bank-branches?filter=bank.id:${val}`).then((res) => {
-				res.data.data.map((e) => {
-					this.bankBranchOptions.push({
-						value: e.id,
-						label: e.name
-					})
-				})
-			}).catch((err) => {
-				console.log(err)
-				throw err
-			})
-			// this.bankBranch.value = ''
-			// this.bankBranchPeriod = ''
+		periodChange(val) {
+			this.expectInstalment.label = this.periodOptions[val].label
+			console.log(this.expectInstalment.label)
 		},
-		bankBranchChoose(val) {
-			console.log(val)
-			this.periodOptions = []
-			axios.get(`${Conf.loanApi}bank-branch-periods?filter=bankBranch.id:${val}`).then((res) => {
-				res.data.data.map((e) => {
-					this.periodOptions.push({
-						value: e.id,
-						label: e.name
-					})
-				})
-			}).catch((err) => {
-				console.log(err)
-				throw err
-			})
-			// this.bankBranchPeriod = ''
-		},
-		getBanks() {
-			axios.get(`${Conf.loanApi}banks`).then((res) => {
-				res.data.data.map((e) => {
-					this.bankOptions.push({
-						value: e.id,
-						label: e.name
-					})
-				})
-			}).catch((err) => {
-				console.log(err)
-				throw err
-			})
-		},
+		// getBanks() {
+		// 	axios.get(`${Conf.loanApi}banks`).then((res) => {
+		// 		res.data.data.map((e) => {
+		// 			this.bankOptions.push({
+		// 				value: e.id,
+		// 				label: e.name
+		// 			})
+		// 		})
+		// 	}).catch((err) => {
+		// 		console.log(err)
+		// 		throw err
+		// 	})
+		// },
 		// 各种验证
 		isIdCard() {
 			let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
@@ -665,37 +824,89 @@ export default {
 			return reg.test(Number(this.money.value))
 		},
 		isFinished() {
-			return this.isIdCard() && this.isTruePhoneNum() && this.isNumber() && this.bank.value && this.bankBranch.value && this.bankBranchPeriod.value && this.name.value
+			return this.name.value && this.isTruePhoneNum() && this.isNumber() && this.expectInstalment.label !== ''
+		},
+		isFilled() {
+			return this.isNumber() && this.expectInstalment.label !== ''
 		},
 		submit() {
-			let result = {
-				userId: JSON.parse(localStorage.getItem('userInfo')).userId,
-				idCardNo: this.idCard.value,
+			this.result = {
+				userId: JSON.parse(localStorage.getItem('userInfo'))?JSON.parse(localStorage.getItem('userInfo')).userId:null,
 				mobile: this.phone.value,
-				bank: {id: Number(this.bank.value)},
-				bankBranch: {id: Number(this.bankBranch.value)},
-				bankBranchPeriod: {id:Number(this.bankBranchPeriod.value)},
+				// bank: {id: Number(this.bank.value)},
+				// bankBranch: {id: Number(this.bankBranch.value)},
+				// bankBranchPeriod: {id:Number(this.bankBranchPeriod.value)},
 				fullname: this.name.value,
 				expectQuota: this.money.value,
+				expectInstalment: this.expectInstalment.label.split('期')[0],
 				statusEnum: 1
 			}
-			axios.post(`${Conf.loanApi}loan-applications`, result).then((res) => {
+			if (this.hasLogin) {
+				axios.post(`${Conf.loanApi}loan-applications`, this.result).then((res) => {
+					this.$message({
+						message: '贷款申请已提交！后续会有工作人员继续为您服务',
+						type: 'success'
+					});
+					this.loanSubmit = true
+				}).catch((err) => {
+					console.log(err)
+					this.$message.error('连接服务器失败，请稍后再试。。');
+					throw err
+				})
+			} else {
 				this.$message({
-					message: '贷款申请已提交！后续会有工作人员继续为您服务',
-					type: 'success'
+					message: '先登录才可以申请!',
+					type: 'warning'
 				});
-			}).catch((err) => {
-				console.log(err)
-				this.$message.error('连接服务器失败，请稍后再试。。');
-				throw err
+			}
+			
+		},
+		isLogin() {
+			let now  = Number(new Date().getTime())
+			let userInfo = localStorage.getItem('userInfo')?JSON.parse(localStorage.getItem('userInfo')): null
+			if (userInfo == null) {
+				this.loginText = '请先登录哦'
+			} else if (Number(userInfo.expiredAt) < now) {
+				this.loginText = '登录信息过期，重新登录一下吧'
+			} else {
+				this.phone.value = JSON.parse(localStorage.getItem('userName')).name
+				this.hasLogin = true
+				// this.getBanks()
+			}
+		},
+		findLabel(id, arr) {
+			let result = ''
+			arr.map((e) => {
+				if (id == e.value) {
+					result = e.label
+				}
 			})
+			return result
+		},
+		getMoney(type) {
+			let result = {
+				every: 0,
+				first: 0,
+				save: 0
+			}
+			if (this.isFilled()) {
+				if (type) {
+					result.every = (Number(this.money.value)*1.04/Number(this.expectInstalment.label.split('期')[0])).toFixed(0)
+					result.first = result.every
+				} else {
+					result.every = (Number(this.money.value)/Number(this.expectInstalment.label.split('期')[0])).toFixed(0)
+					result.first = ((Number(this.money.value)/Number(this.expectInstalment.label.split('期')[0])) + Number(this.money.value)*0.04).toFixed(0)
+				}
+				result.save = (Number(this.money.value)*0.04).toFixed(0)
+				
+			}
+			return result
 		}
 	},
 	mounted(){
 		document.title = '家装分期'
 		document.body.scrollTop = 0
-		this.phone.value = JSON.parse(localStorage.getItem('userName')).name
-		this.getBanks()
+		this.isLogin()
 	}
 }
 </script>
