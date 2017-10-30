@@ -13,17 +13,16 @@ import Router from 'vue-router'
 // import DiaryCon from '@/views/DiaryCon'
 // import Order from '@/views/Order'
 // import Product from '@/views/Product'
-
+const Index = () => import('@/views/Index.vue')
+const Install = () => import('@/views/Install.vue')
 const ForemanDetail = () => import('@/views/ForemanDetail.vue')
 const DcDiary = () => import('@/views/DcDiary.vue')
 const JFooter = () => import('@/components/JFooter.vue')
-const Index = () => import('@/views/Index.vue')
 const Plans = () => import('@/views/Plans.vue')
 const Mall = () => import('@/views/Mall.vue')
 const User = () => import('@/views/User.vue')
 const CaseDc = () => import('@/views/CaseDc.vue')
 const DcStrategy = () => import('@/views/DcStrategy.vue')
-const Install = () => import('@/views/Install.vue')
 const DiaryCon = () => import('@/views/DiaryCon.vue')
 const Order = () => import('@/views/Order.vue')
 const Product = () => import('@/views/Product.vue')

@@ -508,17 +508,21 @@
 	z-index: 100;
 	background-color: #000;
 }
+
 </style>
 <template>
 	<div class="index" id="Index">
 		<nav-bar></nav-bar>
 		<!-- banner -->
+		<!-- <preload-image :imgUrlArr="imgUrls" @imgAllLoaded="picOn()" :animationShow="false">
+			<img src="/static/logo.gif" />
+		</preload-image> -->
 		<div class="pic-bg">
-			<img class="img-bg" src="/static/index/banner_01.png">
+			<img class="img-bg" :src="imgUrls[0]">
 		</div>
 		<!-- what -->
 		<div class="pic-bg" style="overflow: hidden;">
-			<img class="img-bg" src="/static/index/what.png">
+			<img class="img-bg" :src="imgUrls[1]">
 			<div class="info" :style="setAnimation(animation1, 1)">
 				<div class="text" :style="setAnimation(animation1, 2)">
 					<h1 >什么是居分期</h1>
@@ -653,7 +657,7 @@ import axios from 'axios'
 
 export default{
 	components: {
-		NavBar
+		NavBar,
 	},
 	data(){
 		return {
@@ -848,7 +852,9 @@ export default{
 					name: '厨房'
 				}]
 			},],
-			artArr: [[],[]],
+			artArr: [[], []],
+			imgUrls: ['/static/index/banner_01.png','/static/index/what.png'],
+			// preload: false
 		}
 	},
 	methods: {
@@ -1047,6 +1053,9 @@ export default{
 		gotoCon(id) {
 			this.$router.push(`/plans?artId=${id}`)
 		},
+		// picOn() {
+		// 	this.preload = true
+		// }
 	},
 		
 	mounted(){

@@ -25,28 +25,37 @@ input {
 </style>
 <template>
   <div id="app">
-    <router-view></router-view>
-    <j-footer></j-footer>
+    <preload-image :imgUrlArr="imgUrls" @imgAllLoaded="picOn()" :animationShow="myFalse">
+      <img src="/static/logo.gif" />
+    </preload-image>
+    <router-view v-if="preload"></router-view>
+    <j-footer v-if="preload"></j-footer>
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/NavBar'
 import JFooter from '@/components/JFooter'
+import PreloadImage from '@/components/PreloadImage'
 
 export default {
   name: 'app',
   data() {
     return {
+      imgUrls: ['/static/index/banner_01.png','/static/index/what.png'],
+      preload: false,
+      myFalse: false
     }
   },
   components: {
     JFooter,
-    NavBar
+    PreloadImage
   },
   mounted() {
   },
   methods: {
+    picOn() {
+      this.preload = true
+    }
   },
   watch: {
   }

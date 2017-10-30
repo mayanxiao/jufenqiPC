@@ -18,12 +18,32 @@
 		backface-visibility: hidden;
 	}
 }
+.wangshuo {
+	width: 100%;
+	height: 2000px;
+	position: relative;
+	.center {
+		width: 1000px;
+		height: 1000px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		box-shadow: 0px 35px 80px 25px rgb(245, 245, 245);
+	}
+}
 </style>
 
 <template>
-	<div class="test" @mousemove="handle($event)" @mouseleave="leave()">
-		<div class="img-wrapper" id="xiaohei"></div>
+	<div>
+		<div class="test" @mousemove="handle($event)" @mouseleave="leave()">
+			<div class="img-wrapper" id="xiaohei"></div>
+		</div>
+		<div class="wangshuo">
+			<div class="center"></div>
+		</div>
 	</div>
+	
 </template>
 
 <script>

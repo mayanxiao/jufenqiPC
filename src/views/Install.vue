@@ -476,7 +476,7 @@
 								</el-option>
 							</el-select>
 						</div> -->
-						<div v-if="!calcShow" class="btn" :class="{'btn-active': isFilled()}" @click="isFilled()?calcShow = true:false">计算分期计划</div>
+						<div v-if="!calcShow" class="btn" :class="{'btn-active': isFilled()}" @click="isFilled()?calcShow = true:false">分期计算器</div>
 						<p v-if="!calcShow">本计算公式以费率4%为例</p>
 						<div v-if="calcShow" class="calc-wp">
 							<h3>计算结果</h3>
