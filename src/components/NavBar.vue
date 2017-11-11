@@ -257,13 +257,11 @@ export default {
       if (userInfo == null) {
         this.signSuccess = false
         console.log('heihei')
-        localStorage.removeItem('userInfo')
-        localStorage.removeItem('userName')
+        localStorage.clear()
       } else if (Number(userInfo.expiredAt) < now) {
         console.log(JSON.parse(localStorage.getItem('userInfo').expiredAt))
         this.signSuccess = false
-        localStorage.removeItem('userInfo')
-        localStorage.removeItem('userName')
+        localStorage.clear()
       } else {
         this.signSuccess = true
         this.signName = JSON.parse(localStorage.getItem('userName')).name

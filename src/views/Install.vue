@@ -204,7 +204,7 @@
 			}
 			.block-down {
 				width: 886px;
-				height: 217px;
+				height: 137px;
 				background-color: #f4f4f4;
 				display: flex;
 				.item-down {
@@ -232,6 +232,16 @@
 						}
 					}
 				}
+			}
+			.text-line {
+				height: 80px;
+				width: 886px;
+				text-align: center;
+				line-height: 50px;
+				font-size: 20px;
+				color: @main;
+				margin: 0 auto;
+				background-color: #f4f4f4;
 			}
 		}
 	}
@@ -504,7 +514,7 @@
 				<div class="block-up">
 					<div class="item-up"><img src="/static/install/loan.png"></div>
 					<div class="item-up">
-						<p class="text-up">申请已提交</p>
+						<!-- <p class="text-up">申请已提交</p> -->
 						<!-- <p class="text-down">已申请额度 <span>3000000</span></p> -->
 						<p class="text-down">您的申请已提交</p>
 					</div>
@@ -519,6 +529,8 @@
 							<div class="text-title">手机号</div>
 							<div class="text-con">{{result.mobile}}</div>
 						</div>
+					</div>
+					<div class="item-down">
 						<div class="text-wp">
 							<div class="text-title">期望期数</div>
 							<div class="text-con">{{result.expectInstalment}}</div>
@@ -528,19 +540,8 @@
 							<div class="text-con">{{result.expectQuota}}</div>
 						</div>
 					</div>
-					<!-- <div class="item-down">
-						<div class="text-wp">
-							<div class="text-title">身份证</div>
-							<div class="text-con">{{result.idCardNo}}</div>
-						</div><div class="text-wp">
-							<div class="text-title">申请银行</div>
-							<div class="text-con">{{findLabel(result.bank.id, bankOptions)}}</div>
-						</div><div class="text-wp">
-							<div class="text-title">分期期数</div>
-							<div class="text-con">{{findLabel(result.bankBranchPeriod.id, periodOptions)}}期</div>
-						</div>
-					</div> -->
 				</div>
+				<div class="text-line">贷款办理进度可在个人中心查看</div>
 			</div>
 		</div>
 	</div>
@@ -848,6 +849,9 @@ export default {
 						type: 'success'
 					});
 					this.loanSubmit = true
+					let loan = {}
+					loan.id = res.data.data.id
+					localStorage.setItem('loan', JSON.stringify(loan))
 				}).catch((err) => {
 					console.log(err)
 					this.$message.error('连接服务器失败，请稍后再试。。');
@@ -901,7 +905,7 @@ export default {
 				
 			}
 			return result
-		}
+		},
 	},
 	mounted(){
 		document.title = '家装分期'

@@ -73,6 +73,7 @@
     background-color: #222;
     color: #999;
     padding-top: 22px;
+    cursor: default;
     &:hover {
       color: #eee;
     }
@@ -86,7 +87,7 @@
       <div class="infos">
         <div v-for="info in footers">
           <h3>{{info.title}}</h3>
-          <p v-for="text in info.items">{{text}}</p>
+          <p v-for="text in info.items" @click="goto(text.url)">{{text.name}}</p>
         </div>
       </div>
       <div class="qr-codes">
@@ -124,15 +125,51 @@ export default {
   data () {
     return {
       footers: [{
-      	title: '购物指南',
-      	items: ['常见问题', '购买流程', '联系我们', '客服服务']
+      	title: '用户指南',
+      	items: [{
+          name:'常见问题',
+          url: ''
+        },{
+          name:'购买流程',
+          url: ''
+        },{
+          name:'联系我们',
+          url: '',
+        },{
+          name:'客服服务',
+          url: ''
+        }]
       },{
       	title: '个性整装',
-      	items: ['家装日记', '家装攻略', '家装案例']
+      	items: [{
+          name:'家装日记',
+          url: '/dc-diary'
+        },{
+          name:'家装攻略',
+          url: '/dc-strategy'
+        },{
+          name:'家装案例',
+          url: '/case-dc'
+        }]
       },{
         title: '友情链接',
-        items: ['一生家', '奔跑吧装修', '博洛尼']
+        items: [{
+          name:'一生家',
+          url: 'http://www.yishengjia.net'
+        },{
+          name:'博洛尼',
+          url: 'http://bj.boloni.com.cn'
+        },]
       },],
+    }
+  },
+  methods: {
+    goto(url) {
+      if (url.substr(0, 1) == 'h') {
+        location.href = url
+      } else {
+        this.$router.push(url)
+      }
     }
   }
 }

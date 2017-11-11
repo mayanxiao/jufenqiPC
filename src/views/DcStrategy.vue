@@ -286,11 +286,12 @@ export default{
 			axios.get('http://wx.jufenqi.com:8080/content/api/articles', {
 				params: {
 					filter: `enabled:true`,
-					size: 100,
+					size: 1000,
 					sort: 'createdAt,DESC'
 				}
 			}).then((res) => {
 				let arr = res.data.data
+				let arr1 = [],arr2 = []
 				arr.map((e, id) => {
 					let content = JSON.parse(e.contentDelta)
 					let imgList = []
@@ -299,6 +300,7 @@ export default{
 							imgList.push(l.insert.image)
 						}
 					})
+
 					if (e.type == 1) {
 						this.newDiaryList.push({
 							id: e.id,
@@ -307,13 +309,14 @@ export default{
 							imgUrl: imgList[0],
 						})
 					}
-					if (e.type == 0&&id < 5) {
-						this.newRecList.push({
+					if (e.type == 0) {
+						arr2.push({
 							id: e.id,
 							title: e.title,
 							introduction: e.introduction,
 							imgUrl: imgList[0],
 						})
+						this.newRecList = arr2.slice(0, 4)
 					}
 				})
 			}).catch((err) => {

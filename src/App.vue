@@ -8,6 +8,7 @@
 }
 body{
   background: #f7f7f7;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif, '微软雅黑';
 }
 .white-back {
   background-color: #fff;

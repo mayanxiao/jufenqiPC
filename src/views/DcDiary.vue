@@ -281,7 +281,6 @@ export default{
 		},
 		gotoCon(id) {
 			this.$router.push(`/plans?artId=${id}`)
-			location.reload()
 		},
 		getStrategy() {
 			axios.get('http://wx.jufenqi.com:8080/content/api/articles', {
@@ -292,6 +291,7 @@ export default{
 				}
 			}).then((res) => {
 				let arr = res.data.data
+				let arr1 = [], arr2 = []
 				arr.map((e, id) => {
 					let content = JSON.parse(e.contentDelta)
 					let imgList = []
@@ -308,13 +308,14 @@ export default{
 							imgUrl: imgList[0],
 						})
 					}
-					if (e.type == 1&&id < 5) {
-						this.newRecList.push({
+					if (e.type == 1) {
+						arr2.push({
 							id: e.id,
 							title: e.title,
 							introduction: e.introduction,
 							imgUrl: imgList[0],
 						})
+						this.newRecList = arr2.slice(0, 4)
 					}
 				})
 			}).catch((err) => {

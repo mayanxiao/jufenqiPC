@@ -61,12 +61,10 @@
 			.block-title {
 				font-size: 42px;
 				font-weight: 900;
-				font-family: '微软雅黑'
 			}
 			.block-subtitle {
 				font-size: 26px;
 				font-weight: 400;
-				font-family: '微软雅黑'
 			}
 			.line {
 				width: 54px;
@@ -87,7 +85,7 @@
 					border-radius: 10px;
 					background-color: #fff;
 					padding-top: 20px;
-					cursor: pointer;
+					cursor: default;
 					position: absolute;
 					left: 467px;
 					top: 291px;
@@ -527,8 +525,10 @@
 				<div class="text" :style="setAnimation(animation1, 2)">
 					<h1 >什么是居分期</h1>
 					<div class="line"></div>
-					<div class="tips">居分期是根据家庭成员的性格、喜好、工作来配置+定制</div>
-					<div class="tips">家居风格和产品并以管家式追踪贯彻各个流程</div>
+					<div class="tips">居分期主要办理家装分期业务，可满足客户购房后资金不足的</div>
+					<div class="tips">情况下的装修、建材、家具、家居、家电等一系列与住房有关</div>
+					<div class="tips">的消费金融需求。</div>
+					<!-- <div class="tips">家居风格和产品并以管家式追踪贯彻各个流程</div> -->
 				</div>
 			</div>
 		</div>
@@ -587,13 +587,13 @@
 				<div class="text-wp">
 					
 					<div class="tabs">
-						<div class="tab-item" v-for="(tab, tabId) in tabList" @click="tabIndex = tabId" :class="{'active': tabIndex == tabId}">
+						<div class="tab-item" v-for="(tab, tabId) in tabList" @click="changeTab(tabId)" :class="{'active': tabIndex == tabId}">
 							{{tab.name}}
 						</div>
 						<!-- <div class="btn" @click="tabId == 1?goto('/dc-strategy'):goto('/dc-diary')">更多 +</div> -->
 					</div>
 					<div class="tab-content">
-						<div class="content-item" v-for="content in artArr[tabIndex]">
+						<div class="content-item" v-for="content in artArr">
 							<div class="img-wrapper"><img :src="content.coverImg"></div>
 							<div class="text">
 								<p style="font-size: 14px; color: #999; font-weight: 400">{{getTime(content.createdAt)}}</p>
@@ -669,26 +669,26 @@ export default{
 			animation2: false,
 			animation3: false,
 			whyList: [{
-				url: '/static/index/why-item-1.png',
-				text: '家装流行产品及装修咨询',
-				textEn: 'Product decoration consulting'
-			},{
 				url: '/static/index/why-item-2.png',
-				text: '软装、家装分期贷款',
-				textEn: 'Installment Loan'
+				text: '缓解资金紧张问题',
+				textEn: 'A Solution Of Fund Shortage'
 			},{
-				url: '/static/index/why-item-3.png',
-				text: '软装定制宅配',
-				textEn: 'Soft Loading Customization'
+				url: '/static/index/why-item-1.png',
+				text: '倡导新兴消费观念',
+				textEn: 'Advocating New Consumption Concept'
 			},{
 				url: '/static/index/why-item-4.png',
-				text: '全程管家服务',
-				textEn: 'Manager Service'
+				text: '提升大众生活品质',
+				textEn: 'Improving Quality Of Life. '
+			},{
+				url: '/static/index/why-item-3.png',
+				text: '重新定位生活空间',
+				textEn: 'Reposition Life Space'
 			},],
 			tabList: [{
-				name: '家装攻略',
-			},{
 				name: '家装日记',
+			},{
+				name: '家装攻略',
 			},],
 			tabContent: [[{
 					coverImg: '/static/index/tab-item-1.png',
@@ -852,7 +852,7 @@ export default{
 					name: '厨房'
 				}]
 			},],
-			artArr: [[], []],
+			artArr: [],
 			imgUrls: ['/static/index/banner_01.png','/static/index/what.png'],
 			// preload: false
 		}
@@ -1012,13 +1012,13 @@ export default{
 		getStrategy() {
 			axios.get('http://wx.jufenqi.com:8080/content/api/articles', {
 				params: {
-					filter: `enabled:true`,
-					size: 1000,
+					filter: `enabled:true|type:${this.tabIndex}`,
+					size: 4,
 					sort: 'createdAt,DESC'
 				}
 			}).then((res) => {
 				let arr = res.data.data
-				arr.map((e, id) => {
+				arr.map((e, artId) => {
 					let content = JSON.parse(e.contentDelta)
 					let imgList = []
 					content.ops.map((l) => {
@@ -1026,29 +1026,41 @@ export default{
 							imgList.push(l.insert.image)
 						}
 					})
-					if (e.type == 1&&id < 8) {
-						this.artArr[0].push({
-							id: e.id,
-							title: e.title,
-							intro: e.introduction,
-							coverImg: imgList[0],
-							createdAt: e.createdAt
-						})
-					}
-					if (e.type == 0&&id < 8) {
-						this.artArr[1].push({
-							id: e.id,
-							title: e.title,
-							intro: e.introduction,
-							coverImg: imgList[0],
-							createdAt: e.createdAt
-						})
-					}
+					// if (e.type == 1&&id < 8) {
+					// 	this.artArr[0].push({
+							// id: e.id,
+							// title: e.title,
+							// intro: e.introduction,
+							// coverImg: imgList[0],
+							// createdAt: e.createdAt
+					// 	})
+					// }
+					// if (e.type == 0&&id < 8) {
+					// 	this.artArr[1].push({
+					// 		id: e.id,
+					// 		title: e.title,
+					// 		intro: e.introduction,
+					// 		coverImg: imgList[0],
+					// 		createdAt: e.createdAt
+					// 	})
+					// }
+					this.artArr.push({
+						id: e.id,
+						title: e.title,
+						intro: e.introduction,
+						coverImg: imgList[0],
+						createdAt: e.createdAt
+					})
 				})
 			}).catch((err) => {
 				console.log(err)
 				throw err
 			})
+		},
+		changeTab(id) {
+			this.artArr = []
+			this.tabIndex = id
+			this.getStrategy()
 		},
 		gotoCon(id) {
 			this.$router.push(`/plans?artId=${id}`)
